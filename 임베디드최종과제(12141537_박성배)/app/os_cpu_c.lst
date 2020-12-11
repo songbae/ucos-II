@@ -1,0 +1,182 @@
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s 			page 1
+
+
+   1               		.file	"os_cpu_c.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.text
+   9               	.global	OSTaskStkInit
+  10               		.type	OSTaskStkInit, @function
+  11               	OSTaskStkInit:
+  12               	/* prologue: function */
+  13               	/* frame size = 0 */
+  14               	/* stack size = 0 */
+  15               	.L__stack_usage = 0
+  16 0000 FA01      		movw r30,r20
+  17 0002 8083      		st Z,r24
+  18 0004 9293      		st -Z,r25
+  19 0006 1292      		st -Z,__zero_reg__
+  20 0008 1292      		st -Z,__zero_reg__
+  21 000a 1292      		st -Z,__zero_reg__
+  22 000c 1292      		st -Z,__zero_reg__
+  23 000e 1292      		st -Z,__zero_reg__
+  24 0010 1292      		st -Z,__zero_reg__
+  25 0012 1292      		st -Z,__zero_reg__
+  26 0014 1292      		st -Z,__zero_reg__
+  27 0016 1292      		st -Z,__zero_reg__
+  28 0018 1292      		st -Z,__zero_reg__
+  29 001a 1292      		st -Z,__zero_reg__
+  30 001c 1292      		st -Z,__zero_reg__
+  31 001e 1292      		st -Z,__zero_reg__
+  32 0020 1292      		st -Z,__zero_reg__
+  33 0022 1292      		st -Z,__zero_reg__
+  34 0024 1292      		st -Z,__zero_reg__
+  35 0026 1292      		st -Z,__zero_reg__
+  36 0028 1292      		st -Z,__zero_reg__
+  37 002a 1292      		st -Z,__zero_reg__
+  38 002c 1292      		st -Z,__zero_reg__
+  39 002e 1292      		st -Z,__zero_reg__
+  40 0030 1292      		st -Z,__zero_reg__
+  41 0032 1292      		st -Z,__zero_reg__
+  42 0034 1292      		st -Z,__zero_reg__
+  43 0036 6293      		st -Z,r22
+  44 0038 7293      		st -Z,r23
+  45 003a 1292      		st -Z,__zero_reg__
+  46 003c 1292      		st -Z,__zero_reg__
+  47 003e 1292      		st -Z,__zero_reg__
+  48 0040 1292      		st -Z,__zero_reg__
+  49 0042 1292      		st -Z,__zero_reg__
+  50 0044 1292      		st -Z,__zero_reg__
+  51 0046 1292      		st -Z,__zero_reg__
+  52 0048 80E8      		ldi r24,lo8(-128)
+  53 004a 8293      		st -Z,r24
+  54 004c 9F01      		movw r18,r30
+  55 004e 2150      		subi r18,lo8(-(-1))
+  56 0050 3040      		sbci r19,hi8(-(-1))
+  57 0052 C901      		movw r24,r18
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s 			page 2
+
+
+  58               	/* epilogue start */
+  59 0054 0895      		ret
+  60               		.size	OSTaskStkInit, .-OSTaskStkInit
+  61               	.global	OSTaskCreateHook
+  62               		.type	OSTaskCreateHook, @function
+  63               	OSTaskCreateHook:
+  64               	/* prologue: function */
+  65               	/* frame size = 0 */
+  66               	/* stack size = 0 */
+  67               	.L__stack_usage = 0
+  68               	/* epilogue start */
+  69 0056 0895      		ret
+  70               		.size	OSTaskCreateHook, .-OSTaskCreateHook
+  71               	.global	OSTaskDelHook
+  72               		.type	OSTaskDelHook, @function
+  73               	OSTaskDelHook:
+  74               	/* prologue: function */
+  75               	/* frame size = 0 */
+  76               	/* stack size = 0 */
+  77               	.L__stack_usage = 0
+  78               	/* epilogue start */
+  79 0058 0895      		ret
+  80               		.size	OSTaskDelHook, .-OSTaskDelHook
+  81               	.global	OSTaskSwHook
+  82               		.type	OSTaskSwHook, @function
+  83               	OSTaskSwHook:
+  84               	/* prologue: function */
+  85               	/* frame size = 0 */
+  86               	/* stack size = 0 */
+  87               	.L__stack_usage = 0
+  88               	/* epilogue start */
+  89 005a 0895      		ret
+  90               		.size	OSTaskSwHook, .-OSTaskSwHook
+  91               	.global	OSTaskStatHook
+  92               		.type	OSTaskStatHook, @function
+  93               	OSTaskStatHook:
+  94               	/* prologue: function */
+  95               	/* frame size = 0 */
+  96               	/* stack size = 0 */
+  97               	.L__stack_usage = 0
+  98               	/* epilogue start */
+  99 005c 0895      		ret
+ 100               		.size	OSTaskStatHook, .-OSTaskStatHook
+ 101               	.global	OSTimeTickHook
+ 102               		.type	OSTimeTickHook, @function
+ 103               	OSTimeTickHook:
+ 104               	/* prologue: function */
+ 105               	/* frame size = 0 */
+ 106               	/* stack size = 0 */
+ 107               	.L__stack_usage = 0
+ 108               	/* epilogue start */
+ 109 005e 0895      		ret
+ 110               		.size	OSTimeTickHook, .-OSTimeTickHook
+ 111               	.global	OSInitHookBegin
+ 112               		.type	OSInitHookBegin, @function
+ 113               	OSInitHookBegin:
+ 114               	/* prologue: function */
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s 			page 3
+
+
+ 115               	/* frame size = 0 */
+ 116               	/* stack size = 0 */
+ 117               	.L__stack_usage = 0
+ 118               	/* epilogue start */
+ 119 0060 0895      		ret
+ 120               		.size	OSInitHookBegin, .-OSInitHookBegin
+ 121               	.global	OSInitHookEnd
+ 122               		.type	OSInitHookEnd, @function
+ 123               	OSInitHookEnd:
+ 124               	/* prologue: function */
+ 125               	/* frame size = 0 */
+ 126               	/* stack size = 0 */
+ 127               	.L__stack_usage = 0
+ 128               	/* epilogue start */
+ 129 0062 0895      		ret
+ 130               		.size	OSInitHookEnd, .-OSInitHookEnd
+ 131               	.global	OSTaskIdleHook
+ 132               		.type	OSTaskIdleHook, @function
+ 133               	OSTaskIdleHook:
+ 134               	/* prologue: function */
+ 135               	/* frame size = 0 */
+ 136               	/* stack size = 0 */
+ 137               	.L__stack_usage = 0
+ 138               	/* epilogue start */
+ 139 0064 0895      		ret
+ 140               		.size	OSTaskIdleHook, .-OSTaskIdleHook
+ 141               	.global	OSTCBInitHook
+ 142               		.type	OSTCBInitHook, @function
+ 143               	OSTCBInitHook:
+ 144               	/* prologue: function */
+ 145               	/* frame size = 0 */
+ 146               	/* stack size = 0 */
+ 147               	.L__stack_usage = 0
+ 148               	/* epilogue start */
+ 149 0066 0895      		ret
+ 150               		.size	OSTCBInitHook, .-OSTCBInitHook
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 os_cpu_c.c
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:2      *ABS*:0000003f __SREG__
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:3      *ABS*:0000003e __SP_H__
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:4      *ABS*:0000003d __SP_L__
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:5      *ABS*:00000034 __CCP__
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:11     .text:00000000 OSTaskStkInit
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:63     .text:00000056 OSTaskCreateHook
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:73     .text:00000058 OSTaskDelHook
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:83     .text:0000005a OSTaskSwHook
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:93     .text:0000005c OSTaskStatHook
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:103    .text:0000005e OSTimeTickHook
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:113    .text:00000060 OSInitHookBegin
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:123    .text:00000062 OSInitHookEnd
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:133    .text:00000064 OSTaskIdleHook
+C:\Users\simwo\AppData\Local\Temp\ccVH1r6j.s:143    .text:00000066 OSTCBInitHook
+
+NO UNDEFINED SYMBOLS

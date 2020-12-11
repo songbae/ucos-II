@@ -1,0 +1,3524 @@
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 1
+
+
+   1               		.file	"ucos_ii.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.text
+   9               		.type	OS_FlagTaskRdy, @function
+  10               	OS_FlagTaskRdy:
+  11 0000 CF93      		push r28
+  12 0002 DF93      		push r29
+  13               	/* prologue: function */
+  14               	/* frame size = 0 */
+  15               	/* stack size = 2 */
+  16               	.L__stack_usage = 2
+  17 0004 FC01      		movw r30,r24
+  18 0006 A481      		ldd r26,Z+4
+  19 0008 B581      		ldd r27,Z+5
+  20 000a 1C96      		adiw r26,11+1
+  21 000c 1C92      		st X,__zero_reg__
+  22 000e 1E92      		st -X,__zero_reg__
+  23 0010 1B97      		sbiw r26,11
+  24 0012 1A96      		adiw r26,10
+  25 0014 6C93      		st X,r22
+  26 0016 1A97      		sbiw r26,10
+  27 0018 1D96      		adiw r26,13
+  28 001a 8C91      		ld r24,X
+  29 001c 1D97      		sbiw r26,13
+  30 001e 8F7D      		andi r24,lo8(-33)
+  31 0020 1D96      		adiw r26,13
+  32 0022 8C93      		st X,r24
+  33 0024 1D97      		sbiw r26,13
+  34 0026 8823      		tst r24
+  35 0028 01F4      		brne .L5
+  36 002a 8091 0000 		lds r24,OSRdyGrp
+  37 002e 5296      		adiw r26,18
+  38 0030 9C91      		ld r25,X
+  39 0032 5297      		sbiw r26,18
+  40 0034 892B      		or r24,r25
+  41 0036 8093 0000 		sts OSRdyGrp,r24
+  42 003a 5096      		adiw r26,16
+  43 003c 8C91      		ld r24,X
+  44 003e 5097      		sbiw r26,16
+  45 0040 C82F      		mov r28,r24
+  46 0042 D0E0      		ldi r29,lo8(0)
+  47 0044 C050      		subi r28,lo8(-(OSRdyTbl))
+  48 0046 D040      		sbci r29,hi8(-(OSRdyTbl))
+  49 0048 8881      		ld r24,Y
+  50 004a 5196      		adiw r26,17
+  51 004c 9C91      		ld r25,X
+  52 004e 892B      		or r24,r25
+  53 0050 8883      		st Y,r24
+  54 0052 81E0      		ldi r24,lo8(1)
+  55 0054 C281      		ldd r28,Z+2
+  56 0056 D381      		ldd r29,Z+3
+  57 0058 A081      		ld r26,Z
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 2
+
+
+  58 005a B181      		ldd r27,Z+1
+  59 005c 2097      		sbiw r28,0
+  60 005e 01F0      		breq .L7
+  61               	.L3:
+  62 0060 B983      		std Y+1,r27
+  63 0062 A883      		st Y,r26
+  64 0064 1097      		sbiw r26,0
+  65 0066 01F0      		breq .L4
+  66 0068 1396      		adiw r26,2+1
+  67 006a DC93      		st X,r29
+  68 006c CE93      		st -X,r28
+  69 006e 1297      		sbiw r26,2
+  70               	.L4:
+  71               	/* epilogue start */
+  72 0070 DF91      		pop r29
+  73 0072 CF91      		pop r28
+  74 0074 0895      		ret
+  75               	.L5:
+  76 0076 80E0      		ldi r24,lo8(0)
+  77 0078 C281      		ldd r28,Z+2
+  78 007a D381      		ldd r29,Z+3
+  79 007c A081      		ld r26,Z
+  80 007e B181      		ldd r27,Z+1
+  81 0080 2097      		sbiw r28,0
+  82 0082 01F4      		brne .L3
+  83               	.L7:
+  84 0084 0680      		ldd __tmp_reg__,Z+6
+  85 0086 F781      		ldd r31,Z+7
+  86 0088 E02D      		mov r30,__tmp_reg__
+  87 008a B283      		std Z+2,r27
+  88 008c A183      		std Z+1,r26
+  89 008e 1097      		sbiw r26,0
+  90 0090 01F0      		breq .L4
+  91 0092 1396      		adiw r26,2+1
+  92 0094 1C92      		st X,__zero_reg__
+  93 0096 1E92      		st -X,__zero_reg__
+  94 0098 1297      		sbiw r26,2
+  95               	/* epilogue start */
+  96 009a DF91      		pop r29
+  97 009c CF91      		pop r28
+  98 009e 0895      		ret
+  99               		.size	OS_FlagTaskRdy, .-OS_FlagTaskRdy
+ 100               	.global	OS_TaskIdle
+ 101               		.type	OS_TaskIdle, @function
+ 102               	OS_TaskIdle:
+ 103               	/* prologue: function */
+ 104               	/* frame size = 0 */
+ 105               	/* stack size = 0 */
+ 106               	.L__stack_usage = 0
+ 107               	.L9:
+ 108               	/* #APP */
+ 109               	 ;  920 "c:/ucos-II/lab2/source/os_core.c" 1
+ 110 00a0 F894      		cli
+ 111               	 ;  0 "" 2
+ 112               	/* #NOAPP */
+ 113 00a2 8091 0000 		lds r24,OSIdleCtr
+ 114 00a6 9091 0000 		lds r25,OSIdleCtr+1
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 3
+
+
+ 115 00aa A091 0000 		lds r26,OSIdleCtr+2
+ 116 00ae B091 0000 		lds r27,OSIdleCtr+3
+ 117 00b2 0196      		adiw r24,1
+ 118 00b4 A11D      		adc r26,__zero_reg__
+ 119 00b6 B11D      		adc r27,__zero_reg__
+ 120 00b8 8093 0000 		sts OSIdleCtr,r24
+ 121 00bc 9093 0000 		sts OSIdleCtr+1,r25
+ 122 00c0 A093 0000 		sts OSIdleCtr+2,r26
+ 123 00c4 B093 0000 		sts OSIdleCtr+3,r27
+ 124               	/* #APP */
+ 125               	 ;  922 "c:/ucos-II/lab2/source/os_core.c" 1
+ 126 00c8 7894      		sei
+ 127               	 ;  0 "" 2
+ 128               	/* #NOAPP */
+ 129 00ca 0E94 0000 		call OSTaskIdleHook
+ 130 00ce 00C0      		rjmp .L9
+ 131               		.size	OS_TaskIdle, .-OS_TaskIdle
+ 132               	.global	OSIntEnter
+ 133               		.type	OSIntEnter, @function
+ 134               	OSIntEnter:
+ 135               	/* prologue: function */
+ 136               	/* frame size = 0 */
+ 137               	/* stack size = 0 */
+ 138               	.L__stack_usage = 0
+ 139 00d0 8091 0000 		lds r24,OSRunning
+ 140 00d4 8130      		cpi r24,lo8(1)
+ 141 00d6 01F0      		breq .L12
+ 142               	.L10:
+ 143 00d8 0895      		ret
+ 144               	.L12:
+ 145 00da 8091 0000 		lds r24,OSIntNesting
+ 146 00de 8F3F      		cpi r24,lo8(-1)
+ 147 00e0 01F0      		breq .L10
+ 148 00e2 8F5F      		subi r24,lo8(-(1))
+ 149 00e4 8093 0000 		sts OSIntNesting,r24
+ 150 00e8 0895      		ret
+ 151               		.size	OSIntEnter, .-OSIntEnter
+ 152               	.global	OSIntExit
+ 153               		.type	OSIntExit, @function
+ 154               	OSIntExit:
+ 155               	/* prologue: function */
+ 156               	/* frame size = 0 */
+ 157               	/* stack size = 0 */
+ 158               	.L__stack_usage = 0
+ 159 00ea 8091 0000 		lds r24,OSRunning
+ 160 00ee 8130      		cpi r24,lo8(1)
+ 161 00f0 01F0      		breq .L17
+ 162 00f2 0895      		ret
+ 163               	.L17:
+ 164               	/* #APP */
+ 165               	 ;  180 "c:/ucos-II/lab2/source/os_core.c" 1
+ 166 00f4 F894      		cli
+ 167               	 ;  0 "" 2
+ 168               	/* #NOAPP */
+ 169 00f6 8091 0000 		lds r24,OSIntNesting
+ 170 00fa 8823      		tst r24
+ 171 00fc 01F0      		breq .L15
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 4
+
+
+ 172 00fe 8150      		subi r24,lo8(-(-1))
+ 173 0100 8093 0000 		sts OSIntNesting,r24
+ 174 0104 8823      		tst r24
+ 175 0106 01F0      		breq .L15
+ 176               	.L16:
+ 177               	/* #APP */
+ 178               	 ;  193 "c:/ucos-II/lab2/source/os_core.c" 1
+ 179 0108 7894      		sei
+ 180               	 ;  0 "" 2
+ 181               	/* #NOAPP */
+ 182 010a 0895      		ret
+ 183               	.L15:
+ 184 010c 8091 0000 		lds r24,OSLockNesting
+ 185 0110 8823      		tst r24
+ 186 0112 01F4      		brne .L16
+ 187 0114 E091 0000 		lds r30,OSRdyGrp
+ 188 0118 F0E0      		ldi r31,lo8(0)
+ 189 011a E050      		subi r30,lo8(-(OSUnMapTbl))
+ 190 011c F040      		sbci r31,hi8(-(OSUnMapTbl))
+ 191 011e 8081      		ld r24,Z
+ 192 0120 8093 0000 		sts OSIntExitY,r24
+ 193 0124 E82F      		mov r30,r24
+ 194 0126 F0E0      		ldi r31,lo8(0)
+ 195 0128 E050      		subi r30,lo8(-(OSRdyTbl))
+ 196 012a F040      		sbci r31,hi8(-(OSRdyTbl))
+ 197 012c E081      		ld r30,Z
+ 198 012e F0E0      		ldi r31,lo8(0)
+ 199 0130 E050      		subi r30,lo8(-(OSUnMapTbl))
+ 200 0132 F040      		sbci r31,hi8(-(OSUnMapTbl))
+ 201 0134 880F      		lsl r24
+ 202 0136 880F      		lsl r24
+ 203 0138 880F      		lsl r24
+ 204 013a 9081      		ld r25,Z
+ 205 013c 890F      		add r24,r25
+ 206 013e 8093 0000 		sts OSPrioHighRdy,r24
+ 207 0142 9091 0000 		lds r25,OSPrioCur
+ 208 0146 8917      		cp r24,r25
+ 209 0148 01F0      		breq .L16
+ 210 014a E82F      		mov r30,r24
+ 211 014c F0E0      		ldi r31,lo8(0)
+ 212 014e EE0F      		lsl r30
+ 213 0150 FF1F      		rol r31
+ 214 0152 E050      		subi r30,lo8(-(OSTCBPrioTbl))
+ 215 0154 F040      		sbci r31,hi8(-(OSTCBPrioTbl))
+ 216 0156 8081      		ld r24,Z
+ 217 0158 9181      		ldd r25,Z+1
+ 218 015a 9093 0000 		sts OSTCBHighRdy+1,r25
+ 219 015e 8093 0000 		sts OSTCBHighRdy,r24
+ 220 0162 8091 0000 		lds r24,OSCtxSwCtr
+ 221 0166 9091 0000 		lds r25,OSCtxSwCtr+1
+ 222 016a A091 0000 		lds r26,OSCtxSwCtr+2
+ 223 016e B091 0000 		lds r27,OSCtxSwCtr+3
+ 224 0172 0196      		adiw r24,1
+ 225 0174 A11D      		adc r26,__zero_reg__
+ 226 0176 B11D      		adc r27,__zero_reg__
+ 227 0178 8093 0000 		sts OSCtxSwCtr,r24
+ 228 017c 9093 0000 		sts OSCtxSwCtr+1,r25
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 5
+
+
+ 229 0180 A093 0000 		sts OSCtxSwCtr+2,r26
+ 230 0184 B093 0000 		sts OSCtxSwCtr+3,r27
+ 231 0188 0E94 0000 		call OSIntCtxSw
+ 232 018c 00C0      		rjmp .L16
+ 233               		.size	OSIntExit, .-OSIntExit
+ 234               	.global	OSSchedLock
+ 235               		.type	OSSchedLock, @function
+ 236               	OSSchedLock:
+ 237               	/* prologue: function */
+ 238               	/* frame size = 0 */
+ 239               	/* stack size = 0 */
+ 240               	.L__stack_usage = 0
+ 241 018e 8091 0000 		lds r24,OSRunning
+ 242 0192 8130      		cpi r24,lo8(1)
+ 243 0194 01F0      		breq .L21
+ 244 0196 0895      		ret
+ 245               	.L21:
+ 246               	/* #APP */
+ 247               	 ;  222 "c:/ucos-II/lab2/source/os_core.c" 1
+ 248 0198 F894      		cli
+ 249               	 ;  0 "" 2
+ 250               	/* #NOAPP */
+ 251 019a 8091 0000 		lds r24,OSLockNesting
+ 252 019e 8F3F      		cpi r24,lo8(-1)
+ 253 01a0 01F0      		breq .L20
+ 254 01a2 8F5F      		subi r24,lo8(-(1))
+ 255 01a4 8093 0000 		sts OSLockNesting,r24
+ 256               	.L20:
+ 257               	/* #APP */
+ 258               	 ;  226 "c:/ucos-II/lab2/source/os_core.c" 1
+ 259 01a8 7894      		sei
+ 260               	 ;  0 "" 2
+ 261               	/* #NOAPP */
+ 262 01aa 0895      		ret
+ 263               		.size	OSSchedLock, .-OSSchedLock
+ 264               	.global	OSStart
+ 265               		.type	OSStart, @function
+ 266               	OSStart:
+ 267               	/* prologue: function */
+ 268               	/* frame size = 0 */
+ 269               	/* stack size = 0 */
+ 270               	.L__stack_usage = 0
+ 271 01ac 8091 0000 		lds r24,OSRunning
+ 272 01b0 8111      		cpse r24,__zero_reg__
+ 273 01b2 0895      		ret
+ 274               	.L24:
+ 275 01b4 E091 0000 		lds r30,OSRdyGrp
+ 276 01b8 F0E0      		ldi r31,lo8(0)
+ 277 01ba E050      		subi r30,lo8(-(OSUnMapTbl))
+ 278 01bc F040      		sbci r31,hi8(-(OSUnMapTbl))
+ 279 01be E081      		ld r30,Z
+ 280 01c0 AE2F      		mov r26,r30
+ 281 01c2 B0E0      		ldi r27,lo8(0)
+ 282 01c4 A050      		subi r26,lo8(-(OSRdyTbl))
+ 283 01c6 B040      		sbci r27,hi8(-(OSRdyTbl))
+ 284 01c8 AC91      		ld r26,X
+ 285 01ca B0E0      		ldi r27,lo8(0)
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 6
+
+
+ 286 01cc A050      		subi r26,lo8(-(OSUnMapTbl))
+ 287 01ce B040      		sbci r27,hi8(-(OSUnMapTbl))
+ 288 01d0 EE0F      		lsl r30
+ 289 01d2 EE0F      		lsl r30
+ 290 01d4 EE0F      		lsl r30
+ 291 01d6 8C91      		ld r24,X
+ 292 01d8 E80F      		add r30,r24
+ 293 01da E093 0000 		sts OSPrioHighRdy,r30
+ 294 01de E093 0000 		sts OSPrioCur,r30
+ 295 01e2 F0E0      		ldi r31,lo8(0)
+ 296 01e4 EE0F      		lsl r30
+ 297 01e6 FF1F      		rol r31
+ 298 01e8 E050      		subi r30,lo8(-(OSTCBPrioTbl))
+ 299 01ea F040      		sbci r31,hi8(-(OSTCBPrioTbl))
+ 300 01ec 8081      		ld r24,Z
+ 301 01ee 9181      		ldd r25,Z+1
+ 302 01f0 9093 0000 		sts OSTCBHighRdy+1,r25
+ 303 01f4 8093 0000 		sts OSTCBHighRdy,r24
+ 304 01f8 9093 0000 		sts OSTCBCur+1,r25
+ 305 01fc 8093 0000 		sts OSTCBCur,r24
+ 306 0200 0E94 0000 		call OSStartHighRdy
+ 307 0204 0895      		ret
+ 308               		.size	OSStart, .-OSStart
+ 309               	.global	OSTimeTick
+ 310               		.type	OSTimeTick, @function
+ 311               	OSTimeTick:
+ 312               	/* prologue: function */
+ 313               	/* frame size = 0 */
+ 314               	/* stack size = 0 */
+ 315               	.L__stack_usage = 0
+ 316 0206 0E94 0000 		call OSTimeTickHook
+ 317 020a 8091 0000 		lds r24,OSRunning
+ 318 020e 8130      		cpi r24,lo8(1)
+ 319 0210 01F0      		breq .L31
+ 320               	.L25:
+ 321 0212 0895      		ret
+ 322               	.L31:
+ 323 0214 E091 0000 		lds r30,OSTCBList
+ 324 0218 F091 0000 		lds r31,OSTCBList+1
+ 325 021c 8685      		ldd r24,Z+14
+ 326 021e 8C30      		cpi r24,lo8(12)
+ 327 0220 01F0      		breq .L25
+ 328 0222 4091 0000 		lds r20,OSRdyGrp
+ 329 0226 21E0      		ldi r18,lo8(1)
+ 330 0228 30E0      		ldi r19,hi8(1)
+ 331 022a 00C0      		rjmp .L29
+ 332               	.L33:
+ 333 022c 8289      		ldd r24,Z+18
+ 334 022e 482B      		or r20,r24
+ 335 0230 A089      		ldd r26,Z+16
+ 336 0232 B0E0      		ldi r27,lo8(0)
+ 337 0234 A050      		subi r26,lo8(-(OSRdyTbl))
+ 338 0236 B040      		sbci r27,hi8(-(OSRdyTbl))
+ 339 0238 8C91      		ld r24,X
+ 340 023a 9189      		ldd r25,Z+17
+ 341 023c 892B      		or r24,r25
+ 342 023e 8C93      		st X,r24
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 7
+
+
+ 343               	.L27:
+ 344 0240 0280      		ldd __tmp_reg__,Z+2
+ 345 0242 F381      		ldd r31,Z+3
+ 346 0244 E02D      		mov r30,__tmp_reg__
+ 347               	/* #APP */
+ 348               	 ;  393 "c:/ucos-II/lab2/source/os_core.c" 1
+ 349 0246 7894      		sei
+ 350               	 ;  0 "" 2
+ 351               	/* #NOAPP */
+ 352 0248 8685      		ldd r24,Z+14
+ 353 024a 8C30      		cpi r24,lo8(12)
+ 354 024c 01F0      		breq .L32
+ 355               	.L29:
+ 356               	/* #APP */
+ 357               	 ;  381 "c:/ucos-II/lab2/source/os_core.c" 1
+ 358 024e F894      		cli
+ 359               	 ;  0 "" 2
+ 360               	/* #NOAPP */
+ 361 0250 8385      		ldd r24,Z+11
+ 362 0252 9485      		ldd r25,Z+12
+ 363 0254 0097      		sbiw r24,0
+ 364 0256 01F0      		breq .L27
+ 365 0258 0197      		sbiw r24,1
+ 366 025a 9487      		std Z+12,r25
+ 367 025c 8387      		std Z+11,r24
+ 368 025e 0097      		sbiw r24,0
+ 369 0260 01F4      		brne .L27
+ 370 0262 8585      		ldd r24,Z+13
+ 371 0264 83FF      		sbrs r24,3
+ 372 0266 00C0      		rjmp .L33
+ 373 0268 3487      		std Z+12,r19
+ 374 026a 2387      		std Z+11,r18
+ 375 026c 0280      		ldd __tmp_reg__,Z+2
+ 376 026e F381      		ldd r31,Z+3
+ 377 0270 E02D      		mov r30,__tmp_reg__
+ 378               	/* #APP */
+ 379               	 ;  393 "c:/ucos-II/lab2/source/os_core.c" 1
+ 380 0272 7894      		sei
+ 381               	 ;  0 "" 2
+ 382               	/* #NOAPP */
+ 383 0274 8685      		ldd r24,Z+14
+ 384 0276 8C30      		cpi r24,lo8(12)
+ 385 0278 01F4      		brne .L29
+ 386               	.L32:
+ 387 027a 4093 0000 		sts OSRdyGrp,r20
+ 388 027e 0895      		ret
+ 389               		.size	OSTimeTick, .-OSTimeTick
+ 390               	.global	OSVersion
+ 391               		.type	OSVersion, @function
+ 392               	OSVersion:
+ 393               	/* prologue: function */
+ 394               	/* frame size = 0 */
+ 395               	/* stack size = 0 */
+ 396               	.L__stack_usage = 0
+ 397 0280 8CEF      		ldi r24,lo8(252)
+ 398 0282 90E0      		ldi r25,hi8(252)
+ 399               	/* epilogue start */
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 8
+
+
+ 400 0284 0895      		ret
+ 401               		.size	OSVersion, .-OSVersion
+ 402               	.global	OS_EventTaskRdy
+ 403               		.type	OS_EventTaskRdy, @function
+ 404               	OS_EventTaskRdy:
+ 405 0286 0F93      		push r16
+ 406 0288 1F93      		push r17
+ 407 028a CF93      		push r28
+ 408 028c DF93      		push r29
+ 409               	/* prologue: function */
+ 410               	/* frame size = 0 */
+ 411               	/* stack size = 4 */
+ 412               	.L__stack_usage = 4
+ 413 028e FC01      		movw r30,r24
+ 414 0290 1181      		ldd r17,Z+1
+ 415 0292 A12F      		mov r26,r17
+ 416 0294 B0E0      		ldi r27,lo8(0)
+ 417 0296 A050      		subi r26,lo8(-(OSUnMapTbl))
+ 418 0298 B040      		sbci r27,hi8(-(OSUnMapTbl))
+ 419 029a 8C91      		ld r24,X
+ 420 029c 282F      		mov r18,r24
+ 421 029e 30E0      		ldi r19,lo8(0)
+ 422 02a0 D901      		movw r26,r18
+ 423 02a2 A050      		subi r26,lo8(-(OSMapTbl))
+ 424 02a4 B040      		sbci r27,hi8(-(OSMapTbl))
+ 425 02a6 0C91      		ld r16,X
+ 426 02a8 EF01      		movw r28,r30
+ 427 02aa C20F      		add r28,r18
+ 428 02ac D31F      		adc r29,r19
+ 429 02ae 5E81      		ldd r21,Y+6
+ 430 02b0 A52F      		mov r26,r21
+ 431 02b2 B0E0      		ldi r27,lo8(0)
+ 432 02b4 A050      		subi r26,lo8(-(OSUnMapTbl))
+ 433 02b6 B040      		sbci r27,hi8(-(OSUnMapTbl))
+ 434 02b8 9C91      		ld r25,X
+ 435 02ba A92F      		mov r26,r25
+ 436 02bc B0E0      		ldi r27,lo8(0)
+ 437 02be A050      		subi r26,lo8(-(OSMapTbl))
+ 438 02c0 B040      		sbci r27,hi8(-(OSMapTbl))
+ 439 02c2 AC91      		ld r26,X
+ 440 02c4 880F      		lsl r24
+ 441 02c6 880F      		lsl r24
+ 442 02c8 880F      		lsl r24
+ 443 02ca 890F      		add r24,r25
+ 444 02cc 9A2F      		mov r25,r26
+ 445 02ce 9095      		com r25
+ 446 02d0 9523      		and r25,r21
+ 447 02d2 9E83      		std Y+6,r25
+ 448 02d4 9923      		tst r25
+ 449 02d6 01F4      		brne .L36
+ 450 02d8 902F      		mov r25,r16
+ 451 02da 9095      		com r25
+ 452 02dc 9123      		and r25,r17
+ 453 02de 9183      		std Z+1,r25
+ 454               	.L36:
+ 455 02e0 E82F      		mov r30,r24
+ 456 02e2 F0E0      		ldi r31,lo8(0)
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 9
+
+
+ 457 02e4 EE0F      		lsl r30
+ 458 02e6 FF1F      		rol r31
+ 459 02e8 E050      		subi r30,lo8(-(OSTCBPrioTbl))
+ 460 02ea F040      		sbci r31,hi8(-(OSTCBPrioTbl))
+ 461 02ec 0190      		ld __tmp_reg__,Z+
+ 462 02ee F081      		ld r31,Z
+ 463 02f0 E02D      		mov r30,__tmp_reg__
+ 464 02f2 1486      		std Z+12,__zero_reg__
+ 465 02f4 1386      		std Z+11,__zero_reg__
+ 466 02f6 1782      		std Z+7,__zero_reg__
+ 467 02f8 1682      		std Z+6,__zero_reg__
+ 468 02fa 7187      		std Z+9,r23
+ 469 02fc 6087      		std Z+8,r22
+ 470 02fe 4095      		com r20
+ 471 0300 9585      		ldd r25,Z+13
+ 472 0302 4923      		and r20,r25
+ 473 0304 4587      		std Z+13,r20
+ 474 0306 4423      		tst r20
+ 475 0308 01F4      		brne .L37
+ 476 030a 9091 0000 		lds r25,OSRdyGrp
+ 477 030e 902B      		or r25,r16
+ 478 0310 9093 0000 		sts OSRdyGrp,r25
+ 479 0314 F901      		movw r30,r18
+ 480 0316 E050      		subi r30,lo8(-(OSRdyTbl))
+ 481 0318 F040      		sbci r31,hi8(-(OSRdyTbl))
+ 482 031a 9081      		ld r25,Z
+ 483 031c 9A2B      		or r25,r26
+ 484 031e 9083      		st Z,r25
+ 485               	.L37:
+ 486               	/* epilogue start */
+ 487 0320 DF91      		pop r29
+ 488 0322 CF91      		pop r28
+ 489 0324 1F91      		pop r17
+ 490 0326 0F91      		pop r16
+ 491 0328 0895      		ret
+ 492               		.size	OS_EventTaskRdy, .-OS_EventTaskRdy
+ 493               	.global	OS_EventTaskWait
+ 494               		.type	OS_EventTaskWait, @function
+ 495               	OS_EventTaskWait:
+ 496 032a CF93      		push r28
+ 497 032c DF93      		push r29
+ 498               	/* prologue: function */
+ 499               	/* frame size = 0 */
+ 500               	/* stack size = 2 */
+ 501               	.L__stack_usage = 2
+ 502 032e DC01      		movw r26,r24
+ 503 0330 E091 0000 		lds r30,OSTCBCur
+ 504 0334 F091 0000 		lds r31,OSTCBCur+1
+ 505 0338 9783      		std Z+7,r25
+ 506 033a 8683      		std Z+6,r24
+ 507 033c 8089      		ldd r24,Z+16
+ 508 033e 682F      		mov r22,r24
+ 509 0340 70E0      		ldi r23,lo8(0)
+ 510 0342 3189      		ldd r19,Z+17
+ 511 0344 CB01      		movw r24,r22
+ 512 0346 8050      		subi r24,lo8(-(OSRdyTbl))
+ 513 0348 9040      		sbci r25,hi8(-(OSRdyTbl))
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 10
+
+
+ 514 034a 232F      		mov r18,r19
+ 515 034c 2095      		com r18
+ 516 034e EC01      		movw r28,r24
+ 517 0350 4881      		ld r20,Y
+ 518 0352 2423      		and r18,r20
+ 519 0354 2883      		st Y,r18
+ 520 0356 2223      		tst r18
+ 521 0358 01F4      		brne .L39
+ 522 035a 9289      		ldd r25,Z+18
+ 523 035c 9095      		com r25
+ 524 035e 8091 0000 		lds r24,OSRdyGrp
+ 525 0362 8923      		and r24,r25
+ 526 0364 8093 0000 		sts OSRdyGrp,r24
+ 527               	.L39:
+ 528 0368 EB01      		movw r28,r22
+ 529 036a CA0F      		add r28,r26
+ 530 036c DB1F      		adc r29,r27
+ 531 036e 8E81      		ldd r24,Y+6
+ 532 0370 832B      		or r24,r19
+ 533 0372 8E83      		std Y+6,r24
+ 534 0374 1196      		adiw r26,1
+ 535 0376 8C91      		ld r24,X
+ 536 0378 1197      		sbiw r26,1
+ 537 037a 9289      		ldd r25,Z+18
+ 538 037c 892B      		or r24,r25
+ 539 037e 1196      		adiw r26,1
+ 540 0380 8C93      		st X,r24
+ 541 0382 1197      		sbiw r26,1
+ 542               	/* epilogue start */
+ 543 0384 DF91      		pop r29
+ 544 0386 CF91      		pop r28
+ 545 0388 0895      		ret
+ 546               		.size	OS_EventTaskWait, .-OS_EventTaskWait
+ 547               	.global	OS_EventTO
+ 548               		.type	OS_EventTO, @function
+ 549               	OS_EventTO:
+ 550 038a CF93      		push r28
+ 551 038c DF93      		push r29
+ 552               	/* prologue: function */
+ 553               	/* frame size = 0 */
+ 554               	/* stack size = 2 */
+ 555               	.L__stack_usage = 2
+ 556 038e DC01      		movw r26,r24
+ 557 0390 E091 0000 		lds r30,OSTCBCur
+ 558 0394 F091 0000 		lds r31,OSTCBCur+1
+ 559 0398 8089      		ldd r24,Z+16
+ 560 039a ED01      		movw r28,r26
+ 561 039c C80F      		add r28,r24
+ 562 039e D11D      		adc r29,__zero_reg__
+ 563 03a0 8189      		ldd r24,Z+17
+ 564 03a2 8095      		com r24
+ 565 03a4 9E81      		ldd r25,Y+6
+ 566 03a6 8923      		and r24,r25
+ 567 03a8 8E83      		std Y+6,r24
+ 568 03aa 8823      		tst r24
+ 569 03ac 01F4      		brne .L41
+ 570 03ae 9289      		ldd r25,Z+18
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 11
+
+
+ 571 03b0 9095      		com r25
+ 572 03b2 1196      		adiw r26,1
+ 573 03b4 8C91      		ld r24,X
+ 574 03b6 1197      		sbiw r26,1
+ 575 03b8 8923      		and r24,r25
+ 576 03ba 1196      		adiw r26,1
+ 577 03bc 8C93      		st X,r24
+ 578 03be 1197      		sbiw r26,1
+ 579               	.L41:
+ 580 03c0 1586      		std Z+13,__zero_reg__
+ 581 03c2 1782      		std Z+7,__zero_reg__
+ 582 03c4 1682      		std Z+6,__zero_reg__
+ 583               	/* epilogue start */
+ 584 03c6 DF91      		pop r29
+ 585 03c8 CF91      		pop r28
+ 586 03ca 0895      		ret
+ 587               		.size	OS_EventTO, .-OS_EventTO
+ 588               	.global	OS_EventWaitListInit
+ 589               		.type	OS_EventWaitListInit, @function
+ 590               	OS_EventWaitListInit:
+ 591               	/* prologue: function */
+ 592               	/* frame size = 0 */
+ 593               	/* stack size = 0 */
+ 594               	.L__stack_usage = 0
+ 595 03cc FC01      		movw r30,r24
+ 596 03ce 1182      		std Z+1,__zero_reg__
+ 597 03d0 1682      		std Z+6,__zero_reg__
+ 598 03d2 1782      		std Z+7,__zero_reg__
+ 599               	/* epilogue start */
+ 600 03d4 0895      		ret
+ 601               		.size	OS_EventWaitListInit, .-OS_EventWaitListInit
+ 602               	.global	OS_Sched
+ 603               		.type	OS_Sched, @function
+ 604               	OS_Sched:
+ 605               	/* prologue: function */
+ 606               	/* frame size = 0 */
+ 607               	/* stack size = 0 */
+ 608               	.L__stack_usage = 0
+ 609               	/* #APP */
+ 610               	 ;  877 "c:/ucos-II/lab2/source/os_core.c" 1
+ 611 03d6 F894      		cli
+ 612               	 ;  0 "" 2
+ 613               	/* #NOAPP */
+ 614 03d8 8091 0000 		lds r24,OSIntNesting
+ 615 03dc 8823      		tst r24
+ 616 03de 01F4      		brne .L44
+ 617 03e0 8091 0000 		lds r24,OSLockNesting
+ 618 03e4 8823      		tst r24
+ 619 03e6 01F4      		brne .L44
+ 620 03e8 E091 0000 		lds r30,OSRdyGrp
+ 621 03ec F0E0      		ldi r31,lo8(0)
+ 622 03ee E050      		subi r30,lo8(-(OSUnMapTbl))
+ 623 03f0 F040      		sbci r31,hi8(-(OSUnMapTbl))
+ 624 03f2 8081      		ld r24,Z
+ 625 03f4 E82F      		mov r30,r24
+ 626 03f6 F0E0      		ldi r31,lo8(0)
+ 627 03f8 E050      		subi r30,lo8(-(OSRdyTbl))
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 12
+
+
+ 628 03fa F040      		sbci r31,hi8(-(OSRdyTbl))
+ 629 03fc E081      		ld r30,Z
+ 630 03fe F0E0      		ldi r31,lo8(0)
+ 631 0400 E050      		subi r30,lo8(-(OSUnMapTbl))
+ 632 0402 F040      		sbci r31,hi8(-(OSUnMapTbl))
+ 633 0404 880F      		lsl r24
+ 634 0406 880F      		lsl r24
+ 635 0408 880F      		lsl r24
+ 636 040a 9081      		ld r25,Z
+ 637 040c 890F      		add r24,r25
+ 638 040e 8093 0000 		sts OSPrioHighRdy,r24
+ 639 0412 9091 0000 		lds r25,OSPrioCur
+ 640 0416 8917      		cp r24,r25
+ 641 0418 01F0      		breq .L44
+ 642 041a E82F      		mov r30,r24
+ 643 041c F0E0      		ldi r31,lo8(0)
+ 644 041e EE0F      		lsl r30
+ 645 0420 FF1F      		rol r31
+ 646 0422 E050      		subi r30,lo8(-(OSTCBPrioTbl))
+ 647 0424 F040      		sbci r31,hi8(-(OSTCBPrioTbl))
+ 648 0426 8081      		ld r24,Z
+ 649 0428 9181      		ldd r25,Z+1
+ 650 042a 9093 0000 		sts OSTCBHighRdy+1,r25
+ 651 042e 8093 0000 		sts OSTCBHighRdy,r24
+ 652 0432 8091 0000 		lds r24,OSCtxSwCtr
+ 653 0436 9091 0000 		lds r25,OSCtxSwCtr+1
+ 654 043a A091 0000 		lds r26,OSCtxSwCtr+2
+ 655 043e B091 0000 		lds r27,OSCtxSwCtr+3
+ 656 0442 0196      		adiw r24,1
+ 657 0444 A11D      		adc r26,__zero_reg__
+ 658 0446 B11D      		adc r27,__zero_reg__
+ 659 0448 8093 0000 		sts OSCtxSwCtr,r24
+ 660 044c 9093 0000 		sts OSCtxSwCtr+1,r25
+ 661 0450 A093 0000 		sts OSCtxSwCtr+2,r26
+ 662 0454 B093 0000 		sts OSCtxSwCtr+3,r27
+ 663 0458 0E94 0000 		call OSCtxSw
+ 664               	.L44:
+ 665               	/* #APP */
+ 666               	 ;  887 "c:/ucos-II/lab2/source/os_core.c" 1
+ 667 045c 7894      		sei
+ 668               	 ;  0 "" 2
+ 669               	/* epilogue start */
+ 670               	/* #NOAPP */
+ 671 045e 0895      		ret
+ 672               		.size	OS_Sched, .-OS_Sched
+ 673               	.global	OSSchedUnlock
+ 674               		.type	OSSchedUnlock, @function
+ 675               	OSSchedUnlock:
+ 676               	/* prologue: function */
+ 677               	/* frame size = 0 */
+ 678               	/* stack size = 0 */
+ 679               	.L__stack_usage = 0
+ 680 0460 8091 0000 		lds r24,OSRunning
+ 681 0464 8130      		cpi r24,lo8(1)
+ 682 0466 01F0      		breq .L49
+ 683 0468 0895      		ret
+ 684               	.L49:
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 13
+
+
+ 685               	/* #APP */
+ 686               	 ;  256 "c:/ucos-II/lab2/source/os_core.c" 1
+ 687 046a F894      		cli
+ 688               	 ;  0 "" 2
+ 689               	/* #NOAPP */
+ 690 046c 8091 0000 		lds r24,OSLockNesting
+ 691 0470 8823      		tst r24
+ 692 0472 01F0      		breq .L47
+ 693 0474 8150      		subi r24,lo8(-(-1))
+ 694 0476 8093 0000 		sts OSLockNesting,r24
+ 695 047a 8823      		tst r24
+ 696 047c 01F4      		brne .L48
+ 697 047e 8091 0000 		lds r24,OSIntNesting
+ 698 0482 8823      		tst r24
+ 699 0484 01F0      		breq .L50
+ 700               	.L48:
+ 701               	/* #APP */
+ 702               	 ;  263 "c:/ucos-II/lab2/source/os_core.c" 1
+ 703 0486 7894      		sei
+ 704               	 ;  0 "" 2
+ 705               	/* #NOAPP */
+ 706 0488 0895      		ret
+ 707               	.L47:
+ 708               	/* #APP */
+ 709               	 ;  266 "c:/ucos-II/lab2/source/os_core.c" 1
+ 710 048a 7894      		sei
+ 711               	 ;  0 "" 2
+ 712               	/* #NOAPP */
+ 713 048c 0895      		ret
+ 714               	.L50:
+ 715               	/* #APP */
+ 716               	 ;  260 "c:/ucos-II/lab2/source/os_core.c" 1
+ 717 048e 7894      		sei
+ 718               	 ;  0 "" 2
+ 719               	/* #NOAPP */
+ 720 0490 0E94 0000 		call OS_Sched
+ 721 0494 0895      		ret
+ 722               		.size	OSSchedUnlock, .-OSSchedUnlock
+ 723               	.global	OS_TCBInit
+ 724               		.type	OS_TCBInit, @function
+ 725               	OS_TCBInit:
+ 726 0496 1F93      		push r17
+ 727 0498 CF93      		push r28
+ 728 049a DF93      		push r29
+ 729               	/* prologue: function */
+ 730               	/* frame size = 0 */
+ 731               	/* stack size = 3 */
+ 732               	.L__stack_usage = 3
+ 733 049c 182F      		mov r17,r24
+ 734               	/* #APP */
+ 735               	 ;  1043 "c:/ucos-II/lab2/source/os_core.c" 1
+ 736 049e F894      		cli
+ 737               	 ;  0 "" 2
+ 738               	/* #NOAPP */
+ 739 04a0 C091 0000 		lds r28,OSTCBFreeList
+ 740 04a4 D091 0000 		lds r29,OSTCBFreeList+1
+ 741 04a8 2097      		sbiw r28,0
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 14
+
+
+ 742 04aa 01F4      		brne .+2
+ 743 04ac 00C0      		rjmp .L52
+ 744 04ae 2A81      		ldd r18,Y+2
+ 745 04b0 3B81      		ldd r19,Y+3
+ 746 04b2 3093 0000 		sts OSTCBFreeList+1,r19
+ 747 04b6 2093 0000 		sts OSTCBFreeList,r18
+ 748               	/* #APP */
+ 749               	 ;  1047 "c:/ucos-II/lab2/source/os_core.c" 1
+ 750 04ba 7894      		sei
+ 751               	 ;  0 "" 2
+ 752               	/* #NOAPP */
+ 753 04bc 7983      		std Y+1,r23
+ 754 04be 6883      		st Y,r22
+ 755 04c0 8E87      		std Y+14,r24
+ 756 04c2 1D86      		std Y+13,__zero_reg__
+ 757 04c4 1C86      		std Y+12,__zero_reg__
+ 758 04c6 1B86      		std Y+11,__zero_reg__
+ 759 04c8 A82F      		mov r26,r24
+ 760 04ca A695      		lsr r26
+ 761 04cc A695      		lsr r26
+ 762 04ce A695      		lsr r26
+ 763 04d0 A88B      		std Y+16,r26
+ 764 04d2 B0E0      		ldi r27,lo8(0)
+ 765 04d4 A050      		subi r26,lo8(-(OSMapTbl))
+ 766 04d6 B040      		sbci r27,hi8(-(OSMapTbl))
+ 767 04d8 8C91      		ld r24,X
+ 768 04da 8A8B      		std Y+18,r24
+ 769 04dc A12F      		mov r26,r17
+ 770 04de A770      		andi r26,lo8(7)
+ 771 04e0 AF87      		std Y+15,r26
+ 772 04e2 B0E0      		ldi r27,lo8(0)
+ 773 04e4 A050      		subi r26,lo8(-(OSMapTbl))
+ 774 04e6 B040      		sbci r27,hi8(-(OSMapTbl))
+ 775 04e8 8C91      		ld r24,X
+ 776 04ea 898B      		std Y+17,r24
+ 777 04ec 1F82      		std Y+7,__zero_reg__
+ 778 04ee 1E82      		std Y+6,__zero_reg__
+ 779 04f0 1986      		std Y+9,__zero_reg__
+ 780 04f2 1886      		std Y+8,__zero_reg__
+ 781 04f4 CE01      		movw r24,r28
+ 782 04f6 0E94 0000 		call OSTCBInitHook
+ 783 04fa CE01      		movw r24,r28
+ 784 04fc 0E94 0000 		call OSTaskCreateHook
+ 785               	/* #APP */
+ 786               	 ;  1094 "c:/ucos-II/lab2/source/os_core.c" 1
+ 787 0500 F894      		cli
+ 788               	 ;  0 "" 2
+ 789               	/* #NOAPP */
+ 790 0502 E12F      		mov r30,r17
+ 791 0504 F0E0      		ldi r31,lo8(0)
+ 792 0506 EE0F      		lsl r30
+ 793 0508 FF1F      		rol r31
+ 794 050a E050      		subi r30,lo8(-(OSTCBPrioTbl))
+ 795 050c F040      		sbci r31,hi8(-(OSTCBPrioTbl))
+ 796 050e D183      		std Z+1,r29
+ 797 0510 C083      		st Z,r28
+ 798 0512 E091 0000 		lds r30,OSTCBList
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 15
+
+
+ 799 0516 F091 0000 		lds r31,OSTCBList+1
+ 800 051a FB83      		std Y+3,r31
+ 801 051c EA83      		std Y+2,r30
+ 802 051e 1D82      		std Y+5,__zero_reg__
+ 803 0520 1C82      		std Y+4,__zero_reg__
+ 804 0522 3097      		sbiw r30,0
+ 805 0524 01F0      		breq .L53
+ 806 0526 D583      		std Z+5,r29
+ 807 0528 C483      		std Z+4,r28
+ 808               	.L53:
+ 809 052a D093 0000 		sts OSTCBList+1,r29
+ 810 052e C093 0000 		sts OSTCBList,r28
+ 811 0532 8091 0000 		lds r24,OSRdyGrp
+ 812 0536 9A89      		ldd r25,Y+18
+ 813 0538 892B      		or r24,r25
+ 814 053a 8093 0000 		sts OSRdyGrp,r24
+ 815 053e E889      		ldd r30,Y+16
+ 816 0540 F0E0      		ldi r31,lo8(0)
+ 817 0542 E050      		subi r30,lo8(-(OSRdyTbl))
+ 818 0544 F040      		sbci r31,hi8(-(OSRdyTbl))
+ 819 0546 8081      		ld r24,Z
+ 820 0548 9989      		ldd r25,Y+17
+ 821 054a 892B      		or r24,r25
+ 822 054c 8083      		st Z,r24
+ 823               	/* #APP */
+ 824               	 ;  1104 "c:/ucos-II/lab2/source/os_core.c" 1
+ 825 054e 7894      		sei
+ 826               	 ;  0 "" 2
+ 827               	/* #NOAPP */
+ 828 0550 80E0      		ldi r24,lo8(0)
+ 829               	/* epilogue start */
+ 830 0552 DF91      		pop r29
+ 831 0554 CF91      		pop r28
+ 832 0556 1F91      		pop r17
+ 833 0558 0895      		ret
+ 834               	.L52:
+ 835               	/* #APP */
+ 836               	 ;  1107 "c:/ucos-II/lab2/source/os_core.c" 1
+ 837 055a 7894      		sei
+ 838               	 ;  0 "" 2
+ 839               	/* #NOAPP */
+ 840 055c 86E4      		ldi r24,lo8(70)
+ 841               	/* epilogue start */
+ 842 055e DF91      		pop r29
+ 843 0560 CF91      		pop r28
+ 844 0562 1F91      		pop r17
+ 845 0564 0895      		ret
+ 846               		.size	OS_TCBInit, .-OS_TCBInit
+ 847               	.global	OSFlagCreate
+ 848               		.type	OSFlagCreate, @function
+ 849               	OSFlagCreate:
+ 850               	/* prologue: function */
+ 851               	/* frame size = 0 */
+ 852               	/* stack size = 0 */
+ 853               	.L__stack_usage = 0
+ 854 0566 9091 0000 		lds r25,OSIntNesting
+ 855 056a 9923      		tst r25
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 16
+
+
+ 856 056c 01F4      		brne .L59
+ 857               	/* #APP */
+ 858               	 ;  205 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 859 056e F894      		cli
+ 860               	 ;  0 "" 2
+ 861               	/* #NOAPP */
+ 862 0570 E091 0000 		lds r30,OSFlagFreeList
+ 863 0574 F091 0000 		lds r31,OSFlagFreeList+1
+ 864 0578 3097      		sbiw r30,0
+ 865 057a 01F0      		breq .L58
+ 866 057c 2181      		ldd r18,Z+1
+ 867 057e 3281      		ldd r19,Z+2
+ 868 0580 3093 0000 		sts OSFlagFreeList+1,r19
+ 869 0584 2093 0000 		sts OSFlagFreeList,r18
+ 870 0588 95E0      		ldi r25,lo8(5)
+ 871 058a 9083      		st Z,r25
+ 872 058c 8383      		std Z+3,r24
+ 873 058e 1282      		std Z+2,__zero_reg__
+ 874 0590 1182      		std Z+1,__zero_reg__
+ 875               	/* #APP */
+ 876               	 ;  213 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 877 0592 7894      		sei
+ 878               	 ;  0 "" 2
+ 879               	/* #NOAPP */
+ 880 0594 DB01      		movw r26,r22
+ 881 0596 1C92      		st X,__zero_reg__
+ 882 0598 CF01      		movw r24,r30
+ 883               	/* epilogue start */
+ 884 059a 0895      		ret
+ 885               	.L58:
+ 886               	/* #APP */
+ 887               	 ;  216 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 888 059c 7894      		sei
+ 889               	 ;  0 "" 2
+ 890               	/* #NOAPP */
+ 891 059e 8AE9      		ldi r24,lo8(-102)
+ 892 05a0 DB01      		movw r26,r22
+ 893 05a2 8C93      		st X,r24
+ 894 05a4 CF01      		movw r24,r30
+ 895               	/* epilogue start */
+ 896 05a6 0895      		ret
+ 897               	.L59:
+ 898 05a8 8DE8      		ldi r24,lo8(-115)
+ 899 05aa DB01      		movw r26,r22
+ 900 05ac 8C93      		st X,r24
+ 901 05ae E0E0      		ldi r30,lo8(0)
+ 902 05b0 F0E0      		ldi r31,hi8(0)
+ 903 05b2 CF01      		movw r24,r30
+ 904               	/* epilogue start */
+ 905 05b4 0895      		ret
+ 906               		.size	OSFlagCreate, .-OSFlagCreate
+ 907               	.global	OSFlagPend
+ 908               		.type	OSFlagPend, @function
+ 909               	OSFlagPend:
+ 910 05b6 EF92      		push r14
+ 911 05b8 FF92      		push r15
+ 912 05ba 0F93      		push r16
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 17
+
+
+ 913 05bc 1F93      		push r17
+ 914 05be DF93      		push r29
+ 915 05c0 CF93      		push r28
+ 916 05c2 CDB7      		in r28,__SP_L__
+ 917 05c4 DEB7      		in r29,__SP_H__
+ 918 05c6 2C97      		sbiw r28,12
+ 919 05c8 0FB6      		in __tmp_reg__,__SREG__
+ 920 05ca F894      		cli
+ 921 05cc DEBF      		out __SP_H__,r29
+ 922 05ce 0FBE      		out __SREG__,__tmp_reg__
+ 923 05d0 CDBF      		out __SP_L__,r28
+ 924               	/* prologue: function */
+ 925               	/* frame size = 12 */
+ 926               	/* stack size = 18 */
+ 927               	.L__stack_usage = 18
+ 928 05d2 7C01      		movw r14,r24
+ 929 05d4 8091 0000 		lds r24,OSIntNesting
+ 930 05d8 8823      		tst r24
+ 931 05da 01F4      		brne .L90
+ 932 05dc 47FD      		sbrc r20,7
+ 933 05de 00C0      		rjmp .L91
+ 934 05e0 50E0      		ldi r21,lo8(0)
+ 935               	.L63:
+ 936               	/* #APP */
+ 937               	 ;  409 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 938 05e2 F894      		cli
+ 939               	 ;  0 "" 2
+ 940               	/* #NOAPP */
+ 941 05e4 4230      		cpi r20,lo8(2)
+ 942 05e6 01F4      		brne .+2
+ 943 05e8 00C0      		rjmp .L65
+ 944 05ea 4330      		cpi r20,lo8(3)
+ 945 05ec 01F0      		breq .L92
+ 946               	/* #APP */
+ 947               	 ;  478 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 948 05ee 7894      		sei
+ 949               	 ;  0 "" 2
+ 950               	/* #NOAPP */
+ 951 05f0 87E9      		ldi r24,lo8(-105)
+ 952 05f2 F801      		movw r30,r16
+ 953 05f4 8083      		st Z,r24
+ 954 05f6 80E0      		ldi r24,lo8(0)
+ 955               	.L62:
+ 956               	/* epilogue start */
+ 957 05f8 2C96      		adiw r28,12
+ 958 05fa 0FB6      		in __tmp_reg__,__SREG__
+ 959 05fc F894      		cli
+ 960 05fe DEBF      		out __SP_H__,r29
+ 961 0600 0FBE      		out __SREG__,__tmp_reg__
+ 962 0602 CDBF      		out __SP_L__,r28
+ 963 0604 CF91      		pop r28
+ 964 0606 DF91      		pop r29
+ 965 0608 1F91      		pop r17
+ 966 060a 0F91      		pop r16
+ 967 060c FF90      		pop r15
+ 968 060e EF90      		pop r14
+ 969 0610 0895      		ret
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 18
+
+
+ 970               	.L90:
+ 971 0612 82E0      		ldi r24,lo8(2)
+ 972 0614 D801      		movw r26,r16
+ 973 0616 8C93      		st X,r24
+ 974 0618 80E0      		ldi r24,lo8(0)
+ 975 061a 00C0      		rjmp .L62
+ 976               	.L92:
+ 977 061c F701      		movw r30,r14
+ 978 061e 8381      		ldd r24,Z+3
+ 979 0620 962F      		mov r25,r22
+ 980 0622 9823      		and r25,r24
+ 981 0624 01F0      		breq .+2
+ 982 0626 00C0      		rjmp .L93
+ 983 0628 E091 0000 		lds r30,OSTCBCur
+ 984 062c F091 0000 		lds r31,OSTCBCur+1
+ 985 0630 8585      		ldd r24,Z+13
+ 986 0632 8062      		ori r24,lo8(32)
+ 987 0634 8587      		std Z+13,r24
+ 988 0636 3487      		std Z+12,r19
+ 989 0638 2387      		std Z+11,r18
+ 990 063a 6987      		std Y+9,r22
+ 991 063c 4A87      		std Y+10,r20
+ 992 063e FE83      		std Y+6,r31
+ 993 0640 ED83      		std Y+5,r30
+ 994 0642 D701      		movw r26,r14
+ 995 0644 1196      		adiw r26,1
+ 996 0646 9C91      		ld r25,X
+ 997 0648 1197      		sbiw r26,1
+ 998 064a 1296      		adiw r26,2
+ 999 064c 8C91      		ld r24,X
+ 1000 064e 9983      		std Y+1,r25
+ 1001 0650 8A83      		std Y+2,r24
+ 1002 0652 1C82      		std Y+4,__zero_reg__
+ 1003 0654 1B82      		std Y+3,__zero_reg__
+ 1004 0656 F886      		std Y+8,r15
+ 1005 0658 EF82      		std Y+7,r14
+ 1006 065a A92F      		mov r26,r25
+ 1007 065c B82F      		mov r27,r24
+ 1008 065e 1097      		sbiw r26,0
+ 1009 0660 01F4      		brne .+2
+ 1010 0662 00C0      		rjmp .L94
+ 1011 0664 CE01      		movw r24,r28
+ 1012 0666 0196      		adiw r24,1
+ 1013 0668 1396      		adiw r26,2+1
+ 1014 066a 9C93      		st X,r25
+ 1015 066c 8E93      		st -X,r24
+ 1016 066e 1297      		sbiw r26,2
+ 1017               	.L74:
+ 1018 0670 D701      		movw r26,r14
+ 1019 0672 1296      		adiw r26,1+1
+ 1020 0674 9C93      		st X,r25
+ 1021 0676 8E93      		st -X,r24
+ 1022 0678 1197      		sbiw r26,1
+ 1023 067a A089      		ldd r26,Z+16
+ 1024 067c B0E0      		ldi r27,lo8(0)
+ 1025 067e A050      		subi r26,lo8(-(OSRdyTbl))
+ 1026 0680 B040      		sbci r27,hi8(-(OSRdyTbl))
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 19
+
+
+ 1027 0682 8189      		ldd r24,Z+17
+ 1028 0684 8095      		com r24
+ 1029 0686 9C91      		ld r25,X
+ 1030 0688 8923      		and r24,r25
+ 1031 068a 8C93      		st X,r24
+ 1032 068c 8823      		tst r24
+ 1033 068e 01F4      		brne .L75
+ 1034 0690 9289      		ldd r25,Z+18
+ 1035 0692 9095      		com r25
+ 1036 0694 8091 0000 		lds r24,OSRdyGrp
+ 1037 0698 8923      		and r24,r25
+ 1038 069a 8093 0000 		sts OSRdyGrp,r24
+ 1039               	.L75:
+ 1040               	/* #APP */
+ 1041               	 ;  439 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1042 069e 7894      		sei
+ 1043               	 ;  0 "" 2
+ 1044               	/* #NOAPP */
+ 1045 06a0 00C0      		rjmp .L71
+ 1046               	.L65:
+ 1047 06a2 F701      		movw r30,r14
+ 1048 06a4 8381      		ldd r24,Z+3
+ 1049 06a6 962F      		mov r25,r22
+ 1050 06a8 9823      		and r25,r24
+ 1051 06aa 9617      		cp r25,r22
+ 1052 06ac 01F4      		brne .+2
+ 1053 06ae 00C0      		rjmp .L95
+ 1054 06b0 E091 0000 		lds r30,OSTCBCur
+ 1055 06b4 F091 0000 		lds r31,OSTCBCur+1
+ 1056 06b8 8585      		ldd r24,Z+13
+ 1057 06ba 8062      		ori r24,lo8(32)
+ 1058 06bc 8587      		std Z+13,r24
+ 1059 06be 3487      		std Z+12,r19
+ 1060 06c0 2387      		std Z+11,r18
+ 1061 06c2 6987      		std Y+9,r22
+ 1062 06c4 4A87      		std Y+10,r20
+ 1063 06c6 FE83      		std Y+6,r31
+ 1064 06c8 ED83      		std Y+5,r30
+ 1065 06ca D701      		movw r26,r14
+ 1066 06cc 1196      		adiw r26,1
+ 1067 06ce 9C91      		ld r25,X
+ 1068 06d0 1197      		sbiw r26,1
+ 1069 06d2 1296      		adiw r26,2
+ 1070 06d4 8C91      		ld r24,X
+ 1071 06d6 9983      		std Y+1,r25
+ 1072 06d8 8A83      		std Y+2,r24
+ 1073 06da 1C82      		std Y+4,__zero_reg__
+ 1074 06dc 1B82      		std Y+3,__zero_reg__
+ 1075 06de F886      		std Y+8,r15
+ 1076 06e0 EF82      		std Y+7,r14
+ 1077 06e2 A92F      		mov r26,r25
+ 1078 06e4 B82F      		mov r27,r24
+ 1079 06e6 1097      		sbiw r26,0
+ 1080 06e8 01F4      		brne .+2
+ 1081 06ea 00C0      		rjmp .L96
+ 1082 06ec CE01      		movw r24,r28
+ 1083 06ee 0196      		adiw r24,1
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 20
+
+
+ 1084 06f0 1396      		adiw r26,2+1
+ 1085 06f2 9C93      		st X,r25
+ 1086 06f4 8E93      		st -X,r24
+ 1087 06f6 1297      		sbiw r26,2
+ 1088               	.L69:
+ 1089 06f8 D701      		movw r26,r14
+ 1090 06fa 1296      		adiw r26,1+1
+ 1091 06fc 9C93      		st X,r25
+ 1092 06fe 8E93      		st -X,r24
+ 1093 0700 1197      		sbiw r26,1
+ 1094 0702 A089      		ldd r26,Z+16
+ 1095 0704 B0E0      		ldi r27,lo8(0)
+ 1096 0706 A050      		subi r26,lo8(-(OSRdyTbl))
+ 1097 0708 B040      		sbci r27,hi8(-(OSRdyTbl))
+ 1098 070a 8189      		ldd r24,Z+17
+ 1099 070c 8095      		com r24
+ 1100 070e 9C91      		ld r25,X
+ 1101 0710 8923      		and r24,r25
+ 1102 0712 8C93      		st X,r24
+ 1103 0714 8823      		tst r24
+ 1104 0716 01F4      		brne .L70
+ 1105 0718 9289      		ldd r25,Z+18
+ 1106 071a 9095      		com r25
+ 1107 071c 8091 0000 		lds r24,OSRdyGrp
+ 1108 0720 8923      		and r24,r25
+ 1109 0722 8093 0000 		sts OSRdyGrp,r24
+ 1110               	.L70:
+ 1111               	/* #APP */
+ 1112               	 ;  423 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1113 0726 7894      		sei
+ 1114               	 ;  0 "" 2
+ 1115               	/* #NOAPP */
+ 1116               	.L71:
+ 1117 0728 4C87      		std Y+12,r20
+ 1118 072a 5B87      		std Y+11,r21
+ 1119 072c 0E94 0000 		call OS_Sched
+ 1120               	/* #APP */
+ 1121               	 ;  484 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1122 0730 F894      		cli
+ 1123               	 ;  0 "" 2
+ 1124               	/* #NOAPP */
+ 1125 0732 E091 0000 		lds r30,OSTCBCur
+ 1126 0736 F091 0000 		lds r31,OSTCBCur+1
+ 1127 073a 8585      		ldd r24,Z+13
+ 1128 073c 4C85      		ldd r20,Y+12
+ 1129 073e 5B85      		ldd r21,Y+11
+ 1130 0740 85FF      		sbrs r24,5
+ 1131 0742 00C0      		rjmp .L76
+ 1132 0744 8B81      		ldd r24,Y+3
+ 1133 0746 9C81      		ldd r25,Y+4
+ 1134 0748 2981      		ldd r18,Y+1
+ 1135 074a 3A81      		ldd r19,Y+2
+ 1136 074c 0097      		sbiw r24,0
+ 1137 074e 01F4      		brne .+2
+ 1138 0750 00C0      		rjmp .L97
+ 1139 0752 DC01      		movw r26,r24
+ 1140 0754 1196      		adiw r26,1
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 21
+
+
+ 1141 0756 3C93      		st X,r19
+ 1142 0758 2E93      		st -X,r18
+ 1143 075a 2115      		cp r18,__zero_reg__
+ 1144 075c 3105      		cpc r19,__zero_reg__
+ 1145 075e 01F0      		breq .L78
+ 1146 0760 D901      		movw r26,r18
+ 1147 0762 1396      		adiw r26,2+1
+ 1148 0764 9C93      		st X,r25
+ 1149 0766 8E93      		st -X,r24
+ 1150 0768 1297      		sbiw r26,2
+ 1151               	.L78:
+ 1152 076a 1586      		std Z+13,__zero_reg__
+ 1153               	/* #APP */
+ 1154               	 ;  488 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1155 076c 7894      		sei
+ 1156               	 ;  0 "" 2
+ 1157               	/* #NOAPP */
+ 1158 076e 8AE0      		ldi r24,lo8(10)
+ 1159 0770 F801      		movw r30,r16
+ 1160 0772 8083      		st Z,r24
+ 1161 0774 80E0      		ldi r24,lo8(0)
+ 1162 0776 00C0      		rjmp .L62
+ 1163               	.L91:
+ 1164 0778 4F77      		andi r20,lo8(127)
+ 1165 077a 51E0      		ldi r21,lo8(1)
+ 1166 077c 00C0      		rjmp .L63
+ 1167               	.L93:
+ 1168 077e 5130      		cpi r21,lo8(1)
+ 1169 0780 01F4      		brne .L73
+ 1170 0782 9095      		com r25
+ 1171 0784 8923      		and r24,r25
+ 1172 0786 8383      		std Z+3,r24
+ 1173               	.L73:
+ 1174               	/* #APP */
+ 1175               	 ;  434 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1176 0788 7894      		sei
+ 1177               	 ;  0 "" 2
+ 1178               	/* #NOAPP */
+ 1179 078a D801      		movw r26,r16
+ 1180 078c 1C92      		st X,__zero_reg__
+ 1181 078e 00C0      		rjmp .L62
+ 1182               	.L95:
+ 1183 0790 5130      		cpi r21,lo8(1)
+ 1184 0792 01F0      		breq .L98
+ 1185               	.L68:
+ 1186               	/* #APP */
+ 1187               	 ;  418 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1188 0794 7894      		sei
+ 1189               	 ;  0 "" 2
+ 1190               	/* #NOAPP */
+ 1191 0796 D801      		movw r26,r16
+ 1192 0798 1C92      		st X,__zero_reg__
+ 1193 079a 00C0      		rjmp .L62
+ 1194               	.L76:
+ 1195 079c 5130      		cpi r21,lo8(1)
+ 1196 079e 01F0      		breq .L79
+ 1197 07a0 D701      		movw r26,r14
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 22
+
+
+ 1198 07a2 1396      		adiw r26,3
+ 1199 07a4 8C91      		ld r24,X
+ 1200 07a6 1397      		sbiw r26,3
+ 1201               	.L80:
+ 1202               	/* #APP */
+ 1203               	 ;  508 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1204 07a8 7894      		sei
+ 1205               	 ;  0 "" 2
+ 1206               	/* #NOAPP */
+ 1207 07aa F801      		movw r30,r16
+ 1208 07ac 1082      		st Z,__zero_reg__
+ 1209 07ae 00C0      		rjmp .L62
+ 1210               	.L98:
+ 1211 07b0 6095      		com r22
+ 1212 07b2 8623      		and r24,r22
+ 1213 07b4 8383      		std Z+3,r24
+ 1214 07b6 00C0      		rjmp .L68
+ 1215               	.L79:
+ 1216 07b8 4250      		subi r20,lo8(-(-2))
+ 1217 07ba 4230      		cpi r20,lo8(2)
+ 1218 07bc 00F0      		brlo .L89
+ 1219 07be F701      		movw r30,r14
+ 1220 07c0 8381      		ldd r24,Z+3
+ 1221 07c2 00C0      		rjmp .L80
+ 1222               	.L96:
+ 1223 07c4 CE01      		movw r24,r28
+ 1224 07c6 0196      		adiw r24,1
+ 1225 07c8 00C0      		rjmp .L69
+ 1226               	.L97:
+ 1227 07ca 8F81      		ldd r24,Y+7
+ 1228 07cc 9885      		ldd r25,Y+8
+ 1229 07ce DC01      		movw r26,r24
+ 1230 07d0 1296      		adiw r26,1+1
+ 1231 07d2 3C93      		st X,r19
+ 1232 07d4 2E93      		st -X,r18
+ 1233 07d6 1197      		sbiw r26,1
+ 1234 07d8 2115      		cp r18,__zero_reg__
+ 1235 07da 3105      		cpc r19,__zero_reg__
+ 1236 07dc 01F0      		breq .L78
+ 1237 07de D901      		movw r26,r18
+ 1238 07e0 1396      		adiw r26,2+1
+ 1239 07e2 1C92      		st X,__zero_reg__
+ 1240 07e4 1E92      		st -X,__zero_reg__
+ 1241 07e6 1297      		sbiw r26,2
+ 1242 07e8 00C0      		rjmp .L78
+ 1243               	.L89:
+ 1244 07ea 8285      		ldd r24,Z+10
+ 1245 07ec 8095      		com r24
+ 1246 07ee D701      		movw r26,r14
+ 1247 07f0 1396      		adiw r26,3
+ 1248 07f2 9C91      		ld r25,X
+ 1249 07f4 1397      		sbiw r26,3
+ 1250 07f6 8923      		and r24,r25
+ 1251 07f8 1396      		adiw r26,3
+ 1252 07fa 8C93      		st X,r24
+ 1253 07fc 1397      		sbiw r26,3
+ 1254 07fe 00C0      		rjmp .L80
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 23
+
+
+ 1255               	.L94:
+ 1256 0800 CE01      		movw r24,r28
+ 1257 0802 0196      		adiw r24,1
+ 1258 0804 00C0      		rjmp .L74
+ 1259               		.size	OSFlagPend, .-OSFlagPend
+ 1260               	.global	OSFlagPost
+ 1261               		.type	OSFlagPost, @function
+ 1262               	OSFlagPost:
+ 1263 0806 CF92      		push r12
+ 1264 0808 DF92      		push r13
+ 1265 080a EF92      		push r14
+ 1266 080c FF92      		push r15
+ 1267 080e 0F93      		push r16
+ 1268 0810 1F93      		push r17
+ 1269 0812 DF93      		push r29
+ 1270 0814 CF93      		push r28
+ 1271 0816 0F92      		push __tmp_reg__
+ 1272 0818 CDB7      		in r28,__SP_L__
+ 1273 081a DEB7      		in r29,__SP_H__
+ 1274               	/* prologue: function */
+ 1275               	/* frame size = 1 */
+ 1276               	/* stack size = 9 */
+ 1277               	.L__stack_usage = 9
+ 1278 081c 6C01      		movw r12,r24
+ 1279 081e 7901      		movw r14,r18
+ 1280               	/* #APP */
+ 1281               	 ;  577 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1282 0820 F894      		cli
+ 1283               	 ;  0 "" 2
+ 1284               	/* #NOAPP */
+ 1285 0822 4423      		tst r20
+ 1286 0824 01F0      		breq .+2
+ 1287 0826 00C0      		rjmp .L116
+ 1288 0828 6095      		com r22
+ 1289 082a FC01      		movw r30,r24
+ 1290 082c 8381      		ldd r24,Z+3
+ 1291 082e 8623      		and r24,r22
+ 1292 0830 8383      		std Z+3,r24
+ 1293               	.L103:
+ 1294 0832 F601      		movw r30,r12
+ 1295 0834 0181      		ldd r16,Z+1
+ 1296 0836 1281      		ldd r17,Z+2
+ 1297 0838 0115      		cp r16,__zero_reg__
+ 1298 083a 1105      		cpc r17,__zero_reg__
+ 1299 083c 01F4      		brne .+2
+ 1300 083e 00C0      		rjmp .L111
+ 1301 0840 1982      		std Y+1,__zero_reg__
+ 1302 0842 00C0      		rjmp .L109
+ 1303               	.L118:
+ 1304 0844 8330      		cpi r24,lo8(3)
+ 1305 0846 01F0      		breq .L117
+ 1306               	.L106:
+ 1307 0848 F801      		movw r30,r16
+ 1308 084a 9081      		ld r25,Z
+ 1309 084c 8181      		ldd r24,Z+1
+ 1310 084e 092F      		mov r16,r25
+ 1311 0850 182F      		mov r17,r24
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 24
+
+
+ 1312 0852 0115      		cp r16,__zero_reg__
+ 1313 0854 1105      		cpc r17,__zero_reg__
+ 1314 0856 01F0      		breq .L105
+ 1315               	.L109:
+ 1316 0858 F801      		movw r30,r16
+ 1317 085a 8185      		ldd r24,Z+9
+ 1318 085c 8230      		cpi r24,lo8(2)
+ 1319 085e 01F4      		brne .L118
+ 1320 0860 F801      		movw r30,r16
+ 1321 0862 6085      		ldd r22,Z+8
+ 1322 0864 F601      		movw r30,r12
+ 1323 0866 8381      		ldd r24,Z+3
+ 1324 0868 8623      		and r24,r22
+ 1325 086a 6817      		cp r22,r24
+ 1326 086c 01F4      		brne .L106
+ 1327 086e C801      		movw r24,r16
+ 1328 0870 0E94 0000 		call OS_FlagTaskRdy
+ 1329 0874 8130      		cpi r24,lo8(1)
+ 1330 0876 01F4      		brne .L106
+ 1331 0878 F1E0      		ldi r31,lo8(1)
+ 1332 087a F983      		std Y+1,r31
+ 1333 087c 00C0      		rjmp .L106
+ 1334               	.L117:
+ 1335 087e F801      		movw r30,r16
+ 1336 0880 6085      		ldd r22,Z+8
+ 1337 0882 F601      		movw r30,r12
+ 1338 0884 8381      		ldd r24,Z+3
+ 1339 0886 6823      		and r22,r24
+ 1340 0888 01F0      		breq .L106
+ 1341 088a C801      		movw r24,r16
+ 1342 088c 0E94 0000 		call OS_FlagTaskRdy
+ 1343 0890 8130      		cpi r24,lo8(1)
+ 1344 0892 01F4      		brne .L106
+ 1345 0894 81E0      		ldi r24,lo8(1)
+ 1346 0896 8983      		std Y+1,r24
+ 1347 0898 F801      		movw r30,r16
+ 1348 089a 9081      		ld r25,Z
+ 1349 089c 8181      		ldd r24,Z+1
+ 1350 089e 092F      		mov r16,r25
+ 1351 08a0 182F      		mov r17,r24
+ 1352 08a2 0115      		cp r16,__zero_reg__
+ 1353 08a4 1105      		cpc r17,__zero_reg__
+ 1354 08a6 01F4      		brne .L109
+ 1355               	.L105:
+ 1356               	/* #APP */
+ 1357               	 ;  636 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1358 08a8 7894      		sei
+ 1359               	 ;  0 "" 2
+ 1360               	/* #NOAPP */
+ 1361 08aa F981      		ldd r31,Y+1
+ 1362 08ac F130      		cpi r31,lo8(1)
+ 1363 08ae 01F0      		breq .L119
+ 1364               	.L110:
+ 1365               	/* #APP */
+ 1366               	 ;  640 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1367 08b0 F894      		cli
+ 1368               	 ;  0 "" 2
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 25
+
+
+ 1369               	/* #NOAPP */
+ 1370 08b2 F601      		movw r30,r12
+ 1371 08b4 8381      		ldd r24,Z+3
+ 1372               	/* #APP */
+ 1373               	 ;  642 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1374 08b6 7894      		sei
+ 1375               	 ;  0 "" 2
+ 1376               	/* #NOAPP */
+ 1377 08b8 F701      		movw r30,r14
+ 1378 08ba 1082      		st Z,__zero_reg__
+ 1379               	.L104:
+ 1380               	/* epilogue start */
+ 1381 08bc 0F90      		pop __tmp_reg__
+ 1382 08be CF91      		pop r28
+ 1383 08c0 DF91      		pop r29
+ 1384 08c2 1F91      		pop r17
+ 1385 08c4 0F91      		pop r16
+ 1386 08c6 FF90      		pop r15
+ 1387 08c8 EF90      		pop r14
+ 1388 08ca DF90      		pop r13
+ 1389 08cc CF90      		pop r12
+ 1390 08ce 0895      		ret
+ 1391               	.L116:
+ 1392 08d0 4130      		cpi r20,lo8(1)
+ 1393 08d2 01F0      		breq .L120
+ 1394               	/* #APP */
+ 1395               	 ;  588 "c:/ucos-II/lab2/source/os_flag.c" 1
+ 1396 08d4 7894      		sei
+ 1397               	 ;  0 "" 2
+ 1398               	/* #NOAPP */
+ 1399 08d6 89E9      		ldi r24,lo8(-103)
+ 1400 08d8 F901      		movw r30,r18
+ 1401 08da 8083      		st Z,r24
+ 1402 08dc 80E0      		ldi r24,lo8(0)
+ 1403 08de 00C0      		rjmp .L104
+ 1404               	.L120:
+ 1405 08e0 FC01      		movw r30,r24
+ 1406 08e2 8381      		ldd r24,Z+3
+ 1407 08e4 862B      		or r24,r22
+ 1408 08e6 8383      		std Z+3,r24
+ 1409 08e8 00C0      		rjmp .L103
+ 1410               	.L119:
+ 1411 08ea 0E94 0000 		call OS_Sched
+ 1412 08ee 00C0      		rjmp .L110
+ 1413               	.L111:
+ 1414 08f0 1982      		std Y+1,__zero_reg__
+ 1415 08f2 00C0      		rjmp .L105
+ 1416               		.size	OSFlagPost, .-OSFlagPost
+ 1417               	.global	OS_FlagInit
+ 1418               		.type	OS_FlagInit, @function
+ 1419               	OS_FlagInit:
+ 1420               	/* prologue: function */
+ 1421               	/* frame size = 0 */
+ 1422               	/* stack size = 0 */
+ 1423               	.L__stack_usage = 0
+ 1424 08f4 80E0      		ldi r24,lo8(OSFlagTbl)
+ 1425 08f6 90E0      		ldi r25,hi8(OSFlagTbl)
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 26
+
+
+ 1426 08f8 1092 0000 		sts OSFlagTbl,__zero_reg__
+ 1427 08fc 9C01      		movw r18,r24
+ 1428 08fe 2C5F      		subi r18,lo8(-(4))
+ 1429 0900 3F4F      		sbci r19,hi8(-(4))
+ 1430 0902 3093 0000 		sts OSFlagTbl+1+1,r19
+ 1431 0906 2093 0000 		sts OSFlagTbl+1,r18
+ 1432 090a 1092 0000 		sts OSFlagTbl+4,__zero_reg__
+ 1433 090e 9C01      		movw r18,r24
+ 1434 0910 285F      		subi r18,lo8(-(8))
+ 1435 0912 3F4F      		sbci r19,hi8(-(8))
+ 1436 0914 3093 0000 		sts OSFlagTbl+5+1,r19
+ 1437 0918 2093 0000 		sts OSFlagTbl+5,r18
+ 1438 091c 1092 0000 		sts OSFlagTbl+8,__zero_reg__
+ 1439 0920 9C01      		movw r18,r24
+ 1440 0922 245F      		subi r18,lo8(-(12))
+ 1441 0924 3F4F      		sbci r19,hi8(-(12))
+ 1442 0926 3093 0000 		sts OSFlagTbl+9+1,r19
+ 1443 092a 2093 0000 		sts OSFlagTbl+9,r18
+ 1444 092e 1092 0000 		sts OSFlagTbl+12,__zero_reg__
+ 1445 0932 9C01      		movw r18,r24
+ 1446 0934 205F      		subi r18,lo8(-(16))
+ 1447 0936 3F4F      		sbci r19,hi8(-(16))
+ 1448 0938 3093 0000 		sts OSFlagTbl+13+1,r19
+ 1449 093c 2093 0000 		sts OSFlagTbl+13,r18
+ 1450 0940 1092 0000 		sts OSFlagTbl+16,__zero_reg__
+ 1451 0944 9C01      		movw r18,r24
+ 1452 0946 2C5E      		subi r18,lo8(-(20))
+ 1453 0948 3F4F      		sbci r19,hi8(-(20))
+ 1454 094a 3093 0000 		sts OSFlagTbl+17+1,r19
+ 1455 094e 2093 0000 		sts OSFlagTbl+17,r18
+ 1456 0952 1092 0000 		sts OSFlagTbl+21+1,__zero_reg__
+ 1457 0956 1092 0000 		sts OSFlagTbl+21,__zero_reg__
+ 1458 095a 9093 0000 		sts OSFlagFreeList+1,r25
+ 1459 095e 8093 0000 		sts OSFlagFreeList,r24
+ 1460               	/* epilogue start */
+ 1461 0962 0895      		ret
+ 1462               		.size	OS_FlagInit, .-OS_FlagInit
+ 1463               	.global	OS_FlagUnlink
+ 1464               		.type	OS_FlagUnlink, @function
+ 1465               	OS_FlagUnlink:
+ 1466 0964 CF93      		push r28
+ 1467 0966 DF93      		push r29
+ 1468               	/* prologue: function */
+ 1469               	/* frame size = 0 */
+ 1470               	/* stack size = 2 */
+ 1471               	.L__stack_usage = 2
+ 1472 0968 EC01      		movw r28,r24
+ 1473 096a AA81      		ldd r26,Y+2
+ 1474 096c BB81      		ldd r27,Y+3
+ 1475 096e E881      		ld r30,Y
+ 1476 0970 F981      		ldd r31,Y+1
+ 1477 0972 1097      		sbiw r26,0
+ 1478 0974 01F0      		breq .L125
+ 1479 0976 1196      		adiw r26,1
+ 1480 0978 FC93      		st X,r31
+ 1481 097a EE93      		st -X,r30
+ 1482 097c 3097      		sbiw r30,0
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 27
+
+
+ 1483 097e 01F0      		breq .L122
+ 1484 0980 B383      		std Z+3,r27
+ 1485 0982 A283      		std Z+2,r26
+ 1486               	.L122:
+ 1487               	/* epilogue start */
+ 1488 0984 DF91      		pop r29
+ 1489 0986 CF91      		pop r28
+ 1490 0988 0895      		ret
+ 1491               	.L125:
+ 1492 098a AE81      		ldd r26,Y+6
+ 1493 098c BF81      		ldd r27,Y+7
+ 1494 098e 1296      		adiw r26,1+1
+ 1495 0990 FC93      		st X,r31
+ 1496 0992 EE93      		st -X,r30
+ 1497 0994 1197      		sbiw r26,1
+ 1498 0996 3097      		sbiw r30,0
+ 1499 0998 01F0      		breq .L122
+ 1500 099a 1382      		std Z+3,__zero_reg__
+ 1501 099c 1282      		std Z+2,__zero_reg__
+ 1502               	/* epilogue start */
+ 1503 099e DF91      		pop r29
+ 1504 09a0 CF91      		pop r28
+ 1505 09a2 0895      		ret
+ 1506               		.size	OS_FlagUnlink, .-OS_FlagUnlink
+ 1507               	.global	OSMboxCreate
+ 1508               		.type	OSMboxCreate, @function
+ 1509               	OSMboxCreate:
+ 1510               	/* prologue: function */
+ 1511               	/* frame size = 0 */
+ 1512               	/* stack size = 0 */
+ 1513               	.L__stack_usage = 0
+ 1514 09a4 2091 0000 		lds r18,OSIntNesting
+ 1515 09a8 2223      		tst r18
+ 1516 09aa 01F4      		brne .L129
+ 1517               	/* #APP */
+ 1518               	 ;  89 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1519 09ac F894      		cli
+ 1520               	 ;  0 "" 2
+ 1521               	/* #NOAPP */
+ 1522 09ae E091 0000 		lds r30,OSEventFreeList
+ 1523 09b2 F091 0000 		lds r31,OSEventFreeList+1
+ 1524 09b6 3097      		sbiw r30,0
+ 1525 09b8 01F0      		breq .L128
+ 1526 09ba 2481      		ldd r18,Z+4
+ 1527 09bc 3581      		ldd r19,Z+5
+ 1528 09be 3093 0000 		sts OSEventFreeList+1,r19
+ 1529 09c2 2093 0000 		sts OSEventFreeList,r18
+ 1530               	.L128:
+ 1531               	/* #APP */
+ 1532               	 ;  94 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1533 09c6 7894      		sei
+ 1534               	 ;  0 "" 2
+ 1535               	/* #NOAPP */
+ 1536 09c8 3097      		sbiw r30,0
+ 1537 09ca 01F0      		breq .L127
+ 1538 09cc 21E0      		ldi r18,lo8(1)
+ 1539 09ce 2083      		st Z,r18
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 28
+
+
+ 1540 09d0 1382      		std Z+3,__zero_reg__
+ 1541 09d2 1282      		std Z+2,__zero_reg__
+ 1542 09d4 9583      		std Z+5,r25
+ 1543 09d6 8483      		std Z+4,r24
+ 1544 09d8 1182      		std Z+1,__zero_reg__
+ 1545 09da 1682      		std Z+6,__zero_reg__
+ 1546 09dc 1782      		std Z+7,__zero_reg__
+ 1547               	.L127:
+ 1548 09de CF01      		movw r24,r30
+ 1549               	/* epilogue start */
+ 1550 09e0 0895      		ret
+ 1551               	.L129:
+ 1552 09e2 E0E0      		ldi r30,lo8(0)
+ 1553 09e4 F0E0      		ldi r31,hi8(0)
+ 1554 09e6 CF01      		movw r24,r30
+ 1555               	/* epilogue start */
+ 1556 09e8 0895      		ret
+ 1557               		.size	OSMboxCreate, .-OSMboxCreate
+ 1558               	.global	OSMboxPend
+ 1559               		.type	OSMboxPend, @function
+ 1560               	OSMboxPend:
+ 1561 09ea EF92      		push r14
+ 1562 09ec FF92      		push r15
+ 1563 09ee 0F93      		push r16
+ 1564 09f0 1F93      		push r17
+ 1565 09f2 DF93      		push r29
+ 1566 09f4 CF93      		push r28
+ 1567 09f6 00D0      		rcall .
+ 1568 09f8 CDB7      		in r28,__SP_L__
+ 1569 09fa DEB7      		in r29,__SP_H__
+ 1570               	/* prologue: function */
+ 1571               	/* frame size = 2 */
+ 1572               	/* stack size = 8 */
+ 1573               	.L__stack_usage = 8
+ 1574 09fc 7C01      		movw r14,r24
+ 1575 09fe 8091 0000 		lds r24,OSIntNesting
+ 1576 0a02 8823      		tst r24
+ 1577 0a04 01F4      		brne .L135
+ 1578               	/* #APP */
+ 1579               	 ;  260 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1580 0a06 F894      		cli
+ 1581               	 ;  0 "" 2
+ 1582               	/* #NOAPP */
+ 1583 0a08 F701      		movw r30,r14
+ 1584 0a0a 0481      		ldd r16,Z+4
+ 1585 0a0c 1581      		ldd r17,Z+5
+ 1586 0a0e 0115      		cp r16,__zero_reg__
+ 1587 0a10 1105      		cpc r17,__zero_reg__
+ 1588 0a12 01F0      		breq .L133
+ 1589 0a14 1582      		std Z+5,__zero_reg__
+ 1590 0a16 1482      		std Z+4,__zero_reg__
+ 1591               	/* #APP */
+ 1592               	 ;  264 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1593 0a18 7894      		sei
+ 1594               	 ;  0 "" 2
+ 1595               	/* #NOAPP */
+ 1596 0a1a DA01      		movw r26,r20
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 29
+
+
+ 1597 0a1c 1C92      		st X,__zero_reg__
+ 1598               	.L132:
+ 1599 0a1e C801      		movw r24,r16
+ 1600               	/* epilogue start */
+ 1601 0a20 0F90      		pop __tmp_reg__
+ 1602 0a22 0F90      		pop __tmp_reg__
+ 1603 0a24 CF91      		pop r28
+ 1604 0a26 DF91      		pop r29
+ 1605 0a28 1F91      		pop r17
+ 1606 0a2a 0F91      		pop r16
+ 1607 0a2c FF90      		pop r15
+ 1608 0a2e EF90      		pop r14
+ 1609 0a30 0895      		ret
+ 1610               	.L135:
+ 1611 0a32 82E0      		ldi r24,lo8(2)
+ 1612 0a34 DA01      		movw r26,r20
+ 1613 0a36 8C93      		st X,r24
+ 1614 0a38 00E0      		ldi r16,lo8(0)
+ 1615 0a3a 10E0      		ldi r17,hi8(0)
+ 1616 0a3c 00C0      		rjmp .L132
+ 1617               	.L133:
+ 1618 0a3e E091 0000 		lds r30,OSTCBCur
+ 1619 0a42 F091 0000 		lds r31,OSTCBCur+1
+ 1620 0a46 8585      		ldd r24,Z+13
+ 1621 0a48 8260      		ori r24,lo8(2)
+ 1622 0a4a 8587      		std Z+13,r24
+ 1623 0a4c 7487      		std Z+12,r23
+ 1624 0a4e 6387      		std Z+11,r22
+ 1625 0a50 C701      		movw r24,r14
+ 1626 0a52 4983      		std Y+1,r20
+ 1627 0a54 5A83      		std Y+2,r21
+ 1628 0a56 0E94 0000 		call OS_EventTaskWait
+ 1629               	/* #APP */
+ 1630               	 ;  271 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1631 0a5a 7894      		sei
+ 1632               	 ;  0 "" 2
+ 1633               	/* #NOAPP */
+ 1634 0a5c 0E94 0000 		call OS_Sched
+ 1635               	/* #APP */
+ 1636               	 ;  273 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1637 0a60 F894      		cli
+ 1638               	 ;  0 "" 2
+ 1639               	/* #NOAPP */
+ 1640 0a62 E091 0000 		lds r30,OSTCBCur
+ 1641 0a66 F091 0000 		lds r31,OSTCBCur+1
+ 1642 0a6a 0085      		ldd r16,Z+8
+ 1643 0a6c 1185      		ldd r17,Z+9
+ 1644 0a6e 4981      		ldd r20,Y+1
+ 1645 0a70 5A81      		ldd r21,Y+2
+ 1646 0a72 0115      		cp r16,__zero_reg__
+ 1647 0a74 1105      		cpc r17,__zero_reg__
+ 1648 0a76 01F0      		breq .L134
+ 1649 0a78 1186      		std Z+9,__zero_reg__
+ 1650 0a7a 1086      		std Z+8,__zero_reg__
+ 1651 0a7c 1586      		std Z+13,__zero_reg__
+ 1652 0a7e 1782      		std Z+7,__zero_reg__
+ 1653 0a80 1682      		std Z+6,__zero_reg__
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 30
+
+
+ 1654               	/* #APP */
+ 1655               	 ;  279 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1656 0a82 7894      		sei
+ 1657               	 ;  0 "" 2
+ 1658               	/* #NOAPP */
+ 1659 0a84 FA01      		movw r30,r20
+ 1660 0a86 1082      		st Z,__zero_reg__
+ 1661 0a88 00C0      		rjmp .L132
+ 1662               	.L134:
+ 1663 0a8a C701      		movw r24,r14
+ 1664 0a8c 4983      		std Y+1,r20
+ 1665 0a8e 5A83      		std Y+2,r21
+ 1666 0a90 0E94 0000 		call OS_EventTO
+ 1667               	/* #APP */
+ 1668               	 ;  284 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1669 0a94 7894      		sei
+ 1670               	 ;  0 "" 2
+ 1671               	/* #NOAPP */
+ 1672 0a96 8AE0      		ldi r24,lo8(10)
+ 1673 0a98 4981      		ldd r20,Y+1
+ 1674 0a9a 5A81      		ldd r21,Y+2
+ 1675 0a9c DA01      		movw r26,r20
+ 1676 0a9e 8C93      		st X,r24
+ 1677 0aa0 00C0      		rjmp .L132
+ 1678               		.size	OSMboxPend, .-OSMboxPend
+ 1679               	.global	OSMboxPost
+ 1680               		.type	OSMboxPost, @function
+ 1681               	OSMboxPost:
+ 1682               	/* prologue: function */
+ 1683               	/* frame size = 0 */
+ 1684               	/* stack size = 0 */
+ 1685               	.L__stack_usage = 0
+ 1686 0aa2 FC01      		movw r30,r24
+ 1687               	/* #APP */
+ 1688               	 ;  328 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1689 0aa4 F894      		cli
+ 1690               	 ;  0 "" 2
+ 1691               	/* #NOAPP */
+ 1692 0aa6 8181      		ldd r24,Z+1
+ 1693 0aa8 8823      		tst r24
+ 1694 0aaa 01F4      		brne .L140
+ 1695 0aac 8481      		ldd r24,Z+4
+ 1696 0aae 9581      		ldd r25,Z+5
+ 1697 0ab0 0097      		sbiw r24,0
+ 1698 0ab2 01F0      		breq .L139
+ 1699               	/* #APP */
+ 1700               	 ;  336 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1701 0ab4 7894      		sei
+ 1702               	 ;  0 "" 2
+ 1703               	/* #NOAPP */
+ 1704 0ab6 84E1      		ldi r24,lo8(20)
+ 1705 0ab8 0895      		ret
+ 1706               	.L140:
+ 1707 0aba CF01      		movw r24,r30
+ 1708 0abc 42E0      		ldi r20,lo8(2)
+ 1709 0abe 0E94 0000 		call OS_EventTaskRdy
+ 1710               	/* #APP */
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 31
+
+
+ 1711               	 ;  331 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1712 0ac2 7894      		sei
+ 1713               	 ;  0 "" 2
+ 1714               	/* #NOAPP */
+ 1715 0ac4 0E94 0000 		call OS_Sched
+ 1716 0ac8 80E0      		ldi r24,lo8(0)
+ 1717 0aca 0895      		ret
+ 1718               	.L139:
+ 1719 0acc 7583      		std Z+5,r23
+ 1720 0ace 6483      		std Z+4,r22
+ 1721               	/* #APP */
+ 1722               	 ;  340 "c:/ucos-II/lab2/source/os_mbox.c" 1
+ 1723 0ad0 7894      		sei
+ 1724               	 ;  0 "" 2
+ 1725               	/* #NOAPP */
+ 1726 0ad2 80E0      		ldi r24,lo8(0)
+ 1727 0ad4 0895      		ret
+ 1728               		.size	OSMboxPost, .-OSMboxPost
+ 1729               	.global	OSQCreate
+ 1730               		.type	OSQCreate, @function
+ 1731               	OSQCreate:
+ 1732               	/* prologue: function */
+ 1733               	/* frame size = 0 */
+ 1734               	/* stack size = 0 */
+ 1735               	.L__stack_usage = 0
+ 1736 0ad6 2091 0000 		lds r18,OSIntNesting
+ 1737 0ada 2223      		tst r18
+ 1738 0adc 01F0      		breq .+2
+ 1739 0ade 00C0      		rjmp .L145
+ 1740               	/* #APP */
+ 1741               	 ;  103 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1742 0ae0 F894      		cli
+ 1743               	 ;  0 "" 2
+ 1744               	/* #NOAPP */
+ 1745 0ae2 E091 0000 		lds r30,OSEventFreeList
+ 1746 0ae6 F091 0000 		lds r31,OSEventFreeList+1
+ 1747 0aea 3097      		sbiw r30,0
+ 1748 0aec 01F0      		breq .L143
+ 1749 0aee 2481      		ldd r18,Z+4
+ 1750 0af0 3581      		ldd r19,Z+5
+ 1751 0af2 3093 0000 		sts OSEventFreeList+1,r19
+ 1752 0af6 2093 0000 		sts OSEventFreeList,r18
+ 1753               	.L143:
+ 1754               	/* #APP */
+ 1755               	 ;  108 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1756 0afa 7894      		sei
+ 1757               	 ;  0 "" 2
+ 1758               	/* #NOAPP */
+ 1759 0afc 3097      		sbiw r30,0
+ 1760 0afe 01F0      		breq .L142
+ 1761               	/* #APP */
+ 1762               	 ;  110 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1763 0b00 F894      		cli
+ 1764               	 ;  0 "" 2
+ 1765               	/* #NOAPP */
+ 1766 0b02 A091 0000 		lds r26,OSQFreeList
+ 1767 0b06 B091 0000 		lds r27,OSQFreeList+1
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 32
+
+
+ 1768 0b0a 1097      		sbiw r26,0
+ 1769 0b0c 01F0      		breq .L144
+ 1770 0b0e 2D91      		ld r18,X+
+ 1771 0b10 3C91      		ld r19,X
+ 1772 0b12 1197      		sbiw r26,1
+ 1773 0b14 3093 0000 		sts OSQFreeList+1,r19
+ 1774 0b18 2093 0000 		sts OSQFreeList,r18
+ 1775               	/* #APP */
+ 1776               	 ;  114 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1777 0b1c 7894      		sei
+ 1778               	 ;  0 "" 2
+ 1779               	/* #NOAPP */
+ 1780 0b1e 1396      		adiw r26,2+1
+ 1781 0b20 9C93      		st X,r25
+ 1782 0b22 8E93      		st -X,r24
+ 1783 0b24 1297      		sbiw r26,2
+ 1784 0b26 9B01      		movw r18,r22
+ 1785 0b28 220F      		lsl r18
+ 1786 0b2a 331F      		rol r19
+ 1787 0b2c 280F      		add r18,r24
+ 1788 0b2e 391F      		adc r19,r25
+ 1789 0b30 1596      		adiw r26,4+1
+ 1790 0b32 3C93      		st X,r19
+ 1791 0b34 2E93      		st -X,r18
+ 1792 0b36 1497      		sbiw r26,4
+ 1793 0b38 1796      		adiw r26,6+1
+ 1794 0b3a 9C93      		st X,r25
+ 1795 0b3c 8E93      		st -X,r24
+ 1796 0b3e 1697      		sbiw r26,6
+ 1797 0b40 1996      		adiw r26,8+1
+ 1798 0b42 9C93      		st X,r25
+ 1799 0b44 8E93      		st -X,r24
+ 1800 0b46 1897      		sbiw r26,8
+ 1801 0b48 1B96      		adiw r26,10+1
+ 1802 0b4a 7C93      		st X,r23
+ 1803 0b4c 6E93      		st -X,r22
+ 1804 0b4e 1A97      		sbiw r26,10
+ 1805 0b50 1D96      		adiw r26,12+1
+ 1806 0b52 1C92      		st X,__zero_reg__
+ 1807 0b54 1E92      		st -X,__zero_reg__
+ 1808 0b56 1C97      		sbiw r26,12
+ 1809 0b58 82E0      		ldi r24,lo8(2)
+ 1810 0b5a 8083      		st Z,r24
+ 1811 0b5c 1382      		std Z+3,__zero_reg__
+ 1812 0b5e 1282      		std Z+2,__zero_reg__
+ 1813 0b60 B583      		std Z+5,r27
+ 1814 0b62 A483      		std Z+4,r26
+ 1815 0b64 1182      		std Z+1,__zero_reg__
+ 1816 0b66 1682      		std Z+6,__zero_reg__
+ 1817 0b68 1782      		std Z+7,__zero_reg__
+ 1818               	.L142:
+ 1819 0b6a CF01      		movw r24,r30
+ 1820               	/* epilogue start */
+ 1821 0b6c 0895      		ret
+ 1822               	.L145:
+ 1823 0b6e E0E0      		ldi r30,lo8(0)
+ 1824 0b70 F0E0      		ldi r31,hi8(0)
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 33
+
+
+ 1825 0b72 CF01      		movw r24,r30
+ 1826               	/* epilogue start */
+ 1827 0b74 0895      		ret
+ 1828               	.L144:
+ 1829 0b76 8091 0000 		lds r24,OSEventFreeList
+ 1830 0b7a 9091 0000 		lds r25,OSEventFreeList+1
+ 1831 0b7e 9583      		std Z+5,r25
+ 1832 0b80 8483      		std Z+4,r24
+ 1833 0b82 F093 0000 		sts OSEventFreeList+1,r31
+ 1834 0b86 E093 0000 		sts OSEventFreeList,r30
+ 1835               	/* #APP */
+ 1836               	 ;  128 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1837 0b8a 7894      		sei
+ 1838               	 ;  0 "" 2
+ 1839               	/* #NOAPP */
+ 1840 0b8c E0E0      		ldi r30,lo8(0)
+ 1841 0b8e F0E0      		ldi r31,hi8(0)
+ 1842 0b90 00C0      		rjmp .L142
+ 1843               		.size	OSQCreate, .-OSQCreate
+ 1844               	.global	OSQPend
+ 1845               		.type	OSQPend, @function
+ 1846               	OSQPend:
+ 1847 0b92 EF92      		push r14
+ 1848 0b94 FF92      		push r15
+ 1849 0b96 0F93      		push r16
+ 1850 0b98 1F93      		push r17
+ 1851 0b9a CF93      		push r28
+ 1852 0b9c DF93      		push r29
+ 1853               	/* prologue: function */
+ 1854               	/* frame size = 0 */
+ 1855               	/* stack size = 6 */
+ 1856               	.L__stack_usage = 6
+ 1857 0b9e EC01      		movw r28,r24
+ 1858 0ba0 7A01      		movw r14,r20
+ 1859 0ba2 8091 0000 		lds r24,OSIntNesting
+ 1860 0ba6 8823      		tst r24
+ 1861 0ba8 01F0      		breq .+2
+ 1862 0baa 00C0      		rjmp .L152
+ 1863               	/* #APP */
+ 1864               	 ;  346 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1865 0bac F894      		cli
+ 1866               	 ;  0 "" 2
+ 1867               	/* #NOAPP */
+ 1868 0bae EC81      		ldd r30,Y+4
+ 1869 0bb0 FD81      		ldd r31,Y+5
+ 1870 0bb2 8485      		ldd r24,Z+12
+ 1871 0bb4 9585      		ldd r25,Z+13
+ 1872 0bb6 0097      		sbiw r24,0
+ 1873 0bb8 01F0      		breq .L149
+ 1874 0bba A085      		ldd r26,Z+8
+ 1875 0bbc B185      		ldd r27,Z+9
+ 1876 0bbe 0D91      		ld r16,X+
+ 1877 0bc0 1D91      		ld r17,X+
+ 1878 0bc2 B187      		std Z+9,r27
+ 1879 0bc4 A087      		std Z+8,r26
+ 1880 0bc6 0197      		sbiw r24,1
+ 1881 0bc8 9587      		std Z+13,r25
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 34
+
+
+ 1882 0bca 8487      		std Z+12,r24
+ 1883 0bcc 8481      		ldd r24,Z+4
+ 1884 0bce 9581      		ldd r25,Z+5
+ 1885 0bd0 A817      		cp r26,r24
+ 1886 0bd2 B907      		cpc r27,r25
+ 1887 0bd4 01F0      		breq .L153
+ 1888               	.L150:
+ 1889               	/* #APP */
+ 1890               	 ;  354 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1891 0bd6 7894      		sei
+ 1892               	 ;  0 "" 2
+ 1893               	/* #NOAPP */
+ 1894 0bd8 F701      		movw r30,r14
+ 1895 0bda 1082      		st Z,__zero_reg__
+ 1896               	.L148:
+ 1897 0bdc C801      		movw r24,r16
+ 1898               	/* epilogue start */
+ 1899 0bde DF91      		pop r29
+ 1900 0be0 CF91      		pop r28
+ 1901 0be2 1F91      		pop r17
+ 1902 0be4 0F91      		pop r16
+ 1903 0be6 FF90      		pop r15
+ 1904 0be8 EF90      		pop r14
+ 1905 0bea 0895      		ret
+ 1906               	.L149:
+ 1907 0bec E091 0000 		lds r30,OSTCBCur
+ 1908 0bf0 F091 0000 		lds r31,OSTCBCur+1
+ 1909 0bf4 8585      		ldd r24,Z+13
+ 1910 0bf6 8460      		ori r24,lo8(4)
+ 1911 0bf8 8587      		std Z+13,r24
+ 1912 0bfa 7487      		std Z+12,r23
+ 1913 0bfc 6387      		std Z+11,r22
+ 1914 0bfe CE01      		movw r24,r28
+ 1915 0c00 0E94 0000 		call OS_EventTaskWait
+ 1916               	/* #APP */
+ 1917               	 ;  361 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1918 0c04 7894      		sei
+ 1919               	 ;  0 "" 2
+ 1920               	/* #NOAPP */
+ 1921 0c06 0E94 0000 		call OS_Sched
+ 1922               	/* #APP */
+ 1923               	 ;  363 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1924 0c0a F894      		cli
+ 1925               	 ;  0 "" 2
+ 1926               	/* #NOAPP */
+ 1927 0c0c E091 0000 		lds r30,OSTCBCur
+ 1928 0c10 F091 0000 		lds r31,OSTCBCur+1
+ 1929 0c14 0085      		ldd r16,Z+8
+ 1930 0c16 1185      		ldd r17,Z+9
+ 1931 0c18 0115      		cp r16,__zero_reg__
+ 1932 0c1a 1105      		cpc r17,__zero_reg__
+ 1933 0c1c 01F0      		breq .L151
+ 1934 0c1e 1186      		std Z+9,__zero_reg__
+ 1935 0c20 1086      		std Z+8,__zero_reg__
+ 1936 0c22 1586      		std Z+13,__zero_reg__
+ 1937 0c24 1782      		std Z+7,__zero_reg__
+ 1938 0c26 1682      		std Z+6,__zero_reg__
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 35
+
+
+ 1939               	/* #APP */
+ 1940               	 ;  369 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1941 0c28 7894      		sei
+ 1942               	 ;  0 "" 2
+ 1943               	/* #NOAPP */
+ 1944 0c2a F701      		movw r30,r14
+ 1945 0c2c 1082      		st Z,__zero_reg__
+ 1946 0c2e C801      		movw r24,r16
+ 1947               	/* epilogue start */
+ 1948 0c30 DF91      		pop r29
+ 1949 0c32 CF91      		pop r28
+ 1950 0c34 1F91      		pop r17
+ 1951 0c36 0F91      		pop r16
+ 1952 0c38 FF90      		pop r15
+ 1953 0c3a EF90      		pop r14
+ 1954 0c3c 0895      		ret
+ 1955               	.L153:
+ 1956 0c3e 8281      		ldd r24,Z+2
+ 1957 0c40 9381      		ldd r25,Z+3
+ 1958 0c42 9187      		std Z+9,r25
+ 1959 0c44 8087      		std Z+8,r24
+ 1960 0c46 00C0      		rjmp .L150
+ 1961               	.L152:
+ 1962 0c48 82E0      		ldi r24,lo8(2)
+ 1963 0c4a FA01      		movw r30,r20
+ 1964 0c4c 8083      		st Z,r24
+ 1965 0c4e 00E0      		ldi r16,lo8(0)
+ 1966 0c50 10E0      		ldi r17,hi8(0)
+ 1967 0c52 C801      		movw r24,r16
+ 1968               	/* epilogue start */
+ 1969 0c54 DF91      		pop r29
+ 1970 0c56 CF91      		pop r28
+ 1971 0c58 1F91      		pop r17
+ 1972 0c5a 0F91      		pop r16
+ 1973 0c5c FF90      		pop r15
+ 1974 0c5e EF90      		pop r14
+ 1975 0c60 0895      		ret
+ 1976               	.L151:
+ 1977 0c62 CE01      		movw r24,r28
+ 1978 0c64 0E94 0000 		call OS_EventTO
+ 1979               	/* #APP */
+ 1980               	 ;  374 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1981 0c68 7894      		sei
+ 1982               	 ;  0 "" 2
+ 1983               	/* #NOAPP */
+ 1984 0c6a 8AE0      		ldi r24,lo8(10)
+ 1985 0c6c F701      		movw r30,r14
+ 1986 0c6e 8083      		st Z,r24
+ 1987 0c70 00C0      		rjmp .L148
+ 1988               		.size	OSQPend, .-OSQPend
+ 1989               	.global	OSQPost
+ 1990               		.type	OSQPost, @function
+ 1991               	OSQPost:
+ 1992               	/* prologue: function */
+ 1993               	/* frame size = 0 */
+ 1994               	/* stack size = 0 */
+ 1995               	.L__stack_usage = 0
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 36
+
+
+ 1996 0c72 FC01      		movw r30,r24
+ 1997               	/* #APP */
+ 1998               	 ;  417 "c:/ucos-II/lab2/source/os_q.c" 1
+ 1999 0c74 F894      		cli
+ 2000               	 ;  0 "" 2
+ 2001               	/* #NOAPP */
+ 2002 0c76 8181      		ldd r24,Z+1
+ 2003 0c78 8823      		tst r24
+ 2004 0c7a 01F4      		brne .L159
+ 2005 0c7c 0480      		ldd __tmp_reg__,Z+4
+ 2006 0c7e F581      		ldd r31,Z+5
+ 2007 0c80 E02D      		mov r30,__tmp_reg__
+ 2008 0c82 8485      		ldd r24,Z+12
+ 2009 0c84 9585      		ldd r25,Z+13
+ 2010 0c86 2285      		ldd r18,Z+10
+ 2011 0c88 3385      		ldd r19,Z+11
+ 2012 0c8a 8217      		cp r24,r18
+ 2013 0c8c 9307      		cpc r25,r19
+ 2014 0c8e 00F0      		brlo .L157
+ 2015               	/* #APP */
+ 2016               	 ;  426 "c:/ucos-II/lab2/source/os_q.c" 1
+ 2017 0c90 7894      		sei
+ 2018               	 ;  0 "" 2
+ 2019               	/* #NOAPP */
+ 2020 0c92 8EE1      		ldi r24,lo8(30)
+ 2021 0c94 0895      		ret
+ 2022               	.L157:
+ 2023 0c96 A681      		ldd r26,Z+6
+ 2024 0c98 B781      		ldd r27,Z+7
+ 2025 0c9a 6D93      		st X+,r22
+ 2026 0c9c 7D93      		st X+,r23
+ 2027 0c9e B783      		std Z+7,r27
+ 2028 0ca0 A683      		std Z+6,r26
+ 2029 0ca2 0196      		adiw r24,1
+ 2030 0ca4 9587      		std Z+13,r25
+ 2031 0ca6 8487      		std Z+12,r24
+ 2032 0ca8 8481      		ldd r24,Z+4
+ 2033 0caa 9581      		ldd r25,Z+5
+ 2034 0cac A817      		cp r26,r24
+ 2035 0cae B907      		cpc r27,r25
+ 2036 0cb0 01F0      		breq .L160
+ 2037               	.L158:
+ 2038               	/* #APP */
+ 2039               	 ;  434 "c:/ucos-II/lab2/source/os_q.c" 1
+ 2040 0cb2 7894      		sei
+ 2041               	 ;  0 "" 2
+ 2042               	/* #NOAPP */
+ 2043 0cb4 80E0      		ldi r24,lo8(0)
+ 2044 0cb6 0895      		ret
+ 2045               	.L159:
+ 2046 0cb8 CF01      		movw r24,r30
+ 2047 0cba 44E0      		ldi r20,lo8(4)
+ 2048 0cbc 0E94 0000 		call OS_EventTaskRdy
+ 2049               	/* #APP */
+ 2050               	 ;  420 "c:/ucos-II/lab2/source/os_q.c" 1
+ 2051 0cc0 7894      		sei
+ 2052               	 ;  0 "" 2
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 37
+
+
+ 2053               	/* #NOAPP */
+ 2054 0cc2 0E94 0000 		call OS_Sched
+ 2055 0cc6 80E0      		ldi r24,lo8(0)
+ 2056 0cc8 0895      		ret
+ 2057               	.L160:
+ 2058 0cca 8281      		ldd r24,Z+2
+ 2059 0ccc 9381      		ldd r25,Z+3
+ 2060 0cce 9783      		std Z+7,r25
+ 2061 0cd0 8683      		std Z+6,r24
+ 2062 0cd2 00C0      		rjmp .L158
+ 2063               		.size	OSQPost, .-OSQPost
+ 2064               	.global	OS_QInit
+ 2065               		.type	OS_QInit, @function
+ 2066               	OS_QInit:
+ 2067               	/* prologue: function */
+ 2068               	/* frame size = 0 */
+ 2069               	/* stack size = 0 */
+ 2070               	.L__stack_usage = 0
+ 2071 0cd4 80E0      		ldi r24,lo8(OSQTbl)
+ 2072 0cd6 90E0      		ldi r25,hi8(OSQTbl)
+ 2073 0cd8 9C01      		movw r18,r24
+ 2074 0cda 225F      		subi r18,lo8(-(14))
+ 2075 0cdc 3F4F      		sbci r19,hi8(-(14))
+ 2076 0cde 3093 0000 		sts OSQTbl+1,r19
+ 2077 0ce2 2093 0000 		sts OSQTbl,r18
+ 2078 0ce6 9C01      		movw r18,r24
+ 2079 0ce8 245E      		subi r18,lo8(-(28))
+ 2080 0cea 3F4F      		sbci r19,hi8(-(28))
+ 2081 0cec 3093 0000 		sts OSQTbl+14+1,r19
+ 2082 0cf0 2093 0000 		sts OSQTbl+14,r18
+ 2083 0cf4 1092 0000 		sts OSQTbl+28+1,__zero_reg__
+ 2084 0cf8 1092 0000 		sts OSQTbl+28,__zero_reg__
+ 2085 0cfc 9093 0000 		sts OSQFreeList+1,r25
+ 2086 0d00 8093 0000 		sts OSQFreeList,r24
+ 2087               	/* epilogue start */
+ 2088 0d04 0895      		ret
+ 2089               		.size	OS_QInit, .-OS_QInit
+ 2090               	.global	OSSemCreate
+ 2091               		.type	OSSemCreate, @function
+ 2092               	OSSemCreate:
+ 2093               	/* prologue: function */
+ 2094               	/* frame size = 0 */
+ 2095               	/* stack size = 0 */
+ 2096               	.L__stack_usage = 0
+ 2097 0d06 2091 0000 		lds r18,OSIntNesting
+ 2098 0d0a 2223      		tst r18
+ 2099 0d0c 01F4      		brne .L165
+ 2100               	/* #APP */
+ 2101               	 ;  94 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2102 0d0e F894      		cli
+ 2103               	 ;  0 "" 2
+ 2104               	/* #NOAPP */
+ 2105 0d10 E091 0000 		lds r30,OSEventFreeList
+ 2106 0d14 F091 0000 		lds r31,OSEventFreeList+1
+ 2107 0d18 3097      		sbiw r30,0
+ 2108 0d1a 01F0      		breq .L164
+ 2109 0d1c 2481      		ldd r18,Z+4
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 38
+
+
+ 2110 0d1e 3581      		ldd r19,Z+5
+ 2111 0d20 3093 0000 		sts OSEventFreeList+1,r19
+ 2112 0d24 2093 0000 		sts OSEventFreeList,r18
+ 2113               	.L164:
+ 2114               	/* #APP */
+ 2115               	 ;  99 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2116 0d28 7894      		sei
+ 2117               	 ;  0 "" 2
+ 2118               	/* #NOAPP */
+ 2119 0d2a 3097      		sbiw r30,0
+ 2120 0d2c 01F0      		breq .L163
+ 2121 0d2e 23E0      		ldi r18,lo8(3)
+ 2122 0d30 2083      		st Z,r18
+ 2123 0d32 9383      		std Z+3,r25
+ 2124 0d34 8283      		std Z+2,r24
+ 2125 0d36 1582      		std Z+5,__zero_reg__
+ 2126 0d38 1482      		std Z+4,__zero_reg__
+ 2127 0d3a 1182      		std Z+1,__zero_reg__
+ 2128 0d3c 1682      		std Z+6,__zero_reg__
+ 2129 0d3e 1782      		std Z+7,__zero_reg__
+ 2130               	.L163:
+ 2131 0d40 CF01      		movw r24,r30
+ 2132               	/* epilogue start */
+ 2133 0d42 0895      		ret
+ 2134               	.L165:
+ 2135 0d44 E0E0      		ldi r30,lo8(0)
+ 2136 0d46 F0E0      		ldi r31,hi8(0)
+ 2137 0d48 CF01      		movw r24,r30
+ 2138               	/* epilogue start */
+ 2139 0d4a 0895      		ret
+ 2140               		.size	OSSemCreate, .-OSSemCreate
+ 2141               	.global	OSSemPend
+ 2142               		.type	OSSemPend, @function
+ 2143               	OSSemPend:
+ 2144 0d4c 0F93      		push r16
+ 2145 0d4e 1F93      		push r17
+ 2146 0d50 CF93      		push r28
+ 2147 0d52 DF93      		push r29
+ 2148               	/* prologue: function */
+ 2149               	/* frame size = 0 */
+ 2150               	/* stack size = 4 */
+ 2151               	.L__stack_usage = 4
+ 2152 0d54 EC01      		movw r28,r24
+ 2153 0d56 8A01      		movw r16,r20
+ 2154 0d58 8091 0000 		lds r24,OSIntNesting
+ 2155 0d5c 8823      		tst r24
+ 2156 0d5e 01F4      		brne .L171
+ 2157               	/* #APP */
+ 2158               	 ;  265 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2159 0d60 F894      		cli
+ 2160               	 ;  0 "" 2
+ 2161               	/* #NOAPP */
+ 2162 0d62 8A81      		ldd r24,Y+2
+ 2163 0d64 9B81      		ldd r25,Y+3
+ 2164 0d66 0097      		sbiw r24,0
+ 2165 0d68 01F0      		breq .L169
+ 2166 0d6a 0197      		sbiw r24,1
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 39
+
+
+ 2167 0d6c 9B83      		std Y+3,r25
+ 2168 0d6e 8A83      		std Y+2,r24
+ 2169               	/* #APP */
+ 2170               	 ;  268 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2171 0d70 7894      		sei
+ 2172               	 ;  0 "" 2
+ 2173               	/* #NOAPP */
+ 2174 0d72 FA01      		movw r30,r20
+ 2175 0d74 1082      		st Z,__zero_reg__
+ 2176               	.L166:
+ 2177               	/* epilogue start */
+ 2178 0d76 DF91      		pop r29
+ 2179 0d78 CF91      		pop r28
+ 2180 0d7a 1F91      		pop r17
+ 2181 0d7c 0F91      		pop r16
+ 2182 0d7e 0895      		ret
+ 2183               	.L169:
+ 2184 0d80 E091 0000 		lds r30,OSTCBCur
+ 2185 0d84 F091 0000 		lds r31,OSTCBCur+1
+ 2186 0d88 8585      		ldd r24,Z+13
+ 2187 0d8a 8160      		ori r24,lo8(1)
+ 2188 0d8c 8587      		std Z+13,r24
+ 2189 0d8e 7487      		std Z+12,r23
+ 2190 0d90 6387      		std Z+11,r22
+ 2191 0d92 CE01      		movw r24,r28
+ 2192 0d94 0E94 0000 		call OS_EventTaskWait
+ 2193               	/* #APP */
+ 2194               	 ;  276 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2195 0d98 7894      		sei
+ 2196               	 ;  0 "" 2
+ 2197               	/* #NOAPP */
+ 2198 0d9a 0E94 0000 		call OS_Sched
+ 2199               	/* #APP */
+ 2200               	 ;  278 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2201 0d9e F894      		cli
+ 2202               	 ;  0 "" 2
+ 2203               	/* #NOAPP */
+ 2204 0da0 E091 0000 		lds r30,OSTCBCur
+ 2205 0da4 F091 0000 		lds r31,OSTCBCur+1
+ 2206 0da8 8585      		ldd r24,Z+13
+ 2207 0daa 80FD      		sbrc r24,0
+ 2208 0dac 00C0      		rjmp .L172
+ 2209 0dae 1782      		std Z+7,__zero_reg__
+ 2210 0db0 1682      		std Z+6,__zero_reg__
+ 2211               	/* #APP */
+ 2212               	 ;  286 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2213 0db2 7894      		sei
+ 2214               	 ;  0 "" 2
+ 2215               	/* #NOAPP */
+ 2216 0db4 F801      		movw r30,r16
+ 2217 0db6 1082      		st Z,__zero_reg__
+ 2218               	/* epilogue start */
+ 2219 0db8 DF91      		pop r29
+ 2220 0dba CF91      		pop r28
+ 2221 0dbc 1F91      		pop r17
+ 2222 0dbe 0F91      		pop r16
+ 2223 0dc0 0895      		ret
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 40
+
+
+ 2224               	.L171:
+ 2225 0dc2 82E0      		ldi r24,lo8(2)
+ 2226 0dc4 FA01      		movw r30,r20
+ 2227 0dc6 8083      		st Z,r24
+ 2228               	/* epilogue start */
+ 2229 0dc8 DF91      		pop r29
+ 2230 0dca CF91      		pop r28
+ 2231 0dcc 1F91      		pop r17
+ 2232 0dce 0F91      		pop r16
+ 2233 0dd0 0895      		ret
+ 2234               	.L172:
+ 2235 0dd2 CE01      		movw r24,r28
+ 2236 0dd4 0E94 0000 		call OS_EventTO
+ 2237               	/* #APP */
+ 2238               	 ;  281 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2239 0dd8 7894      		sei
+ 2240               	 ;  0 "" 2
+ 2241               	/* #NOAPP */
+ 2242 0dda 8AE0      		ldi r24,lo8(10)
+ 2243 0ddc F801      		movw r30,r16
+ 2244 0dde 8083      		st Z,r24
+ 2245 0de0 00C0      		rjmp .L166
+ 2246               		.size	OSSemPend, .-OSSemPend
+ 2247               	.global	OSSemPost
+ 2248               		.type	OSSemPost, @function
+ 2249               	OSSemPost:
+ 2250               	/* prologue: function */
+ 2251               	/* frame size = 0 */
+ 2252               	/* stack size = 0 */
+ 2253               	.L__stack_usage = 0
+ 2254 0de2 FC01      		movw r30,r24
+ 2255               	/* #APP */
+ 2256               	 ;  323 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2257 0de4 F894      		cli
+ 2258               	 ;  0 "" 2
+ 2259               	/* #NOAPP */
+ 2260 0de6 8181      		ldd r24,Z+1
+ 2261 0de8 8823      		tst r24
+ 2262 0dea 01F4      		brne .L177
+ 2263 0dec 8281      		ldd r24,Z+2
+ 2264 0dee 9381      		ldd r25,Z+3
+ 2265 0df0 2FEF      		ldi r18,hi8(-1)
+ 2266 0df2 8F3F      		cpi r24,lo8(-1)
+ 2267 0df4 9207      		cpc r25,r18
+ 2268 0df6 01F0      		breq .L176
+ 2269 0df8 0196      		adiw r24,1
+ 2270 0dfa 9383      		std Z+3,r25
+ 2271 0dfc 8283      		std Z+2,r24
+ 2272               	/* #APP */
+ 2273               	 ;  332 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2274 0dfe 7894      		sei
+ 2275               	 ;  0 "" 2
+ 2276               	/* #NOAPP */
+ 2277 0e00 80E0      		ldi r24,lo8(0)
+ 2278 0e02 0895      		ret
+ 2279               	.L176:
+ 2280               	/* #APP */
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 41
+
+
+ 2281               	 ;  335 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2282 0e04 7894      		sei
+ 2283               	 ;  0 "" 2
+ 2284               	/* #NOAPP */
+ 2285 0e06 82E3      		ldi r24,lo8(50)
+ 2286 0e08 0895      		ret
+ 2287               	.L177:
+ 2288 0e0a CF01      		movw r24,r30
+ 2289 0e0c 60E0      		ldi r22,lo8(0)
+ 2290 0e0e 70E0      		ldi r23,hi8(0)
+ 2291 0e10 41E0      		ldi r20,lo8(1)
+ 2292 0e12 0E94 0000 		call OS_EventTaskRdy
+ 2293               	/* #APP */
+ 2294               	 ;  326 "c:/ucos-II/lab2/source/os_sem.c" 1
+ 2295 0e16 7894      		sei
+ 2296               	 ;  0 "" 2
+ 2297               	/* #NOAPP */
+ 2298 0e18 0E94 0000 		call OS_Sched
+ 2299 0e1c 80E0      		ldi r24,lo8(0)
+ 2300 0e1e 0895      		ret
+ 2301               		.size	OSSemPost, .-OSSemPost
+ 2302               	.global	OSTaskCreate
+ 2303               		.type	OSTaskCreate, @function
+ 2304               	OSTaskCreate:
+ 2305 0e20 8F92      		push r8
+ 2306 0e22 9F92      		push r9
+ 2307 0e24 AF92      		push r10
+ 2308 0e26 BF92      		push r11
+ 2309 0e28 CF92      		push r12
+ 2310 0e2a DF92      		push r13
+ 2311 0e2c EF92      		push r14
+ 2312 0e2e FF92      		push r15
+ 2313 0e30 0F93      		push r16
+ 2314 0e32 1F93      		push r17
+ 2315 0e34 DF93      		push r29
+ 2316 0e36 CF93      		push r28
+ 2317 0e38 0F92      		push __tmp_reg__
+ 2318 0e3a CDB7      		in r28,__SP_L__
+ 2319 0e3c DEB7      		in r29,__SP_H__
+ 2320               	/* prologue: function */
+ 2321               	/* frame size = 1 */
+ 2322               	/* stack size = 13 */
+ 2323               	.L__stack_usage = 13
+ 2324 0e3e 122F      		mov r17,r18
+ 2325               	/* #APP */
+ 2326               	 ;  172 "c:/ucos-II/lab2/source/os_task.c" 1
+ 2327 0e40 F894      		cli
+ 2328               	 ;  0 "" 2
+ 2329               	/* #NOAPP */
+ 2330 0e42 822E      		mov r8,r18
+ 2331 0e44 9924      		clr r9
+ 2332 0e46 880C      		lsl r8
+ 2333 0e48 991C      		rol r9
+ 2334 0e4a 20E0      		ldi r18,lo8(OSTCBPrioTbl)
+ 2335 0e4c 30E0      		ldi r19,hi8(OSTCBPrioTbl)
+ 2336 0e4e 820E      		add r8,r18
+ 2337 0e50 931E      		adc r9,r19
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 42
+
+
+ 2338 0e52 F401      		movw r30,r8
+ 2339 0e54 2081      		ld r18,Z
+ 2340 0e56 3181      		ldd r19,Z+1
+ 2341 0e58 2115      		cp r18,__zero_reg__
+ 2342 0e5a 3105      		cpc r19,__zero_reg__
+ 2343 0e5c 01F0      		breq .L182
+ 2344               	/* #APP */
+ 2345               	 ;  193 "c:/ucos-II/lab2/source/os_task.c" 1
+ 2346 0e5e 7894      		sei
+ 2347               	 ;  0 "" 2
+ 2348               	/* #NOAPP */
+ 2349 0e60 88E2      		ldi r24,lo8(40)
+ 2350               	.L181:
+ 2351               	/* epilogue start */
+ 2352 0e62 0F90      		pop __tmp_reg__
+ 2353 0e64 CF91      		pop r28
+ 2354 0e66 DF91      		pop r29
+ 2355 0e68 1F91      		pop r17
+ 2356 0e6a 0F91      		pop r16
+ 2357 0e6c FF90      		pop r15
+ 2358 0e6e EF90      		pop r14
+ 2359 0e70 DF90      		pop r13
+ 2360 0e72 CF90      		pop r12
+ 2361 0e74 BF90      		pop r11
+ 2362 0e76 AF90      		pop r10
+ 2363 0e78 9F90      		pop r9
+ 2364 0e7a 8F90      		pop r8
+ 2365 0e7c 0895      		ret
+ 2366               	.L182:
+ 2367 0e7e 21E0      		ldi r18,lo8(1)
+ 2368 0e80 30E0      		ldi r19,hi8(1)
+ 2369 0e82 3183      		std Z+1,r19
+ 2370 0e84 2083      		st Z,r18
+ 2371               	/* #APP */
+ 2372               	 ;  176 "c:/ucos-II/lab2/source/os_task.c" 1
+ 2373 0e86 7894      		sei
+ 2374               	 ;  0 "" 2
+ 2375               	/* #NOAPP */
+ 2376 0e88 20E0      		ldi r18,lo8(0)
+ 2377 0e8a 30E0      		ldi r19,hi8(0)
+ 2378 0e8c 0E94 0000 		call OSTaskStkInit
+ 2379 0e90 BC01      		movw r22,r24
+ 2380 0e92 812F      		mov r24,r17
+ 2381 0e94 40E0      		ldi r20,lo8(0)
+ 2382 0e96 50E0      		ldi r21,hi8(0)
+ 2383 0e98 20E0      		ldi r18,lo8(0)
+ 2384 0e9a 30E0      		ldi r19,hi8(0)
+ 2385 0e9c EE24      		clr r14
+ 2386 0e9e FF24      		clr r15
+ 2387 0ea0 8701      		movw r16,r14
+ 2388 0ea2 CC24      		clr r12
+ 2389 0ea4 DD24      		clr r13
+ 2390 0ea6 AA24      		clr r10
+ 2391 0ea8 BB24      		clr r11
+ 2392 0eaa 0E94 0000 		call OS_TCBInit
+ 2393 0eae 8823      		tst r24
+ 2394 0eb0 01F4      		brne .L180
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 43
+
+
+ 2395               	/* #APP */
+ 2396               	 ;  180 "c:/ucos-II/lab2/source/os_task.c" 1
+ 2397 0eb2 F894      		cli
+ 2398               	 ;  0 "" 2
+ 2399               	/* #NOAPP */
+ 2400 0eb4 9091 0000 		lds r25,OSTaskCtr
+ 2401 0eb8 9F5F      		subi r25,lo8(-(1))
+ 2402 0eba 9093 0000 		sts OSTaskCtr,r25
+ 2403               	/* #APP */
+ 2404               	 ;  182 "c:/ucos-II/lab2/source/os_task.c" 1
+ 2405 0ebe 7894      		sei
+ 2406               	 ;  0 "" 2
+ 2407               	/* #NOAPP */
+ 2408 0ec0 9091 0000 		lds r25,OSRunning
+ 2409 0ec4 9130      		cpi r25,lo8(1)
+ 2410 0ec6 01F4      		brne .L181
+ 2411 0ec8 8983      		std Y+1,r24
+ 2412 0eca 0E94 0000 		call OS_Sched
+ 2413 0ece 8981      		ldd r24,Y+1
+ 2414 0ed0 00C0      		rjmp .L181
+ 2415               	.L180:
+ 2416               	/* #APP */
+ 2417               	 ;  187 "c:/ucos-II/lab2/source/os_task.c" 1
+ 2418 0ed2 F894      		cli
+ 2419               	 ;  0 "" 2
+ 2420               	/* #NOAPP */
+ 2421 0ed4 F401      		movw r30,r8
+ 2422 0ed6 1182      		std Z+1,__zero_reg__
+ 2423 0ed8 1082      		st Z,__zero_reg__
+ 2424               	/* #APP */
+ 2425               	 ;  189 "c:/ucos-II/lab2/source/os_task.c" 1
+ 2426 0eda 7894      		sei
+ 2427               	 ;  0 "" 2
+ 2428               	/* #NOAPP */
+ 2429 0edc 00C0      		rjmp .L181
+ 2430               		.size	OSTaskCreate, .-OSTaskCreate
+ 2431               	.global	OSInit
+ 2432               		.type	OSInit, @function
+ 2433               	OSInit:
+ 2434               	/* prologue: function */
+ 2435               	/* frame size = 0 */
+ 2436               	/* stack size = 0 */
+ 2437               	.L__stack_usage = 0
+ 2438 0ede 0E94 0000 		call OSInitHookBegin
+ 2439 0ee2 1092 0000 		sts OSIntNesting,__zero_reg__
+ 2440 0ee6 1092 0000 		sts OSLockNesting,__zero_reg__
+ 2441 0eea 1092 0000 		sts OSTaskCtr,__zero_reg__
+ 2442 0eee 1092 0000 		sts OSRunning,__zero_reg__
+ 2443 0ef2 1092 0000 		sts OSCtxSwCtr,__zero_reg__
+ 2444 0ef6 1092 0000 		sts OSCtxSwCtr+1,__zero_reg__
+ 2445 0efa 1092 0000 		sts OSCtxSwCtr+2,__zero_reg__
+ 2446 0efe 1092 0000 		sts OSCtxSwCtr+3,__zero_reg__
+ 2447 0f02 1092 0000 		sts OSIdleCtr,__zero_reg__
+ 2448 0f06 1092 0000 		sts OSIdleCtr+1,__zero_reg__
+ 2449 0f0a 1092 0000 		sts OSIdleCtr+2,__zero_reg__
+ 2450 0f0e 1092 0000 		sts OSIdleCtr+3,__zero_reg__
+ 2451 0f12 1092 0000 		sts OSRdyGrp,__zero_reg__
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 44
+
+
+ 2452 0f16 1092 0000 		sts OSRdyTbl,__zero_reg__
+ 2453 0f1a 1092 0000 		sts OSRdyTbl+1,__zero_reg__
+ 2454 0f1e 1092 0000 		sts OSPrioCur,__zero_reg__
+ 2455 0f22 1092 0000 		sts OSPrioHighRdy,__zero_reg__
+ 2456 0f26 1092 0000 		sts OSTCBHighRdy+1,__zero_reg__
+ 2457 0f2a 1092 0000 		sts OSTCBHighRdy,__zero_reg__
+ 2458 0f2e 1092 0000 		sts OSTCBCur+1,__zero_reg__
+ 2459 0f32 1092 0000 		sts OSTCBCur,__zero_reg__
+ 2460 0f36 1092 0000 		sts OSTCBList+1,__zero_reg__
+ 2461 0f3a 1092 0000 		sts OSTCBList,__zero_reg__
+ 2462 0f3e E0E0      		ldi r30,lo8(OSTCBPrioTbl)
+ 2463 0f40 F0E0      		ldi r31,hi8(OSTCBPrioTbl)
+ 2464               	.L184:
+ 2465 0f42 1192      		st Z+,__zero_reg__
+ 2466 0f44 1192      		st Z+,__zero_reg__
+ 2467 0f46 20E0      		ldi r18,hi8(OSTCBPrioTbl+26)
+ 2468 0f48 E030      		cpi r30,lo8(OSTCBPrioTbl+26)
+ 2469 0f4a F207      		cpc r31,r18
+ 2470 0f4c 01F4      		brne .L184
+ 2471 0f4e 80E0      		ldi r24,lo8(OSTCBTbl+19)
+ 2472 0f50 90E0      		ldi r25,hi8(OSTCBTbl+19)
+ 2473               	.L185:
+ 2474 0f52 FC01      		movw r30,r24
+ 2475 0f54 7197      		sbiw r30,17
+ 2476 0f56 9183      		std Z+1,r25
+ 2477 0f58 8083      		st Z,r24
+ 2478 0f5a 4396      		adiw r24,19
+ 2479 0f5c 20E0      		ldi r18,hi8(OSTCBTbl+247)
+ 2480 0f5e 8030      		cpi r24,lo8(OSTCBTbl+247)
+ 2481 0f60 9207      		cpc r25,r18
+ 2482 0f62 01F4      		brne .L185
+ 2483 0f64 1092 0000 		sts OSTCBTbl+230+1,__zero_reg__
+ 2484 0f68 1092 0000 		sts OSTCBTbl+230,__zero_reg__
+ 2485 0f6c 80E0      		ldi r24,lo8(OSTCBTbl)
+ 2486 0f6e 90E0      		ldi r25,hi8(OSTCBTbl)
+ 2487 0f70 9093 0000 		sts OSTCBFreeList+1,r25
+ 2488 0f74 8093 0000 		sts OSTCBFreeList,r24
+ 2489 0f78 80E0      		ldi r24,lo8(OSEventTbl)
+ 2490 0f7a 90E0      		ldi r25,hi8(OSEventTbl)
+ 2491 0f7c 1092 0000 		sts OSEventTbl,__zero_reg__
+ 2492 0f80 9C01      		movw r18,r24
+ 2493 0f82 285F      		subi r18,lo8(-(8))
+ 2494 0f84 3F4F      		sbci r19,hi8(-(8))
+ 2495 0f86 3093 0000 		sts OSEventTbl+4+1,r19
+ 2496 0f8a 2093 0000 		sts OSEventTbl+4,r18
+ 2497 0f8e 1092 0000 		sts OSEventTbl+8,__zero_reg__
+ 2498 0f92 9C01      		movw r18,r24
+ 2499 0f94 205F      		subi r18,lo8(-(16))
+ 2500 0f96 3F4F      		sbci r19,hi8(-(16))
+ 2501 0f98 3093 0000 		sts OSEventTbl+12+1,r19
+ 2502 0f9c 2093 0000 		sts OSEventTbl+12,r18
+ 2503 0fa0 1092 0000 		sts OSEventTbl+16,__zero_reg__
+ 2504 0fa4 9C01      		movw r18,r24
+ 2505 0fa6 285E      		subi r18,lo8(-(24))
+ 2506 0fa8 3F4F      		sbci r19,hi8(-(24))
+ 2507 0faa 3093 0000 		sts OSEventTbl+20+1,r19
+ 2508 0fae 2093 0000 		sts OSEventTbl+20,r18
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 45
+
+
+ 2509 0fb2 1092 0000 		sts OSEventTbl+24,__zero_reg__
+ 2510 0fb6 9C01      		movw r18,r24
+ 2511 0fb8 205E      		subi r18,lo8(-(32))
+ 2512 0fba 3F4F      		sbci r19,hi8(-(32))
+ 2513 0fbc 3093 0000 		sts OSEventTbl+28+1,r19
+ 2514 0fc0 2093 0000 		sts OSEventTbl+28,r18
+ 2515 0fc4 1092 0000 		sts OSEventTbl+32,__zero_reg__
+ 2516 0fc8 9C01      		movw r18,r24
+ 2517 0fca 285D      		subi r18,lo8(-(40))
+ 2518 0fcc 3F4F      		sbci r19,hi8(-(40))
+ 2519 0fce 3093 0000 		sts OSEventTbl+36+1,r19
+ 2520 0fd2 2093 0000 		sts OSEventTbl+36,r18
+ 2521 0fd6 1092 0000 		sts OSEventTbl+40,__zero_reg__
+ 2522 0fda 1092 0000 		sts OSEventTbl+44+1,__zero_reg__
+ 2523 0fde 1092 0000 		sts OSEventTbl+44,__zero_reg__
+ 2524 0fe2 9093 0000 		sts OSEventFreeList+1,r25
+ 2525 0fe6 8093 0000 		sts OSEventFreeList,r24
+ 2526 0fea 80E0      		ldi r24,lo8(OSFlagTbl)
+ 2527 0fec 90E0      		ldi r25,hi8(OSFlagTbl)
+ 2528 0fee 1092 0000 		sts OSFlagTbl,__zero_reg__
+ 2529 0ff2 9C01      		movw r18,r24
+ 2530 0ff4 2C5F      		subi r18,lo8(-(4))
+ 2531 0ff6 3F4F      		sbci r19,hi8(-(4))
+ 2532 0ff8 3093 0000 		sts OSFlagTbl+1+1,r19
+ 2533 0ffc 2093 0000 		sts OSFlagTbl+1,r18
+ 2534 1000 1092 0000 		sts OSFlagTbl+4,__zero_reg__
+ 2535 1004 9C01      		movw r18,r24
+ 2536 1006 285F      		subi r18,lo8(-(8))
+ 2537 1008 3F4F      		sbci r19,hi8(-(8))
+ 2538 100a 3093 0000 		sts OSFlagTbl+5+1,r19
+ 2539 100e 2093 0000 		sts OSFlagTbl+5,r18
+ 2540 1012 1092 0000 		sts OSFlagTbl+8,__zero_reg__
+ 2541 1016 9C01      		movw r18,r24
+ 2542 1018 245F      		subi r18,lo8(-(12))
+ 2543 101a 3F4F      		sbci r19,hi8(-(12))
+ 2544 101c 3093 0000 		sts OSFlagTbl+9+1,r19
+ 2545 1020 2093 0000 		sts OSFlagTbl+9,r18
+ 2546 1024 1092 0000 		sts OSFlagTbl+12,__zero_reg__
+ 2547 1028 9C01      		movw r18,r24
+ 2548 102a 205F      		subi r18,lo8(-(16))
+ 2549 102c 3F4F      		sbci r19,hi8(-(16))
+ 2550 102e 3093 0000 		sts OSFlagTbl+13+1,r19
+ 2551 1032 2093 0000 		sts OSFlagTbl+13,r18
+ 2552 1036 1092 0000 		sts OSFlagTbl+16,__zero_reg__
+ 2553 103a 9C01      		movw r18,r24
+ 2554 103c 2C5E      		subi r18,lo8(-(20))
+ 2555 103e 3F4F      		sbci r19,hi8(-(20))
+ 2556 1040 3093 0000 		sts OSFlagTbl+17+1,r19
+ 2557 1044 2093 0000 		sts OSFlagTbl+17,r18
+ 2558 1048 1092 0000 		sts OSFlagTbl+21+1,__zero_reg__
+ 2559 104c 1092 0000 		sts OSFlagTbl+21,__zero_reg__
+ 2560 1050 9093 0000 		sts OSFlagFreeList+1,r25
+ 2561 1054 8093 0000 		sts OSFlagFreeList,r24
+ 2562 1058 80E0      		ldi r24,lo8(OSQTbl)
+ 2563 105a 90E0      		ldi r25,hi8(OSQTbl)
+ 2564 105c 9C01      		movw r18,r24
+ 2565 105e 225F      		subi r18,lo8(-(14))
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 46
+
+
+ 2566 1060 3F4F      		sbci r19,hi8(-(14))
+ 2567 1062 3093 0000 		sts OSQTbl+1,r19
+ 2568 1066 2093 0000 		sts OSQTbl,r18
+ 2569 106a 9C01      		movw r18,r24
+ 2570 106c 245E      		subi r18,lo8(-(28))
+ 2571 106e 3F4F      		sbci r19,hi8(-(28))
+ 2572 1070 3093 0000 		sts OSQTbl+14+1,r19
+ 2573 1074 2093 0000 		sts OSQTbl+14,r18
+ 2574 1078 1092 0000 		sts OSQTbl+28+1,__zero_reg__
+ 2575 107c 1092 0000 		sts OSQTbl+28,__zero_reg__
+ 2576 1080 9093 0000 		sts OSQFreeList+1,r25
+ 2577 1084 8093 0000 		sts OSQFreeList,r24
+ 2578 1088 80E0      		ldi r24,lo8(gs(OS_TaskIdle))
+ 2579 108a 90E0      		ldi r25,hi8(gs(OS_TaskIdle))
+ 2580 108c 60E0      		ldi r22,lo8(0)
+ 2581 108e 70E0      		ldi r23,hi8(0)
+ 2582 1090 40E0      		ldi r20,lo8(OSTaskIdleStk+127)
+ 2583 1092 50E0      		ldi r21,hi8(OSTaskIdleStk+127)
+ 2584 1094 2CE0      		ldi r18,lo8(12)
+ 2585 1096 0E94 0000 		call OSTaskCreate
+ 2586 109a 80E0      		ldi r24,lo8(gs(OS_TaskStat))
+ 2587 109c 90E0      		ldi r25,hi8(gs(OS_TaskStat))
+ 2588 109e 60E0      		ldi r22,lo8(0)
+ 2589 10a0 70E0      		ldi r23,hi8(0)
+ 2590 10a2 40E0      		ldi r20,lo8(OSTaskStatStk+127)
+ 2591 10a4 50E0      		ldi r21,hi8(OSTaskStatStk+127)
+ 2592 10a6 2BE0      		ldi r18,lo8(11)
+ 2593 10a8 0E94 0000 		call OSTaskCreate
+ 2594 10ac 0E94 0000 		call OSInitHookEnd
+ 2595               	/* epilogue start */
+ 2596 10b0 0895      		ret
+ 2597               		.size	OSInit, .-OSInit
+ 2598               	.global	OSTimeDly
+ 2599               		.type	OSTimeDly, @function
+ 2600               	OSTimeDly:
+ 2601               	/* prologue: function */
+ 2602               	/* frame size = 0 */
+ 2603               	/* stack size = 0 */
+ 2604               	.L__stack_usage = 0
+ 2605 10b2 0097      		sbiw r24,0
+ 2606 10b4 01F0      		breq .L188
+ 2607               	/* #APP */
+ 2608               	 ;  43 "c:/ucos-II/lab2/source/os_time.c" 1
+ 2609 10b6 F894      		cli
+ 2610               	 ;  0 "" 2
+ 2611               	/* #NOAPP */
+ 2612 10b8 A091 0000 		lds r26,OSTCBCur
+ 2613 10bc B091 0000 		lds r27,OSTCBCur+1
+ 2614 10c0 5096      		adiw r26,16
+ 2615 10c2 EC91      		ld r30,X
+ 2616 10c4 5097      		sbiw r26,16
+ 2617 10c6 F0E0      		ldi r31,lo8(0)
+ 2618 10c8 E050      		subi r30,lo8(-(OSRdyTbl))
+ 2619 10ca F040      		sbci r31,hi8(-(OSRdyTbl))
+ 2620 10cc 5196      		adiw r26,17
+ 2621 10ce 2C91      		ld r18,X
+ 2622 10d0 5197      		sbiw r26,17
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 47
+
+
+ 2623 10d2 2095      		com r18
+ 2624 10d4 3081      		ld r19,Z
+ 2625 10d6 2323      		and r18,r19
+ 2626 10d8 2083      		st Z,r18
+ 2627 10da 2223      		tst r18
+ 2628 10dc 01F4      		brne .L190
+ 2629 10de 5296      		adiw r26,18
+ 2630 10e0 3C91      		ld r19,X
+ 2631 10e2 5297      		sbiw r26,18
+ 2632 10e4 3095      		com r19
+ 2633 10e6 2091 0000 		lds r18,OSRdyGrp
+ 2634 10ea 2323      		and r18,r19
+ 2635 10ec 2093 0000 		sts OSRdyGrp,r18
+ 2636               	.L190:
+ 2637 10f0 1C96      		adiw r26,11+1
+ 2638 10f2 9C93      		st X,r25
+ 2639 10f4 8E93      		st -X,r24
+ 2640 10f6 1B97      		sbiw r26,11
+ 2641               	/* #APP */
+ 2642               	 ;  48 "c:/ucos-II/lab2/source/os_time.c" 1
+ 2643 10f8 7894      		sei
+ 2644               	 ;  0 "" 2
+ 2645               	/* #NOAPP */
+ 2646 10fa 0E94 0000 		call OS_Sched
+ 2647               	.L188:
+ 2648 10fe 0895      		ret
+ 2649               		.size	OSTimeDly, .-OSTimeDly
+ 2650               	.global	OS_TaskStat
+ 2651               		.type	OS_TaskStat, @function
+ 2652               	OS_TaskStat:
+ 2653 1100 8F92      		push r8
+ 2654 1102 9F92      		push r9
+ 2655 1104 AF92      		push r10
+ 2656 1106 BF92      		push r11
+ 2657 1108 DF92      		push r13
+ 2658 110a EF92      		push r14
+ 2659 110c FF92      		push r15
+ 2660 110e 0F93      		push r16
+ 2661 1110 1F93      		push r17
+ 2662               	/* prologue: function */
+ 2663               	/* frame size = 0 */
+ 2664               	/* stack size = 9 */
+ 2665               	.L__stack_usage = 9
+ 2666 1112 8091 0000 		lds r24,OSStatRdy
+ 2667 1116 8823      		tst r24
+ 2668 1118 01F4      		brne .L192
+ 2669               	.L198:
+ 2670 111a 88EC      		ldi r24,lo8(200)
+ 2671 111c 90E0      		ldi r25,hi8(200)
+ 2672 111e 0E94 0000 		call OSTimeDly
+ 2673 1122 8091 0000 		lds r24,OSStatRdy
+ 2674 1126 8823      		tst r24
+ 2675 1128 01F0      		breq .L198
+ 2676               	.L192:
+ 2677 112a 6091 0000 		lds r22,OSIdleCtrMax
+ 2678 112e 7091 0000 		lds r23,OSIdleCtrMax+1
+ 2679 1132 8091 0000 		lds r24,OSIdleCtrMax+2
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 48
+
+
+ 2680 1136 9091 0000 		lds r25,OSIdleCtrMax+3
+ 2681 113a 24E6      		ldi r18,lo8(100)
+ 2682 113c 30E0      		ldi r19,hi8(100)
+ 2683 113e 40E0      		ldi r20,hlo8(100)
+ 2684 1140 50E0      		ldi r21,hhi8(100)
+ 2685 1142 0E94 0000 		call __udivmodsi4
+ 2686 1146 7901      		movw r14,r18
+ 2687 1148 8A01      		movw r16,r20
+ 2688 114a A4E6      		ldi r26,lo8(100)
+ 2689 114c 8A2E      		mov r8,r26
+ 2690 114e 912C      		mov r9,__zero_reg__
+ 2691 1150 A12C      		mov r10,__zero_reg__
+ 2692 1152 B12C      		mov r11,__zero_reg__
+ 2693 1154 F4E6      		ldi r31,lo8(100)
+ 2694 1156 DF2E      		mov r13,r31
+ 2695 1158 00C0      		rjmp .L197
+ 2696               	.L200:
+ 2697 115a A801      		movw r20,r16
+ 2698 115c 9701      		movw r18,r14
+ 2699 115e 0E94 0000 		call __udivmodsi4
+ 2700 1162 8D2D      		mov r24,r13
+ 2701 1164 821B      		sub r24,r18
+ 2702 1166 87FD      		sbrc r24,7
+ 2703 1168 00C0      		rjmp .L195
+ 2704 116a 8093 0000 		sts OSCPUUsage,r24
+ 2705               	.L196:
+ 2706 116e 0E94 0000 		call OSTaskStatHook
+ 2707 1172 84E6      		ldi r24,lo8(100)
+ 2708 1174 90E0      		ldi r25,hi8(100)
+ 2709 1176 0E94 0000 		call OSTimeDly
+ 2710               	.L197:
+ 2711               	/* #APP */
+ 2712               	 ;  970 "c:/ucos-II/lab2/source/os_core.c" 1
+ 2713 117a F894      		cli
+ 2714               	 ;  0 "" 2
+ 2715               	/* #NOAPP */
+ 2716 117c 8091 0000 		lds r24,OSIdleCtr
+ 2717 1180 9091 0000 		lds r25,OSIdleCtr+1
+ 2718 1184 A091 0000 		lds r26,OSIdleCtr+2
+ 2719 1188 B091 0000 		lds r27,OSIdleCtr+3
+ 2720 118c 8093 0000 		sts OSIdleCtrRun,r24
+ 2721 1190 9093 0000 		sts OSIdleCtrRun+1,r25
+ 2722 1194 A093 0000 		sts OSIdleCtrRun+2,r26
+ 2723 1198 B093 0000 		sts OSIdleCtrRun+3,r27
+ 2724 119c 6091 0000 		lds r22,OSIdleCtr
+ 2725 11a0 7091 0000 		lds r23,OSIdleCtr+1
+ 2726 11a4 8091 0000 		lds r24,OSIdleCtr+2
+ 2727 11a8 9091 0000 		lds r25,OSIdleCtr+3
+ 2728 11ac 1092 0000 		sts OSIdleCtr,__zero_reg__
+ 2729 11b0 1092 0000 		sts OSIdleCtr+1,__zero_reg__
+ 2730 11b4 1092 0000 		sts OSIdleCtr+2,__zero_reg__
+ 2731 11b8 1092 0000 		sts OSIdleCtr+3,__zero_reg__
+ 2732               	/* #APP */
+ 2733               	 ;  974 "c:/ucos-II/lab2/source/os_core.c" 1
+ 2734 11bc 7894      		sei
+ 2735               	 ;  0 "" 2
+ 2736               	/* #NOAPP */
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 49
+
+
+ 2737 11be E114      		cp r14,__zero_reg__
+ 2738 11c0 F104      		cpc r15,__zero_reg__
+ 2739 11c2 0105      		cpc r16,__zero_reg__
+ 2740 11c4 1105      		cpc r17,__zero_reg__
+ 2741 11c6 01F4      		brne .L200
+ 2742 11c8 1092 0000 		sts OSCPUUsage,__zero_reg__
+ 2743 11cc 6091 0000 		lds r22,OSIdleCtrMax
+ 2744 11d0 7091 0000 		lds r23,OSIdleCtrMax+1
+ 2745 11d4 8091 0000 		lds r24,OSIdleCtrMax+2
+ 2746 11d8 9091 0000 		lds r25,OSIdleCtrMax+3
+ 2747 11dc A501      		movw r20,r10
+ 2748 11de 9401      		movw r18,r8
+ 2749 11e0 0E94 0000 		call __udivmodsi4
+ 2750 11e4 7901      		movw r14,r18
+ 2751 11e6 8A01      		movw r16,r20
+ 2752 11e8 00C0      		rjmp .L196
+ 2753               	.L195:
+ 2754 11ea 1092 0000 		sts OSCPUUsage,__zero_reg__
+ 2755 11ee 00C0      		rjmp .L196
+ 2756               		.size	OS_TaskStat, .-OS_TaskStat
+ 2757               	.global	OSStatInit
+ 2758               		.type	OSStatInit, @function
+ 2759               	OSStatInit:
+ 2760               	/* prologue: function */
+ 2761               	/* frame size = 0 */
+ 2762               	/* stack size = 0 */
+ 2763               	.L__stack_usage = 0
+ 2764 11f0 82E0      		ldi r24,lo8(2)
+ 2765 11f2 90E0      		ldi r25,hi8(2)
+ 2766 11f4 0E94 0000 		call OSTimeDly
+ 2767               	/* #APP */
+ 2768               	 ;  339 "c:/ucos-II/lab2/source/os_core.c" 1
+ 2769 11f8 F894      		cli
+ 2770               	 ;  0 "" 2
+ 2771               	/* #NOAPP */
+ 2772 11fa 1092 0000 		sts OSIdleCtr,__zero_reg__
+ 2773 11fe 1092 0000 		sts OSIdleCtr+1,__zero_reg__
+ 2774 1202 1092 0000 		sts OSIdleCtr+2,__zero_reg__
+ 2775 1206 1092 0000 		sts OSIdleCtr+3,__zero_reg__
+ 2776               	/* #APP */
+ 2777               	 ;  341 "c:/ucos-II/lab2/source/os_core.c" 1
+ 2778 120a 7894      		sei
+ 2779               	 ;  0 "" 2
+ 2780               	/* #NOAPP */
+ 2781 120c 84E6      		ldi r24,lo8(100)
+ 2782 120e 90E0      		ldi r25,hi8(100)
+ 2783 1210 0E94 0000 		call OSTimeDly
+ 2784               	/* #APP */
+ 2785               	 ;  343 "c:/ucos-II/lab2/source/os_core.c" 1
+ 2786 1214 F894      		cli
+ 2787               	 ;  0 "" 2
+ 2788               	/* #NOAPP */
+ 2789 1216 8091 0000 		lds r24,OSIdleCtr
+ 2790 121a 9091 0000 		lds r25,OSIdleCtr+1
+ 2791 121e A091 0000 		lds r26,OSIdleCtr+2
+ 2792 1222 B091 0000 		lds r27,OSIdleCtr+3
+ 2793 1226 8093 0000 		sts OSIdleCtrMax,r24
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 50
+
+
+ 2794 122a 9093 0000 		sts OSIdleCtrMax+1,r25
+ 2795 122e A093 0000 		sts OSIdleCtrMax+2,r26
+ 2796 1232 B093 0000 		sts OSIdleCtrMax+3,r27
+ 2797 1236 81E0      		ldi r24,lo8(1)
+ 2798 1238 8093 0000 		sts OSStatRdy,r24
+ 2799               	/* #APP */
+ 2800               	 ;  346 "c:/ucos-II/lab2/source/os_core.c" 1
+ 2801 123c 7894      		sei
+ 2802               	 ;  0 "" 2
+ 2803               	/* epilogue start */
+ 2804               	/* #NOAPP */
+ 2805 123e 0895      		ret
+ 2806               		.size	OSStatInit, .-OSStatInit
+ 2807               	.global	OSTimeDlyHMSM
+ 2808               		.type	OSTimeDlyHMSM, @function
+ 2809               	OSTimeDlyHMSM:
+ 2810 1240 8F92      		push r8
+ 2811 1242 9F92      		push r9
+ 2812 1244 AF92      		push r10
+ 2813 1246 BF92      		push r11
+ 2814 1248 CF92      		push r12
+ 2815 124a DF92      		push r13
+ 2816 124c EF92      		push r14
+ 2817 124e FF92      		push r15
+ 2818 1250 0F93      		push r16
+ 2819 1252 1F93      		push r17
+ 2820               	/* prologue: function */
+ 2821               	/* frame size = 0 */
+ 2822               	/* stack size = 10 */
+ 2823               	.L__stack_usage = 10
+ 2824 1254 182F      		mov r17,r24
+ 2825 1256 C62E      		mov r12,r22
+ 2826 1258 042F      		mov r16,r20
+ 2827 125a 8823      		tst r24
+ 2828 125c 01F0      		breq .L214
+ 2829               	.L203:
+ 2830 125e 8C2D      		mov r24,r12
+ 2831 1260 8C33      		cpi r24,lo8(60)
+ 2832 1262 00F4      		brsh .L208
+ 2833               	.L204:
+ 2834 1264 0C33      		cpi r16,lo8(60)
+ 2835 1266 00F4      		brsh .L209
+ 2836               	.L205:
+ 2837 1268 83E0      		ldi r24,hi8(1000)
+ 2838 126a 283E      		cpi r18,lo8(1000)
+ 2839 126c 3807      		cpc r19,r24
+ 2840 126e 00F0      		brlo .L215
+ 2841 1270 83E5      		ldi r24,lo8(83)
+ 2842               	.L206:
+ 2843               	/* epilogue start */
+ 2844 1272 1F91      		pop r17
+ 2845 1274 0F91      		pop r16
+ 2846 1276 FF90      		pop r15
+ 2847 1278 EF90      		pop r14
+ 2848 127a DF90      		pop r13
+ 2849 127c CF90      		pop r12
+ 2850 127e BF90      		pop r11
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 51
+
+
+ 2851 1280 AF90      		pop r10
+ 2852 1282 9F90      		pop r9
+ 2853 1284 8F90      		pop r8
+ 2854 1286 0895      		ret
+ 2855               	.L209:
+ 2856 1288 82E5      		ldi r24,lo8(82)
+ 2857 128a 00C0      		rjmp .L206
+ 2858               	.L214:
+ 2859 128c 6623      		tst r22
+ 2860 128e 01F4      		brne .L203
+ 2861 1290 4423      		tst r20
+ 2862 1292 01F4      		brne .L204
+ 2863 1294 2115      		cp r18,__zero_reg__
+ 2864 1296 3105      		cpc r19,__zero_reg__
+ 2865 1298 01F4      		brne .L205
+ 2866 129a 84E5      		ldi r24,lo8(84)
+ 2867 129c 00C0      		rjmp .L206
+ 2868               	.L208:
+ 2869 129e 81E5      		ldi r24,lo8(81)
+ 2870 12a0 00C0      		rjmp .L206
+ 2871               	.L215:
+ 2872 12a2 44E6      		ldi r20,lo8(100)
+ 2873 12a4 50E0      		ldi r21,hi8(100)
+ 2874 12a6 0E94 0000 		call __umulhisi3
+ 2875 12aa 6C50      		subi r22,lo8(-(500))
+ 2876 12ac 7E4F      		sbci r23,hi8(-(500))
+ 2877 12ae 8F4F      		sbci r24,hlo8(-(500))
+ 2878 12b0 9F4F      		sbci r25,hhi8(-(500))
+ 2879 12b2 28EE      		ldi r18,lo8(1000)
+ 2880 12b4 33E0      		ldi r19,hi8(1000)
+ 2881 12b6 40E0      		ldi r20,hlo8(1000)
+ 2882 12b8 50E0      		ldi r21,hhi8(1000)
+ 2883 12ba 0E94 0000 		call __udivmodsi4
+ 2884 12be 4901      		movw r8,r18
+ 2885 12c0 5A01      		movw r10,r20
+ 2886 12c2 6C2D      		mov r22,r12
+ 2887 12c4 70E0      		ldi r23,lo8(0)
+ 2888 12c6 80E0      		ldi r24,lo8(0)
+ 2889 12c8 90E0      		ldi r25,hi8(0)
+ 2890 12ca 2CE3      		ldi r18,lo8(60)
+ 2891 12cc 30E0      		ldi r19,hi8(60)
+ 2892 12ce 40E0      		ldi r20,hlo8(60)
+ 2893 12d0 50E0      		ldi r21,hhi8(60)
+ 2894 12d2 0E94 0000 		call __mulsi3
+ 2895 12d6 6B01      		movw r12,r22
+ 2896 12d8 7C01      		movw r14,r24
+ 2897 12da C00E      		add r12,r16
+ 2898 12dc D11C      		adc r13,__zero_reg__
+ 2899 12de E11C      		adc r14,__zero_reg__
+ 2900 12e0 F11C      		adc r15,__zero_reg__
+ 2901 12e2 612F      		mov r22,r17
+ 2902 12e4 70E0      		ldi r23,lo8(0)
+ 2903 12e6 80E0      		ldi r24,lo8(0)
+ 2904 12e8 90E0      		ldi r25,hi8(0)
+ 2905 12ea 20E1      		ldi r18,lo8(3600)
+ 2906 12ec 3EE0      		ldi r19,hi8(3600)
+ 2907 12ee 40E0      		ldi r20,hlo8(3600)
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 52
+
+
+ 2908 12f0 50E0      		ldi r21,hhi8(3600)
+ 2909 12f2 0E94 0000 		call __mulsi3
+ 2910 12f6 C60E      		add r12,r22
+ 2911 12f8 D71E      		adc r13,r23
+ 2912 12fa E81E      		adc r14,r24
+ 2913 12fc F91E      		adc r15,r25
+ 2914 12fe C701      		movw r24,r14
+ 2915 1300 B601      		movw r22,r12
+ 2916 1302 24E6      		ldi r18,lo8(100)
+ 2917 1304 30E0      		ldi r19,hi8(100)
+ 2918 1306 40E0      		ldi r20,hlo8(100)
+ 2919 1308 50E0      		ldi r21,hhi8(100)
+ 2920 130a 0E94 0000 		call __mulsi3
+ 2921 130e 860E      		add r8,r22
+ 2922 1310 971E      		adc r9,r23
+ 2923 1312 A81E      		adc r10,r24
+ 2924 1314 B91E      		adc r11,r25
+ 2925 1316 8501      		movw r16,r10
+ 2926 1318 D501      		movw r26,r10
+ 2927 131a C401      		movw r24,r8
+ 2928 131c A070      		andi r26,hlo8(65535)
+ 2929 131e B070      		andi r27,hhi8(65535)
+ 2930 1320 0E94 0000 		call OSTimeDly
+ 2931 1324 A114      		cp r10,__zero_reg__
+ 2932 1326 B104      		cpc r11,__zero_reg__
+ 2933 1328 01F0      		breq .L211
+ 2934               	.L212:
+ 2935 132a 80E0      		ldi r24,lo8(-32768)
+ 2936 132c 90E8      		ldi r25,hi8(-32768)
+ 2937 132e 0E94 0000 		call OSTimeDly
+ 2938 1332 80E0      		ldi r24,lo8(-32768)
+ 2939 1334 90E8      		ldi r25,hi8(-32768)
+ 2940 1336 0E94 0000 		call OSTimeDly
+ 2941 133a 0150      		subi r16,lo8(-(-1))
+ 2942 133c 1040      		sbci r17,hi8(-(-1))
+ 2943 133e 01F4      		brne .L212
+ 2944               	.L211:
+ 2945 1340 80E0      		ldi r24,lo8(0)
+ 2946 1342 00C0      		rjmp .L206
+ 2947               		.size	OSTimeDlyHMSM, .-OSTimeDlyHMSM
+ 2948               	.global	OSMapTbl
+ 2949               		.data
+ 2950               		.type	OSMapTbl, @object
+ 2951               		.size	OSMapTbl, 8
+ 2952               	OSMapTbl:
+ 2953 0000 01        		.byte	1
+ 2954 0001 02        		.byte	2
+ 2955 0002 04        		.byte	4
+ 2956 0003 08        		.byte	8
+ 2957 0004 10        		.byte	16
+ 2958 0005 20        		.byte	32
+ 2959 0006 40        		.byte	64
+ 2960 0007 80        		.byte	-128
+ 2961               	.global	OSUnMapTbl
+ 2962               		.type	OSUnMapTbl, @object
+ 2963               		.size	OSUnMapTbl, 256
+ 2964               	OSUnMapTbl:
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 53
+
+
+ 2965 0008 00        		.byte	0
+ 2966 0009 00        		.byte	0
+ 2967 000a 01        		.byte	1
+ 2968 000b 00        		.byte	0
+ 2969 000c 02        		.byte	2
+ 2970 000d 00        		.byte	0
+ 2971 000e 01        		.byte	1
+ 2972 000f 00        		.byte	0
+ 2973 0010 03        		.byte	3
+ 2974 0011 00        		.byte	0
+ 2975 0012 01        		.byte	1
+ 2976 0013 00        		.byte	0
+ 2977 0014 02        		.byte	2
+ 2978 0015 00        		.byte	0
+ 2979 0016 01        		.byte	1
+ 2980 0017 00        		.byte	0
+ 2981 0018 04        		.byte	4
+ 2982 0019 00        		.byte	0
+ 2983 001a 01        		.byte	1
+ 2984 001b 00        		.byte	0
+ 2985 001c 02        		.byte	2
+ 2986 001d 00        		.byte	0
+ 2987 001e 01        		.byte	1
+ 2988 001f 00        		.byte	0
+ 2989 0020 03        		.byte	3
+ 2990 0021 00        		.byte	0
+ 2991 0022 01        		.byte	1
+ 2992 0023 00        		.byte	0
+ 2993 0024 02        		.byte	2
+ 2994 0025 00        		.byte	0
+ 2995 0026 01        		.byte	1
+ 2996 0027 00        		.byte	0
+ 2997 0028 05        		.byte	5
+ 2998 0029 00        		.byte	0
+ 2999 002a 01        		.byte	1
+ 3000 002b 00        		.byte	0
+ 3001 002c 02        		.byte	2
+ 3002 002d 00        		.byte	0
+ 3003 002e 01        		.byte	1
+ 3004 002f 00        		.byte	0
+ 3005 0030 03        		.byte	3
+ 3006 0031 00        		.byte	0
+ 3007 0032 01        		.byte	1
+ 3008 0033 00        		.byte	0
+ 3009 0034 02        		.byte	2
+ 3010 0035 00        		.byte	0
+ 3011 0036 01        		.byte	1
+ 3012 0037 00        		.byte	0
+ 3013 0038 04        		.byte	4
+ 3014 0039 00        		.byte	0
+ 3015 003a 01        		.byte	1
+ 3016 003b 00        		.byte	0
+ 3017 003c 02        		.byte	2
+ 3018 003d 00        		.byte	0
+ 3019 003e 01        		.byte	1
+ 3020 003f 00        		.byte	0
+ 3021 0040 03        		.byte	3
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 54
+
+
+ 3022 0041 00        		.byte	0
+ 3023 0042 01        		.byte	1
+ 3024 0043 00        		.byte	0
+ 3025 0044 02        		.byte	2
+ 3026 0045 00        		.byte	0
+ 3027 0046 01        		.byte	1
+ 3028 0047 00        		.byte	0
+ 3029 0048 06        		.byte	6
+ 3030 0049 00        		.byte	0
+ 3031 004a 01        		.byte	1
+ 3032 004b 00        		.byte	0
+ 3033 004c 02        		.byte	2
+ 3034 004d 00        		.byte	0
+ 3035 004e 01        		.byte	1
+ 3036 004f 00        		.byte	0
+ 3037 0050 03        		.byte	3
+ 3038 0051 00        		.byte	0
+ 3039 0052 01        		.byte	1
+ 3040 0053 00        		.byte	0
+ 3041 0054 02        		.byte	2
+ 3042 0055 00        		.byte	0
+ 3043 0056 01        		.byte	1
+ 3044 0057 00        		.byte	0
+ 3045 0058 04        		.byte	4
+ 3046 0059 00        		.byte	0
+ 3047 005a 01        		.byte	1
+ 3048 005b 00        		.byte	0
+ 3049 005c 02        		.byte	2
+ 3050 005d 00        		.byte	0
+ 3051 005e 01        		.byte	1
+ 3052 005f 00        		.byte	0
+ 3053 0060 03        		.byte	3
+ 3054 0061 00        		.byte	0
+ 3055 0062 01        		.byte	1
+ 3056 0063 00        		.byte	0
+ 3057 0064 02        		.byte	2
+ 3058 0065 00        		.byte	0
+ 3059 0066 01        		.byte	1
+ 3060 0067 00        		.byte	0
+ 3061 0068 05        		.byte	5
+ 3062 0069 00        		.byte	0
+ 3063 006a 01        		.byte	1
+ 3064 006b 00        		.byte	0
+ 3065 006c 02        		.byte	2
+ 3066 006d 00        		.byte	0
+ 3067 006e 01        		.byte	1
+ 3068 006f 00        		.byte	0
+ 3069 0070 03        		.byte	3
+ 3070 0071 00        		.byte	0
+ 3071 0072 01        		.byte	1
+ 3072 0073 00        		.byte	0
+ 3073 0074 02        		.byte	2
+ 3074 0075 00        		.byte	0
+ 3075 0076 01        		.byte	1
+ 3076 0077 00        		.byte	0
+ 3077 0078 04        		.byte	4
+ 3078 0079 00        		.byte	0
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 55
+
+
+ 3079 007a 01        		.byte	1
+ 3080 007b 00        		.byte	0
+ 3081 007c 02        		.byte	2
+ 3082 007d 00        		.byte	0
+ 3083 007e 01        		.byte	1
+ 3084 007f 00        		.byte	0
+ 3085 0080 03        		.byte	3
+ 3086 0081 00        		.byte	0
+ 3087 0082 01        		.byte	1
+ 3088 0083 00        		.byte	0
+ 3089 0084 02        		.byte	2
+ 3090 0085 00        		.byte	0
+ 3091 0086 01        		.byte	1
+ 3092 0087 00        		.byte	0
+ 3093 0088 07        		.byte	7
+ 3094 0089 00        		.byte	0
+ 3095 008a 01        		.byte	1
+ 3096 008b 00        		.byte	0
+ 3097 008c 02        		.byte	2
+ 3098 008d 00        		.byte	0
+ 3099 008e 01        		.byte	1
+ 3100 008f 00        		.byte	0
+ 3101 0090 03        		.byte	3
+ 3102 0091 00        		.byte	0
+ 3103 0092 01        		.byte	1
+ 3104 0093 00        		.byte	0
+ 3105 0094 02        		.byte	2
+ 3106 0095 00        		.byte	0
+ 3107 0096 01        		.byte	1
+ 3108 0097 00        		.byte	0
+ 3109 0098 04        		.byte	4
+ 3110 0099 00        		.byte	0
+ 3111 009a 01        		.byte	1
+ 3112 009b 00        		.byte	0
+ 3113 009c 02        		.byte	2
+ 3114 009d 00        		.byte	0
+ 3115 009e 01        		.byte	1
+ 3116 009f 00        		.byte	0
+ 3117 00a0 03        		.byte	3
+ 3118 00a1 00        		.byte	0
+ 3119 00a2 01        		.byte	1
+ 3120 00a3 00        		.byte	0
+ 3121 00a4 02        		.byte	2
+ 3122 00a5 00        		.byte	0
+ 3123 00a6 01        		.byte	1
+ 3124 00a7 00        		.byte	0
+ 3125 00a8 05        		.byte	5
+ 3126 00a9 00        		.byte	0
+ 3127 00aa 01        		.byte	1
+ 3128 00ab 00        		.byte	0
+ 3129 00ac 02        		.byte	2
+ 3130 00ad 00        		.byte	0
+ 3131 00ae 01        		.byte	1
+ 3132 00af 00        		.byte	0
+ 3133 00b0 03        		.byte	3
+ 3134 00b1 00        		.byte	0
+ 3135 00b2 01        		.byte	1
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 56
+
+
+ 3136 00b3 00        		.byte	0
+ 3137 00b4 02        		.byte	2
+ 3138 00b5 00        		.byte	0
+ 3139 00b6 01        		.byte	1
+ 3140 00b7 00        		.byte	0
+ 3141 00b8 04        		.byte	4
+ 3142 00b9 00        		.byte	0
+ 3143 00ba 01        		.byte	1
+ 3144 00bb 00        		.byte	0
+ 3145 00bc 02        		.byte	2
+ 3146 00bd 00        		.byte	0
+ 3147 00be 01        		.byte	1
+ 3148 00bf 00        		.byte	0
+ 3149 00c0 03        		.byte	3
+ 3150 00c1 00        		.byte	0
+ 3151 00c2 01        		.byte	1
+ 3152 00c3 00        		.byte	0
+ 3153 00c4 02        		.byte	2
+ 3154 00c5 00        		.byte	0
+ 3155 00c6 01        		.byte	1
+ 3156 00c7 00        		.byte	0
+ 3157 00c8 06        		.byte	6
+ 3158 00c9 00        		.byte	0
+ 3159 00ca 01        		.byte	1
+ 3160 00cb 00        		.byte	0
+ 3161 00cc 02        		.byte	2
+ 3162 00cd 00        		.byte	0
+ 3163 00ce 01        		.byte	1
+ 3164 00cf 00        		.byte	0
+ 3165 00d0 03        		.byte	3
+ 3166 00d1 00        		.byte	0
+ 3167 00d2 01        		.byte	1
+ 3168 00d3 00        		.byte	0
+ 3169 00d4 02        		.byte	2
+ 3170 00d5 00        		.byte	0
+ 3171 00d6 01        		.byte	1
+ 3172 00d7 00        		.byte	0
+ 3173 00d8 04        		.byte	4
+ 3174 00d9 00        		.byte	0
+ 3175 00da 01        		.byte	1
+ 3176 00db 00        		.byte	0
+ 3177 00dc 02        		.byte	2
+ 3178 00dd 00        		.byte	0
+ 3179 00de 01        		.byte	1
+ 3180 00df 00        		.byte	0
+ 3181 00e0 03        		.byte	3
+ 3182 00e1 00        		.byte	0
+ 3183 00e2 01        		.byte	1
+ 3184 00e3 00        		.byte	0
+ 3185 00e4 02        		.byte	2
+ 3186 00e5 00        		.byte	0
+ 3187 00e6 01        		.byte	1
+ 3188 00e7 00        		.byte	0
+ 3189 00e8 05        		.byte	5
+ 3190 00e9 00        		.byte	0
+ 3191 00ea 01        		.byte	1
+ 3192 00eb 00        		.byte	0
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 57
+
+
+ 3193 00ec 02        		.byte	2
+ 3194 00ed 00        		.byte	0
+ 3195 00ee 01        		.byte	1
+ 3196 00ef 00        		.byte	0
+ 3197 00f0 03        		.byte	3
+ 3198 00f1 00        		.byte	0
+ 3199 00f2 01        		.byte	1
+ 3200 00f3 00        		.byte	0
+ 3201 00f4 02        		.byte	2
+ 3202 00f5 00        		.byte	0
+ 3203 00f6 01        		.byte	1
+ 3204 00f7 00        		.byte	0
+ 3205 00f8 04        		.byte	4
+ 3206 00f9 00        		.byte	0
+ 3207 00fa 01        		.byte	1
+ 3208 00fb 00        		.byte	0
+ 3209 00fc 02        		.byte	2
+ 3210 00fd 00        		.byte	0
+ 3211 00fe 01        		.byte	1
+ 3212 00ff 00        		.byte	0
+ 3213 0100 03        		.byte	3
+ 3214 0101 00        		.byte	0
+ 3215 0102 01        		.byte	1
+ 3216 0103 00        		.byte	0
+ 3217 0104 02        		.byte	2
+ 3218 0105 00        		.byte	0
+ 3219 0106 01        		.byte	1
+ 3220 0107 00        		.byte	0
+ 3221               		.comm OSCtxSwCtr,4,1
+ 3222               		.comm OSEventFreeList,2,1
+ 3223               		.comm OSEventTbl,48,1
+ 3224               		.comm OSFlagTbl,24,1
+ 3225               		.comm OSFlagFreeList,2,1
+ 3226               		.comm OSCPUUsage,1,1
+ 3227               		.comm OSIdleCtrMax,4,1
+ 3228               		.comm OSIdleCtrRun,4,1
+ 3229               		.comm OSStatRdy,1,1
+ 3230               		.comm OSTaskStatStk,128,1
+ 3231               		.comm OSIntNesting,1,1
+ 3232               		.comm OSIntExitY,1,1
+ 3233               		.comm OSLockNesting,1,1
+ 3234               		.comm OSPrioCur,1,1
+ 3235               		.comm OSPrioHighRdy,1,1
+ 3236               		.comm OSRdyGrp,1,1
+ 3237               		.comm OSRdyTbl,2,1
+ 3238               		.comm OSRunning,1,1
+ 3239               		.comm OSTaskCtr,1,1
+ 3240               		.comm OSIdleCtr,4,1
+ 3241               		.comm OSTaskIdleStk,128,1
+ 3242               		.comm OSTCBCur,2,1
+ 3243               		.comm OSTCBFreeList,2,1
+ 3244               		.comm OSTCBHighRdy,2,1
+ 3245               		.comm OSTCBList,2,1
+ 3246               		.comm OSTCBPrioTbl,26,1
+ 3247               		.comm OSTCBTbl,247,1
+ 3248               		.comm OSQFreeList,2,1
+ 3249               		.comm OSQTbl,42,1
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 58
+
+
+ 3250               	.global __do_copy_data
+ 3251               	.global __do_clear_bss
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 59
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ucos_ii.c
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2      *ABS*:0000003f __SREG__
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:3      *ABS*:0000003e __SP_H__
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:4      *ABS*:0000003d __SP_L__
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:5      *ABS*:00000034 __CCP__
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:10     .text:00000000 OS_FlagTaskRdy
+                            *COM*:00000001 OSRdyGrp
+                            *COM*:00000002 OSRdyTbl
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:102    .text:000000a0 OS_TaskIdle
+                            *COM*:00000004 OSIdleCtr
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:134    .text:000000d0 OSIntEnter
+                            *COM*:00000001 OSRunning
+                            *COM*:00000001 OSIntNesting
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:154    .text:000000ea OSIntExit
+                            *COM*:00000001 OSLockNesting
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2964   .data:00000008 OSUnMapTbl
+                            *COM*:00000001 OSIntExitY
+                            *COM*:00000001 OSPrioHighRdy
+                            *COM*:00000001 OSPrioCur
+                            *COM*:0000001a OSTCBPrioTbl
+                            *COM*:00000002 OSTCBHighRdy
+                            *COM*:00000004 OSCtxSwCtr
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:236    .text:0000018e OSSchedLock
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:266    .text:000001ac OSStart
+                            *COM*:00000002 OSTCBCur
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:311    .text:00000206 OSTimeTick
+                            *COM*:00000002 OSTCBList
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:392    .text:00000280 OSVersion
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:404    .text:00000286 OS_EventTaskRdy
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2952   .data:00000000 OSMapTbl
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:495    .text:0000032a OS_EventTaskWait
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:549    .text:0000038a OS_EventTO
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:590    .text:000003cc OS_EventWaitListInit
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:604    .text:000003d6 OS_Sched
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:675    .text:00000460 OSSchedUnlock
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:725    .text:00000496 OS_TCBInit
+                            *COM*:00000002 OSTCBFreeList
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:849    .text:00000566 OSFlagCreate
+                            *COM*:00000002 OSFlagFreeList
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:909    .text:000005b6 OSFlagPend
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:1262   .text:00000806 OSFlagPost
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:1419   .text:000008f4 OS_FlagInit
+                            *COM*:00000018 OSFlagTbl
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:1465   .text:00000964 OS_FlagUnlink
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:1509   .text:000009a4 OSMboxCreate
+                            *COM*:00000002 OSEventFreeList
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:1560   .text:000009ea OSMboxPend
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:1681   .text:00000aa2 OSMboxPost
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:1731   .text:00000ad6 OSQCreate
+                            *COM*:00000002 OSQFreeList
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:1846   .text:00000b92 OSQPend
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:1991   .text:00000c72 OSQPost
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2066   .text:00000cd4 OS_QInit
+                            *COM*:0000002a OSQTbl
+GAS LISTING C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s 			page 60
+
+
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2092   .text:00000d06 OSSemCreate
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2143   .text:00000d4c OSSemPend
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2249   .text:00000de2 OSSemPost
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2304   .text:00000e20 OSTaskCreate
+                            *COM*:00000001 OSTaskCtr
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2433   .text:00000ede OSInit
+                            *COM*:000000f7 OSTCBTbl
+                            *COM*:00000030 OSEventTbl
+                            *COM*:00000080 OSTaskIdleStk
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2652   .text:00001100 OS_TaskStat
+                            *COM*:00000080 OSTaskStatStk
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2600   .text:000010b2 OSTimeDly
+                            *COM*:00000001 OSStatRdy
+                            *COM*:00000004 OSIdleCtrMax
+                            *COM*:00000001 OSCPUUsage
+                            *COM*:00000004 OSIdleCtrRun
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2759   .text:000011f0 OSStatInit
+C:\Users\simwo\AppData\Local\Temp\cc3LJoVz.s:2809   .text:00001240 OSTimeDlyHMSM
+
+UNDEFINED SYMBOLS
+OSTaskIdleHook
+OSIntCtxSw
+OSStartHighRdy
+OSTimeTickHook
+OSCtxSw
+OSTCBInitHook
+OSTaskCreateHook
+OSTaskStkInit
+OSInitHookBegin
+OSInitHookEnd
+__udivmodsi4
+OSTaskStatHook
+__umulhisi3
+__mulsi3
+__do_copy_data
+__do_clear_bss

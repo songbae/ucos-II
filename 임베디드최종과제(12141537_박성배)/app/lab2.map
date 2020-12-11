@@ -1,0 +1,770 @@
+Archive member included because of file (symbol)
+
+c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_umulhisi3.o)
+                              ucos_ii.o (__umulhisi3)
+c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_mulsi3.o)
+                              ucos_ii.o (__mulsi3)
+c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
+                              ucos_ii.o (__udivmodsi4)
+c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+                              c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o (exit)
+c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+                              lab2.o (__do_copy_data)
+c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+                              lab2.o (__do_clear_bss)
+
+Allocating common symbols
+Common symbol       size              file
+
+buzzer_grp          0x2               lab2.o
+OSLockNesting       0x1               ucos_ii.o
+OSRunning           0x1               ucos_ii.o
+OSIdleCtr           0x4               ucos_ii.o
+OSPrioHighRdy       0x1               ucos_ii.o
+OSFlagTbl           0x18              ucos_ii.o
+OSPrioCur           0x1               ucos_ii.o
+buzzer1_grp         0x2               lab2.o
+OSTCBList           0x2               ucos_ii.o
+OSTaskStatStk       0x80              ucos_ii.o
+OSCtxSwCtr          0x4               ucos_ii.o
+led_queue           0xa               lab2.o
+FndNum              0x1               lab2.o
+OSIdleCtrMax        0x4               ucos_ii.o
+OSTCBFreeList       0x2               ucos_ii.o
+OSCPUUsage          0x1               ucos_ii.o
+OSTaskCtr           0x1               ucos_ii.o
+Mbox                0x6               lab2.o
+OSQTbl              0x2a              ucos_ii.o
+OSTCBHighRdy        0x2               ucos_ii.o
+OSQFreeList         0x2               ucos_ii.o
+OSRdyGrp            0x1               ucos_ii.o
+err                 0x1               lab2.o
+case_grp            0x2               lab2.o
+OSRdyTbl            0x2               ucos_ii.o
+queue_to_led        0x2               lab2.o
+OSEventFreeList     0x2               ucos_ii.o
+led_grp             0x2               lab2.o
+OSIntExitY          0x1               ucos_ii.o
+OSIntNesting        0x1               ucos_ii.o
+OSTCBCur            0x2               ucos_ii.o
+TaskStk             0x280             lab2.o
+OSTaskIdleStk       0x80              ucos_ii.o
+OSEventTbl          0x30              ucos_ii.o
+OSTCBTbl            0xf7              ucos_ii.o
+Sem                 0x2               lab2.o
+OSFlagFreeList      0x2               ucos_ii.o
+OSStatRdy           0x1               ucos_ii.o
+OSTCBPrioTbl        0x1a              ucos_ii.o
+OSIdleCtrRun        0x4               ucos_ii.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800100         0x0000ff00         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+LOAD lab2.o
+LOAD os_cpu_c.o
+LOAD ucos_ii.o
+LOAD os_cpu_a.o
+LOAD c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a
+LOAD c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51\libc.a
+LOAD c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x1fe4
+ *(.vectors)
+ .vectors       0x00000000       0x8c c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+                0x00000000                __vector_default
+                0x00000000                __vectors
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x0000008c                . = ALIGN (0x2)
+                0x0000008c                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x0000008c        0x0 linker stubs
+ *(.trampolines*)
+                0x0000008c                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x0000008c                __ctors_start = .
+ *(.ctors)
+                0x0000008c                __ctors_end = .
+                0x0000008c                __dtors_start = .
+ *(.dtors)
+                0x0000008c                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x0000008c        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+                0x0000008c                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x0000008c        0xc c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000098       0x1a c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+                0x00000098                __do_copy_data
+ .init4         0x000000b2       0x10 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+                0x000000b2                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x000000c2        0x8 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+ *(.init9)
+ *(.text)
+ .text          0x000000ca        0x4 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+                0x000000ca                __vector_22
+                0x000000ca                __vector_28
+                0x000000ca                __vector_1
+                0x000000ca                __vector_32
+                0x000000ca                __vector_34
+                0x000000ca                __vector_24
+                0x000000ca                __vector_12
+                0x000000ca                __bad_interrupt
+                0x000000ca                __vector_31
+                0x000000ca                __vector_3
+                0x000000ca                __vector_23
+                0x000000ca                __vector_30
+                0x000000ca                __vector_25
+                0x000000ca                __vector_11
+                0x000000ca                __vector_13
+                0x000000ca                __vector_17
+                0x000000ca                __vector_19
+                0x000000ca                __vector_7
+                0x000000ca                __vector_27
+                0x000000ca                __vector_33
+                0x000000ca                __vector_4
+                0x000000ca                __vector_9
+                0x000000ca                __vector_2
+                0x000000ca                __vector_21
+                0x000000ca                __vector_15
+                0x000000ca                __vector_29
+                0x000000ca                __vector_8
+                0x000000ca                __vector_26
+                0x000000ca                __vector_14
+                0x000000ca                __vector_18
+                0x000000ca                __vector_20
+ .text          0x000000ce      0x868 lab2.o
+                0x000000ce                Buzzer
+                0x00000168                Buzzer1
+                0x00000206                Led
+                0x00000364                __vector_10
+                0x000003f8                __vector_5
+                0x000004b6                __vector_6
+                0x0000052e                main
+                0x00000684                clear_fnd
+                0x000006ce                Fnd
+                0x000007fe                light
+                0x00000816                Test_case
+                0x00000882                Test
+ .text          0x00000936       0x68 os_cpu_c.o
+                0x00000936                OSTaskStkInit
+                0x0000098c                OSTaskCreateHook
+                0x0000098e                OSTaskDelHook
+                0x00000990                OSTaskSwHook
+                0x00000992                OSTaskStatHook
+                0x00000994                OSTimeTickHook
+                0x00000996                OSInitHookBegin
+                0x00000998                OSInitHookEnd
+                0x0000099a                OSTaskIdleHook
+                0x0000099c                OSTCBInitHook
+ .text          0x0000099e     0x1344 ucos_ii.o
+                0x00000a3e                OS_TaskIdle
+                0x00000a6e                OSIntEnter
+                0x00000a88                OSIntExit
+                0x00000b2c                OSSchedLock
+                0x00000b4a                OSStart
+                0x00000ba4                OSTimeTick
+                0x00000c1e                OSVersion
+                0x00000c24                OS_EventTaskRdy
+                0x00000cc8                OS_EventTaskWait
+                0x00000d28                OS_EventTO
+                0x00000d6a                OS_EventWaitListInit
+                0x00000d74                OS_Sched
+                0x00000dfe                OSSchedUnlock
+                0x00000e34                OS_TCBInit
+                0x00000f04                OSFlagCreate
+                0x00000f54                OSFlagPend
+                0x000011a4                OSFlagPost
+                0x00001292                OS_FlagInit
+                0x00001302                OS_FlagUnlink
+                0x00001342                OSMboxCreate
+                0x00001388                OSMboxPend
+                0x00001440                OSMboxPost
+                0x00001474                OSQCreate
+                0x00001530                OSQPend
+                0x00001610                OSQPost
+                0x00001672                OS_QInit
+                0x000016a4                OSSemCreate
+                0x000016ea                OSSemPend
+                0x00001780                OSSemPost
+                0x000017be                OSTaskCreate
+                0x0000187c                OSInit
+                0x00001a50                OSTimeDly
+                0x00001a9e                OS_TaskStat
+                0x00001b8e                OSStatInit
+                0x00001bde                OSTimeDlyHMSM
+ .text          0x00001ce2      0x25e os_cpu_a.o
+                0x00001ce2                OSStartHighRdy
+                0x00001d4a                OSCtxSw
+                0x00001e10                OSIntCtxSw
+                0x00001e7e                __vector_16
+                0x00001e7e                OSTickISR
+ .text          0x00001f40        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_umulhisi3.o)
+ .text          0x00001f40        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_mulsi3.o)
+ .text          0x00001f40        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
+ .text          0x00001f40        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+ .text          0x00001f40        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+ .text          0x00001f40        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+                0x00001f40                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x00001f40       0x1e c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_umulhisi3.o)
+                0x00001f40                __umulhisi3
+ .text.libgcc   0x00001f5e       0x3e c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_mulsi3.o)
+                0x00001f5e                __mulsi3
+ .text.libgcc   0x00001f9c       0x44 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
+                0x00001f9c                __udivmodsi4
+ .text.libgcc   0x00001fe0        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+ .text.libgcc   0x00001fe0        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00001fe0        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+                0x00001fe0                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00001fe0        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+                0x00001fe0                _exit
+                0x00001fe0                exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00001fe0        0x4 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00001fe4                _etext = .
+
+.data           0x00800100      0x158 load address 0x00001fe4
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+ .data          0x00800100       0x50 lab2.o
+                0x00800100                test
+                0x00800102                switch_cnt
+                0x00800104                win_melody
+                0x00800136                FND_DATA
+ .data          0x00800150        0x0 os_cpu_c.o
+ .data          0x00800150      0x108 ucos_ii.o
+                0x00800150                OSMapTbl
+                0x00800158                OSUnMapTbl
+ .data          0x00800258        0x0 os_cpu_a.o
+ .data          0x00800258        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_umulhisi3.o)
+ .data          0x00800258        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_mulsi3.o)
+ .data          0x00800258        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
+ .data          0x00800258        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+ .data          0x00800258        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+ .data          0x00800258        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800258                . = ALIGN (0x2)
+                0x00800258                _edata = .
+                0x00800258                PROVIDE (__data_end, .)
+
+.bss            0x00800258      0x559
+                0x00800258                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800258        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+ .bss           0x00800258        0xe lab2.o
+                0x00800258                switch_state
+                0x0080025a                switch_click
+                0x0080025c                test_case
+                0x0080025e                buzzer_state
+                0x00800260                melody_idx
+                0x00800262                melody1_idx
+                0x00800264                idx
+ .bss           0x00800266        0x0 os_cpu_c.o
+ .bss           0x00800266        0x0 ucos_ii.o
+ .bss           0x00800266        0x0 os_cpu_a.o
+ .bss           0x00800266        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_umulhisi3.o)
+ .bss           0x00800266        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_mulsi3.o)
+ .bss           0x00800266        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
+ .bss           0x00800266        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+ .bss           0x00800266        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+ .bss           0x00800266        0x0 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800266      0x29e lab2.o
+                0x00800266                buzzer_grp
+                0x00800268                buzzer1_grp
+                0x0080026a                led_queue
+                0x00800274                FndNum
+                0x00800275                Mbox
+                0x0080027b                err
+                0x0080027c                case_grp
+                0x0080027e                queue_to_led
+                0x00800280                led_grp
+                0x00800282                TaskStk
+                0x00800502                Sem
+ COMMON         0x00800504      0x2ad ucos_ii.o
+                0x00800504                OSLockNesting
+                0x00800505                OSRunning
+                0x00800506                OSIdleCtr
+                0x0080050a                OSPrioHighRdy
+                0x0080050b                OSFlagTbl
+                0x00800523                OSPrioCur
+                0x00800524                OSTCBList
+                0x00800526                OSTaskStatStk
+                0x008005a6                OSCtxSwCtr
+                0x008005aa                OSIdleCtrMax
+                0x008005ae                OSTCBFreeList
+                0x008005b0                OSCPUUsage
+                0x008005b1                OSTaskCtr
+                0x008005b2                OSQTbl
+                0x008005dc                OSTCBHighRdy
+                0x008005de                OSQFreeList
+                0x008005e0                OSRdyGrp
+                0x008005e1                OSRdyTbl
+                0x008005e3                OSEventFreeList
+                0x008005e5                OSIntExitY
+                0x008005e6                OSIntNesting
+                0x008005e7                OSTCBCur
+                0x008005e9                OSTaskIdleStk
+                0x00800669                OSEventTbl
+                0x00800699                OSTCBTbl
+                0x00800790                OSFlagFreeList
+                0x00800792                OSStatRdy
+                0x00800793                OSTCBPrioTbl
+                0x008007ad                OSIdleCtrRun
+                0x008007b1                PROVIDE (__bss_end, .)
+                0x00001fe4                __data_load_start = LOADADDR (.data)
+                0x0000213c                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008007b1        0x0
+                0x008007b1                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008007b1                PROVIDE (__noinit_end, .)
+                0x008007b1                _end = .
+                0x008007b1                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab           0x00000000      0xa38
+ *(.stab)
+ .stab          0x00000000      0x6cc c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+ .stab          0x000006cc      0x36c os_cpu_a.o
+                                0x378 (size before relaxing)
+
+.stabstr        0x00000000       0xd5
+ *(.stabstr)
+ .stabstr       0x00000000       0xd5 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(lab2.elf elf32-avr)
+LOAD linker stubs
+
+Cross Reference Table
+
+Symbol                                            File
+Buzzer                                            lab2.o
+Buzzer1                                           lab2.o
+FND_DATA                                          lab2.o
+Fnd                                               lab2.o
+FndNum                                            lab2.o
+Led                                               lab2.o
+Mbox                                              lab2.o
+OSCPUUsage                                        ucos_ii.o
+OSCtxSw                                           os_cpu_a.o
+                                                  ucos_ii.o
+OSCtxSwCtr                                        ucos_ii.o
+OSEventFreeList                                   ucos_ii.o
+OSEventTbl                                        ucos_ii.o
+OSFlagCreate                                      ucos_ii.o
+                                                  lab2.o
+OSFlagFreeList                                    ucos_ii.o
+OSFlagPend                                        ucos_ii.o
+                                                  lab2.o
+OSFlagPost                                        ucos_ii.o
+                                                  lab2.o
+OSFlagTbl                                         ucos_ii.o
+OSIdleCtr                                         ucos_ii.o
+OSIdleCtrMax                                      ucos_ii.o
+OSIdleCtrRun                                      ucos_ii.o
+OSInit                                            ucos_ii.o
+                                                  lab2.o
+OSInitHookBegin                                   os_cpu_c.o
+                                                  ucos_ii.o
+OSInitHookEnd                                     os_cpu_c.o
+                                                  ucos_ii.o
+OSIntCtxSw                                        os_cpu_a.o
+                                                  ucos_ii.o
+OSIntEnter                                        ucos_ii.o
+OSIntExit                                         ucos_ii.o
+                                                  os_cpu_a.o
+OSIntExitY                                        ucos_ii.o
+OSIntNesting                                      os_cpu_a.o
+                                                  ucos_ii.o
+OSLockNesting                                     ucos_ii.o
+OSMapTbl                                          ucos_ii.o
+OSMboxCreate                                      ucos_ii.o
+                                                  lab2.o
+OSMboxPend                                        ucos_ii.o
+                                                  lab2.o
+OSMboxPost                                        ucos_ii.o
+                                                  lab2.o
+OSPrioCur                                         os_cpu_a.o
+                                                  ucos_ii.o
+OSPrioHighRdy                                     os_cpu_a.o
+                                                  ucos_ii.o
+OSQCreate                                         ucos_ii.o
+                                                  lab2.o
+OSQFreeList                                       ucos_ii.o
+OSQPend                                           ucos_ii.o
+                                                  lab2.o
+OSQPost                                           ucos_ii.o
+                                                  lab2.o
+OSQTbl                                            ucos_ii.o
+OSRdyGrp                                          ucos_ii.o
+OSRdyTbl                                          ucos_ii.o
+OSRunning                                         os_cpu_a.o
+                                                  ucos_ii.o
+OSSchedLock                                       ucos_ii.o
+OSSchedUnlock                                     ucos_ii.o
+OSSemCreate                                       ucos_ii.o
+                                                  lab2.o
+OSSemPend                                         ucos_ii.o
+                                                  lab2.o
+OSSemPost                                         ucos_ii.o
+                                                  lab2.o
+OSStart                                           ucos_ii.o
+                                                  lab2.o
+OSStartHighRdy                                    os_cpu_a.o
+                                                  ucos_ii.o
+OSStatInit                                        ucos_ii.o
+OSStatRdy                                         ucos_ii.o
+OSTCBCur                                          os_cpu_a.o
+                                                  ucos_ii.o
+OSTCBFreeList                                     ucos_ii.o
+OSTCBHighRdy                                      os_cpu_a.o
+                                                  ucos_ii.o
+OSTCBInitHook                                     os_cpu_c.o
+                                                  ucos_ii.o
+OSTCBList                                         ucos_ii.o
+OSTCBPrioTbl                                      ucos_ii.o
+OSTCBTbl                                          ucos_ii.o
+OSTaskCreate                                      ucos_ii.o
+                                                  lab2.o
+OSTaskCreateHook                                  os_cpu_c.o
+                                                  ucos_ii.o
+OSTaskCtr                                         ucos_ii.o
+OSTaskDelHook                                     os_cpu_c.o
+OSTaskIdleHook                                    os_cpu_c.o
+                                                  ucos_ii.o
+OSTaskIdleStk                                     ucos_ii.o
+OSTaskStatHook                                    os_cpu_c.o
+                                                  ucos_ii.o
+OSTaskStatStk                                     ucos_ii.o
+OSTaskStkInit                                     os_cpu_c.o
+                                                  ucos_ii.o
+OSTaskSwHook                                      os_cpu_c.o
+                                                  os_cpu_a.o
+OSTickISR                                         os_cpu_a.o
+OSTimeDly                                         ucos_ii.o
+OSTimeDlyHMSM                                     ucos_ii.o
+OSTimeTick                                        ucos_ii.o
+                                                  os_cpu_a.o
+OSTimeTickHook                                    os_cpu_c.o
+                                                  ucos_ii.o
+OSUnMapTbl                                        ucos_ii.o
+OSVersion                                         ucos_ii.o
+OS_EventTO                                        ucos_ii.o
+OS_EventTaskRdy                                   ucos_ii.o
+OS_EventTaskWait                                  ucos_ii.o
+OS_EventWaitListInit                              ucos_ii.o
+OS_FlagInit                                       ucos_ii.o
+OS_FlagUnlink                                     ucos_ii.o
+OS_QInit                                          ucos_ii.o
+OS_Sched                                          ucos_ii.o
+OS_TCBInit                                        ucos_ii.o
+OS_TaskIdle                                       ucos_ii.o
+OS_TaskStat                                       ucos_ii.o
+Sem                                               lab2.o
+TaskStk                                           lab2.o
+Test                                              lab2.o
+Test_case                                         lab2.o
+__bad_interrupt                                   c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__bss_end                                         c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+__bss_start                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+__data_end                                        c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+__data_load_start                                 c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+__data_start                                      c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+__do_clear_bss                                    c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+                                                  ucos_ii.o
+                                                  lab2.o
+__do_copy_data                                    c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+                                                  ucos_ii.o
+                                                  lab2.o
+__heap_end                                        c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__init                                            c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__mulsi3                                          c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_mulsi3.o)
+                                                  ucos_ii.o
+__stack                                           c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__udivmodsi4                                      c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
+                                                  ucos_ii.o
+__umulhisi3                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_umulhisi3.o)
+                                                  ucos_ii.o
+__vector_1                                        c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_10                                       lab2.o
+                                                  c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_11                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_12                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_13                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_14                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_15                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_16                                       os_cpu_a.o
+                                                  c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_17                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_18                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_19                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_2                                        c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_20                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_21                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_22                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_23                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_24                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_25                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_26                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_27                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_28                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_29                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_3                                        c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_30                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_31                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_32                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_33                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_34                                       c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_4                                        c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_5                                        lab2.o
+                                                  c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_6                                        lab2.o
+                                                  c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_7                                        c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_8                                        c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_9                                        c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vector_default                                  c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+__vectors                                         c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+_exit                                             c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+buzzer1_grp                                       lab2.o
+buzzer_grp                                        lab2.o
+buzzer_state                                      lab2.o
+case_grp                                          lab2.o
+clear_fnd                                         lab2.o
+err                                               lab2.o
+exit                                              c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+                                                  c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+idx                                               lab2.o
+led_grp                                           lab2.o
+led_queue                                         lab2.o
+light                                             lab2.o
+main                                              lab2.o
+                                                  c:/program files (x86)/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm128.o
+melody1_idx                                       lab2.o
+melody_idx                                        lab2.o
+queue_to_led                                      lab2.o
+switch_click                                      lab2.o
+switch_cnt                                        lab2.o
+switch_state                                      lab2.o
+test                                              lab2.o
+test_case                                         lab2.o
+win_melody                                        lab2.o
